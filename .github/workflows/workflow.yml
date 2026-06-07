@@ -49,7 +49,7 @@ jobs:
             --ip 172.25.0.10 \
             --env-file /home/envs/islam24-backend.env \
             -v /home/envs/firebase/islam-24-firebase.json:/app/firebase-admin.json:ro \
-            -p 8082:3000 \
+            -p 8082:8082 \
             --restart unless-stopped \
             ${{secrets.DOCKERHUB_USERNAME}}/islam24-backend:latest
 
