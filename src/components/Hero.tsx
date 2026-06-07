@@ -1,7 +1,28 @@
 import Image from 'next/image';
 import styles from './Hero.module.css';
+import gplay from 'google-play-scraper';
+import { unstable_cache } from 'next/cache';
 
-export default function Hero() {
+const getAppStats = unstable_cache(
+  async () => {
+    try {
+      const appInfo = await gplay.app({ appId: 'com.hazrat.islam24' });
+      return {
+        scoreText: appInfo.scoreText || '4.8',
+        installs: appInfo.installs || '100+',
+      };
+    } catch (e) {
+      console.error('Failed to fetch Play Store stats:', e);
+      return { scoreText: '4.8', installs: '100+' }; // fallback if API fails
+    }
+  },
+  ['play-store-stats'],
+  { revalidate: 86400 } // Cache for 24 hours to prevent rate limits
+);
+
+export default async function Hero() {
+  const stats = await getAppStats();
+
   return (
     <section className={styles.hero}>
       <div className={styles.bgGradient}></div>
@@ -27,12 +48,12 @@ export default function Hero() {
 
           <div className={styles.stats}>
             <div className={styles.stat}>
-              <span className={styles.statNumber}>4.8</span>
+              <span className={styles.statNumber}>{stats.scoreText}</span>
               <span className={styles.statLabel}>★ Rating</span>
             </div>
             <div className={styles.statDivider}></div>
             <div className={styles.stat}>
-              <span className={styles.statNumber}>100+</span>
+              <span className={styles.statNumber}>{stats.installs}</span>
               <span className={styles.statLabel}>Downloads</span>
             </div>
             <div className={styles.statDivider}></div>
