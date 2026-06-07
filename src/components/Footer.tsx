@@ -27,6 +27,7 @@ export default function Footer() {
         <div className={styles.linkGroup}>
           <h4 className={styles.linkTitle}>Legal</h4>
           <Link href="/privacy-policy" className={styles.link}>Privacy Policy</Link>
+          <Link href="/delete-account" className={styles.link}>Delete Account</Link>
           <Link href="/acknowledgements" className={styles.link}>Acknowledgements</Link>
         </div>
 
