@@ -40,10 +40,8 @@ jobs:
             --name islam24-backend \
             --network custom_bridge \
             --ip 172.25.0.10 \
-            -e FIREBASE_KEY_PATH="/app/firebase/islam-24-firebase.json" \
             --env-file /home/envs/islam24-backend.env \
-            -v /home/envs/firebase/islam-24-firebase.json:/app/firebase/islam-24-firebase.json \
-            -p 8082:8082 \
+            -p 8082:3000 \
             --restart unless-stopped \
             ${{secrets.DOCKERHUB_USERNAME}}/islam24-backend:latest
 
