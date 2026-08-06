@@ -1,4 +1,4 @@
-name: Build and Deploy Islam24 backend
+name: Build and Deploy Islam24 website
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{secrets.DOCKERHUB_USERNAME}}/islam24-backend:latest
+          tags: ${{secrets.DOCKERHUB_USERNAME}}/islam24-website:latest
           build-args: |
             NEXT_PUBLIC_FIREBASE_API_KEY=${{ secrets.NEXT_PUBLIC_FIREBASE_API_KEY }}
             NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${{ secrets.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}
@@ -38,20 +38,20 @@ jobs:
     steps:
       - name: Pull and restart Container
         run: |
-          docker pull ${{secrets.DOCKERHUB_USERNAME}}/islam24-backend:latest
+          docker pull ${{secrets.DOCKERHUB_USERNAME}}/islam24-website:latest
           
-          docker stop islam24-backend || true
-          docker rm islam24-backend || true
+          docker stop islam24-website || true
+          docker rm islam24-website || true
           
           docker run -d \
-            --name islam24-backend \
+            --name islam24-website \
             --network custom_bridge \
             --ip 172.25.0.10 \
-            --env-file /home/envs/islam24-backend.env \
+            --env-file /home/envs/islam24-website.env \
             -v /home/envs/firebase/islam-24-firebase.json:/app/firebase-admin.json:ro \
             -p 8082:8082 \
             --restart unless-stopped \
-            ${{secrets.DOCKERHUB_USERNAME}}/islam24-backend:latest
+            ${{secrets.DOCKERHUB_USERNAME}}/islam24-website:latest
 
           sleep 5
-          docker ps | grep islam24-backend
+          docker ps | grep islam24-website
