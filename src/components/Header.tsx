@@ -1,13 +1,18 @@
 'use client';
 
+/* eslint-disable @next/next/no-img-element */
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useAuth } from '@/context/AuthContext';
 import styles from './Header.module.css';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [imgError, setImgError] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -28,6 +33,26 @@ export default function Header() {
           <Link href="/acknowledgements" className={styles.navLink}>Acknowledgements</Link>
           <Link href="/contact" className={styles.navLink}>Contact</Link>
           <Link href="/privacy-policy" className={styles.navLink}>Privacy</Link>
+          <Link href="/delete-account" className={styles.navLink}>
+            {user ? (
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--emerald)' }}>
+                {user.picture && !imgError ? (
+                  <img
+                    src={user.picture}
+                    alt=""
+                    referrerPolicy="no-referrer"
+                    onError={() => setImgError(true)}
+                    style={{ width: '20px', height: '20px', borderRadius: '50%', objectFit: 'cover' }}
+                  />
+                ) : (
+                  '👤'
+                )}
+                {user.name ? user.name.split(' ')[0] : 'Profile'}
+              </span>
+            ) : (
+              'Account'
+            )}
+          </Link>
           <a
             href="https://play.google.com/store/apps/details?id=com.hazrat.islam24"
             target="_blank"
@@ -54,6 +79,9 @@ export default function Header() {
         <Link href="/acknowledgements" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Acknowledgements</Link>
         <Link href="/contact" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Contact</Link>
         <Link href="/privacy-policy" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Privacy</Link>
+        <Link href="/delete-account" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>
+          {user ? `Account (${user.name || user.email})` : 'Account & Delete'}
+        </Link>
         <a
           href="https://play.google.com/store/apps/details?id=com.hazrat.islam24"
           target="_blank"

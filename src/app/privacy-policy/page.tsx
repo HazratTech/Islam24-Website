@@ -41,7 +41,7 @@ export default function PrivacyPolicyPage() {
           <h2>3. Third-Party Services</h2>
           <p>
             Islam24 is proudly ad-free and tracker-free. We do not use third-party analytics (like Google Analytics
-            or Firebase Analytics) or advertising networks. Your usage remains completely private to you.
+            or third-party trackers) or advertising networks. Your usage remains completely private to you.
           </p>
 
           <h2>4. Data Security</h2>

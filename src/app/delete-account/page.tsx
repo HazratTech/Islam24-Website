@@ -1,75 +1,142 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+/* eslint-disable @next/next/no-img-element */
+import { useState, useEffect, useRef } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { auth, googleProvider, signInWithPopup, signOut } from '@/lib/firebase/client';
-import { User } from 'firebase/auth';
+import { useAuth } from '@/context/AuthContext';
 import styles from './DeleteAccount.module.css';
 
-export default function DeleteAccountPage() {
-  const [user, setUser] = useState<User | null>(null);
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [errorMessage, setErrorMessage] = useState('');
+interface GoogleIdAccounts {
+  initialize: (config: { client_id: string; callback: (res: { credential?: string }) => void }) => void;
+  renderButton: (parent: HTMLElement, options: Record<string, unknown>) => void;
+}
 
-  // Keep track of auth state changes
-  useEffect(() => {
-    const unsubscribe = auth?.onAuthStateChanged((currentUser) => {
-      setUser(currentUser);
-    });
-    return () => unsubscribe && unsubscribe();
-  }, []);
-
-  const handleLogin = async () => {
-    try {
-      setStatus('loading');
-      setErrorMessage('');
-      
-      if (!auth || !googleProvider) {
-        throw new Error('Firebase configuration is missing. Please contact the administrator.');
-      }
-
-      await signInWithPopup(auth, googleProvider);
-      setStatus('idle');
-    } catch (error: any) {
-      console.error(error);
-      setStatus('error');
-      setErrorMessage(error.message || 'Failed to sign in with Google');
-    }
+interface CustomWindow extends Window {
+  google?: {
+    accounts?: {
+      id?: GoogleIdAccounts;
+    };
   };
+}
+
+export default function DeleteAccountPage() {
+  const { user, loading, error, loginWithGoogleIdToken, logout, deleteAccount, clearError } = useAuth();
+  const [deleteSuccess, setDeleteSuccess] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [localError, setLocalError] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
+  const [imgError, setImgError] = useState(false);
+  const googleBtnRef = useRef<HTMLDivElement>(null);
+  const gsiInitializedRef = useRef(false);
+
+  const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+
+  // Initialize Google Identity Services safely once
+  useEffect(() => {
+    if (user || !googleClientId || gsiInitializedRef.current) return;
+
+    const initGoogle = () => {
+      const winGoogle = (window as unknown as CustomWindow).google;
+      if (winGoogle?.accounts?.id && googleBtnRef.current) {
+        try {
+          if (!gsiInitializedRef.current) {
+            winGoogle.accounts.id.initialize({
+              client_id: googleClientId,
+              callback: async (response: { credential?: string }) => {
+                if (response.credential) {
+                  setLocalError(null);
+                  clearError();
+                  try {
+                    await loginWithGoogleIdToken(response.credential);
+                  } catch (err: unknown) {
+                    const msg = err instanceof Error ? err.message : 'Failed to authenticate with Google';
+                    setLocalError(msg);
+                  }
+                }
+              },
+            });
+            gsiInitializedRef.current = true;
+          }
+
+          googleBtnRef.current.innerHTML = '';
+          winGoogle.accounts.id.renderButton(googleBtnRef.current, {
+            theme: 'outline',
+            size: 'large',
+            type: 'standard',
+            shape: 'rectangular',
+            width: 320,
+            logo_alignment: 'left',
+          });
+        } catch (e: unknown) {
+          console.error('Error rendering Google Sign-In button:', e);
+        }
+      }
+    };
+
+    const winGoogle = (window as unknown as CustomWindow).google;
+    if (winGoogle?.accounts?.id) {
+      initGoogle();
+    } else {
+      const interval = setInterval(() => {
+        const checkGoogle = (window as unknown as CustomWindow).google;
+        if (checkGoogle?.accounts?.id) {
+          initGoogle();
+          clearInterval(interval);
+        }
+      }, 300);
+      return () => clearInterval(interval);
+    }
+  }, [user, googleClientId, loginWithGoogleIdToken, clearError]);
 
   const handleDelete = async () => {
     if (!user) return;
-    
-    const confirmDelete = window.confirm("Are you absolutely sure you want to delete your account? This action cannot be undone and will erase all your saved data.");
+
+    const confirmDelete = window.confirm(
+      "Are you absolutely sure you want to delete your account? This action is permanent and will erase all your saved data immediately from Islam24 servers."
+    );
     if (!confirmDelete) return;
 
+    setIsDeleting(true);
+    setLocalError(null);
+    clearError();
+
     try {
-      setStatus('loading');
-      
-      // Get the fresh ID token
-      const idToken = await user.getIdToken(true);
-      
-      const res = await fetch('/api/delete-account', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ idToken }),
+      await deleteAccount();
+      setDeleteSuccess(true);
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'An error occurred while deleting your account';
+      setLocalError(msg);
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    setLocalError(null);
+    clearError();
+    gsiInitializedRef.current = false;
+    await logout();
+  };
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const displayError = localError || error;
+
+  const formatDate = (dateString?: string) => {
+    if (!dateString) return 'N/A';
+    try {
+      return new Date(dateString).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
       });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Failed to delete account');
-
-      // Sign out on the frontend after successful deletion
-      if (auth) {
-        await signOut(auth);
-      }
-      setUser(null);
-      setStatus('success');
-      
-    } catch (error: any) {
-      console.error(error);
-      setStatus('error');
-      setErrorMessage(error.message || 'An error occurred while deleting your account');
+    } catch {
+      return dateString;
     }
   };
 
@@ -80,63 +147,160 @@ export default function DeleteAccountPage() {
         <div className={`container ${styles.container}`}>
           <div className={styles.card}>
             <div className={styles.header}>
-              <span className="section-badge" style={{ background: 'rgba(255,59,48,0.1)', color: '#FF3B30', borderColor: '#FF3B30' }}>Danger Zone</span>
-              <h1 className={styles.title}>Delete Your Account</h1>
+              <span className="section-badge">User Account</span>
+              <h1 className={styles.title}>
+                {user ? 'My Profile' : 'Account Sign In'}
+              </h1>
               <p className={styles.subtitle}>
-                Use this page to request the permanent deletion of your Islam24 account and all associated data.
+                {user
+                  ? 'Manage your Islam24 account details, connected preferences, and account privacy options.'
+                  : 'Sign in to access your Islam24 account profile or manage account deletion.'}
               </p>
             </div>
 
-            {status === 'success' && (
+            {deleteSuccess && (
               <div className={styles.successMessage}>
-                Your account and all associated data have been permanently deleted.
-              </div>
-            )}
-
-            {status === 'error' && (
-              <div className={styles.errorMessage}>
-                {errorMessage}
-              </div>
-            )}
-
-            {!user ? (
-              <div className={styles.loginSection}>
-                <p style={{ marginBottom: '20px', color: 'var(--text-secondary)' }}>
-                  Please sign in with the Google account associated with your Islam24 app to verify ownership before deletion.
+                <h3 style={{ fontSize: '1.1rem', margin: '0 0 4px 0' }}>Account Successfully Deleted</h3>
+                <p style={{ fontSize: '0.9rem', margin: 0 }}>
+                  Your account and all associated data have been permanently removed from Islam24.
                 </p>
-                <button onClick={handleLogin} disabled={status === 'loading'} className={styles.googleBtn}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                    <path d="M1 1h22v22H1z" fill="none"/>
-                  </svg>
-                  Sign in with Google
-                </button>
+              </div>
+            )}
+
+            {displayError && (
+              <div className={styles.errorMessage}>
+                {displayError}
+              </div>
+            )}
+
+            {loading ? (
+              <div style={{ textAlign: 'center', padding: '40px', color: 'var(--text-secondary)' }}>
+                Loading profile...
+              </div>
+            ) : !user ? (
+              <div className={styles.loginSection}>
+                <p style={{ marginBottom: '24px', color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
+                  Please sign in with the Google account associated with your Islam24 mobile app.
+                </p>
+
+                {googleClientId ? (
+                  <div className={styles.googleBtnWrapper}>
+                    <div ref={googleBtnRef} />
+                  </div>
+                ) : (
+                  <div className={styles.errorMessage} style={{ textAlign: 'left', fontSize: '0.85rem' }}>
+                    <strong>Configuration Warning:</strong> <code>NEXT_PUBLIC_GOOGLE_CLIENT_ID</code> is missing in environment variables. Please add your Google OAuth Web Client ID to <code>.env</code>.
+                  </div>
+                )}
               </div>
             ) : (
-              <div className={styles.deleteSection}>
-                <div className={styles.userInfo}>
-                  <div className={styles.avatar}>
-                    {user.photoURL ? <img src={user.photoURL} alt="Avatar" /> : user.email?.charAt(0).toUpperCase()}
+              <div className={styles.profileSection}>
+                {/* Profile Header Card */}
+                <div className={styles.profileCardHeader}>
+                  <div className={styles.verifiedBadge}>
+                    <span>✓ Verified Islam24 User</span>
                   </div>
-                  <div>
-                    <h3 style={{ fontSize: '1.1rem' }}>{user.displayName || 'App User'}</h3>
-                    <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{user.email}</p>
+
+                  <div className={styles.avatarRing}>
+                    <div className={styles.avatar}>
+                      {user.picture && !imgError ? (
+                        <img
+                          src={user.picture}
+                          alt=""
+                          referrerPolicy="no-referrer"
+                          onError={() => setImgError(true)}
+                        />
+                      ) : (
+                        (user.name || user.email || 'U').charAt(0).toUpperCase()
+                      )}
+                    </div>
                   </div>
-                </div>
-                
-                <div className={styles.warningBox}>
-                  <strong>Warning:</strong> Deleting your account is permanent. All your data will be wiped from our servers immediately.
+
+                  <h2 className={styles.userName}>{user.name || 'Islam24 User'}</h2>
+                  <p className={styles.userEmail}>{user.email}</p>
+
+                  <div className={styles.metaGrid}>
+                    <div className={styles.metaItem}>
+                      <div className={styles.metaLabel}>Account Status</div>
+                      <div className={styles.metaValue}>
+                        <span className={styles.statusIndicator}>
+                          <span className={styles.statusDot}></span> Active
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className={styles.metaItem}>
+                      <div className={styles.metaLabel}>Member Since</div>
+                      <div className={styles.metaValue}>
+                        {formatDate(user.createdAt)}
+                      </div>
+                    </div>
+
+                    <div className={styles.metaItem} style={{ gridColumn: '1 / -1' }}>
+                      <div className={styles.metaLabel}>User ID</div>
+                      <div className={styles.metaValue}>
+                        <span style={{ fontFamily: 'monospace', fontSize: '0.8rem' }}>{user.id}</span>
+                        <button
+                          onClick={() => copyToClipboard(user.id)}
+                          className={styles.copyBtn}
+                          title="Copy User ID"
+                        >
+                          {copied ? 'Copied ✓' : 'Copy'}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div style={{ display: 'flex', gap: '16px', marginTop: '24px' }}>
-                  <button onClick={() => auth && signOut(auth)} className="btn btn-dark" style={{ flex: 1 }}>
-                    Cancel
+                {/* Features & Sync Overview */}
+                <div className={styles.featuresGrid}>
+                  <div className={styles.featureCard}>
+                    <div className={styles.featureIcon}>☁️</div>
+                    <div className={styles.featureTitle}>Cloud Sync Active</div>
+                    <div className={styles.featureDesc}>
+                      Your Quran bookmarks, Azkar history, and settings sync automatically across your mobile devices.
+                    </div>
+                  </div>
+
+                  <div className={styles.featureCard}>
+                    <div className={styles.featureIcon}>🛡️</div>
+                    <div className={styles.featureTitle}>100% Ad-Free</div>
+                    <div className={styles.featureDesc}>
+                      Enjoy a distraction-free Islamic experience without ads or commercial tracking.
+                    </div>
+                  </div>
+                </div>
+
+                {/* Account Actions & Logout */}
+                <div className={styles.actionsBar}>
+                  <button onClick={handleLogout} className={styles.signOutBtn} disabled={isDeleting}>
+                    Sign Out
                   </button>
-                  <button onClick={handleDelete} disabled={status === 'loading'} className={`btn ${styles.deleteBtn}`} style={{ flex: 1 }}>
-                    {status === 'loading' ? 'Deleting...' : 'Delete My Account'}
+                </div>
+
+                {/* Danger Zone: Account Deletion */}
+                <div className={styles.dangerZoneCard}>
+                  <div className={styles.dangerHeader}>
+                    <span className={styles.dangerTitle}>Permanently Delete Account</span>
+                    <span className={styles.dangerBadge}>Danger Zone</span>
+                  </div>
+
+                  <p className={styles.dangerText}>
+                    Requesting deletion will permanently purge your Islam24 account and remove all stored data from our backend servers immediately.
+                  </p>
+
+                  <ul className={styles.dangerList}>
+                    <li>All synced Quran reading progress & bookmarks</li>
+                    <li>Saved Azkar & Tasbih counter histories</li>
+                    <li>Account profile & OAuth authentication tokens</li>
+                  </ul>
+
+                  <button
+                    onClick={handleDelete}
+                    disabled={isDeleting}
+                    className={styles.deleteBtn}
+                  >
+                    {isDeleting ? 'Deleting Account...' : 'Delete My Islam24 Account'}
                   </button>
                 </div>
               </div>

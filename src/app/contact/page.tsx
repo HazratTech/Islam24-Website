@@ -26,9 +26,10 @@ export default function ContactPage() {
 
       setStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus('error');
-      setErrorMessage(err.message || 'Something went wrong');
+      const message = err instanceof Error ? err.message : 'Something went wrong';
+      setErrorMessage(message);
     }
   };
 

@@ -28,14 +28,14 @@ export default function TermsOfServicePage() {
             <section className={styles.section}>
               <h2>2. Use of Service</h2>
               <p>
-                Islam24 provides digital tools including prayer times, Qibla direction, Quran reading, and community features. These services are provided "as is" for your personal, non-commercial use. You agree to use the services only for lawful purposes and in a way that does not infringe the rights of others.
+                Islam24 provides digital tools including prayer times, Qibla direction, Quran reading, and community features. These services are provided &quot;as is&quot; for your personal, non-commercial use. You agree to use the services only for lawful purposes and in a way that does not infringe the rights of others.
               </p>
             </section>
 
             <section className={styles.section}>
               <h2>3. Accounts and Data Deletion</h2>
               <p>
-                If you choose to create an account (e.g., via Google Sign-In) to sync your bookmarks or tasbih progress, you are responsible for maintaining the confidentiality of your account. You have the right to delete your account and all associated data at any time via the "Delete Account" option in the app or on our website. Upon deletion, your personal data will be permanently removed from our databases.
+                If you choose to create an account (e.g., via Google Sign-In) to sync your bookmarks or tasbih progress, you are responsible for maintaining the confidentiality of your account. You have the right to delete your account and all associated data at any time via the &quot;Delete Account&quot; option in the app or on our website. Upon deletion, your personal data will be permanently removed from our databases.
               </p>
             </section>
 
@@ -56,7 +56,7 @@ export default function TermsOfServicePage() {
             <section className={styles.section}>
               <h2>6. Changes to Terms</h2>
               <p>
-                We reserve the right to modify or replace these Terms at any time. We will try to provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
+                We reserve the right to modify or replace these Terms at any time. We will try to provide at least 30 days&apos; notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
               </p>
             </section>
 

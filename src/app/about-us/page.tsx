@@ -28,7 +28,7 @@ export default function AboutUsPage() {
             <section className={styles.section}>
               <h2>Why We Built Islam24</h2>
               <p>
-                In today's fast-paced digital world, finding moments for spiritual reflection can be challenging. We built Islam24 to bridge this gap. By combining beautiful design with essential Islamic tools—such as a highly accurate Qibla compass, customizable Adhan notifications, and a complete digital Quran—we strive to bring peace and focus into your daily life.
+                In today&apos;s fast-paced digital world, finding moments for spiritual reflection can be challenging. We built Islam24 to bridge this gap. By combining beautiful design with essential Islamic tools—such as a highly accurate Qibla compass, customizable Adhan notifications, and a complete digital Quran—we strive to bring peace and focus into your daily life.
               </p>
             </section>
 
@@ -45,7 +45,7 @@ export default function AboutUsPage() {
             <section className={styles.section}>
               <h2>Join Our Journey</h2>
               <p>
-                Islam24 is more than just an app; it's a growing community of believers striving to improve their Deen. Whether you are reading the Quran, tracking your daily prayers, or finding the Qibla while traveling, we are honored to be part of your spiritual routine.
+                Islam24 is more than just an app; it&apos;s a growing community of believers striving to improve their Deen. Whether you are reading the Quran, tracking your daily prayers, or finding the Qibla while traveling, we are honored to be part of your spiritual routine.
               </p>
             </section>
           </div>
