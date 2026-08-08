@@ -1,50 +1,23 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://islam24.app'; // Assuming a domain, user can change later
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
+  const lastMod = new Date();
 
-  return [
-    {
-      url: `${baseUrl}`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/features`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: 'https://islam24.app/contact',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: 'https://islam24.app/about-us',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: 'https://islam24.app/terms-of-service',
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/acknowledgements`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/privacy-policy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
+  const publicRoutes = [
+    { route: '', priority: 1.0, changeFreq: 'daily' as const },
+    { route: '/features', priority: 0.9, changeFreq: 'weekly' as const },
+    { route: '/about-us', priority: 0.8, changeFreq: 'monthly' as const },
+    { route: '/contact', priority: 0.6, changeFreq: 'monthly' as const },
+    { route: '/acknowledgements', priority: 0.5, changeFreq: 'monthly' as const },
+    { route: '/privacy-policy', priority: 0.4, changeFreq: 'yearly' as const },
+    { route: '/terms-of-service', priority: 0.4, changeFreq: 'yearly' as const },
   ];
+
+  return publicRoutes.map(({ route, priority, changeFreq }) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: lastMod,
+    changeFrequency: changeFreq,
+    priority,
+  }));
 }

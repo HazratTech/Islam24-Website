@@ -1,7 +1,7 @@
-import Image from 'next/image';
 import styles from './Hero.module.css';
 import gplay from 'google-play-scraper';
 import { unstable_cache } from 'next/cache';
+import OptimizedVideoPlayer from '@/components/OptimizedVideoPlayer';
 
 const getAppStats = unstable_cache(
   async () => {
@@ -82,13 +82,15 @@ export default async function Hero() {
         <div className={styles.mockupArea}>
           <div className={styles.phone}>
             <div className={styles.phoneScreen}>
-              <Image
-                src="/screenshot/Home.png"
-                alt="Islam24 App"
+              <OptimizedVideoPlayer
+                poster="/videos/poster.jpg"
+                webm="/videos/app-preview.webm"
+                mp4="/videos/app-preview.mp4"
+                alt="Islam24 App Screen Preview Video"
                 width={280}
                 height={560}
-                className={styles.appScreenshot}
                 priority
+                className={styles.appVideo}
               />
             </div>
           </div>
