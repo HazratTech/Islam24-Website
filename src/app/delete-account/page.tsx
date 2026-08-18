@@ -30,7 +30,9 @@ export default function DeleteAccountPage() {
   const googleBtnRef = useRef<HTMLDivElement>(null);
   const gsiInitializedRef = useRef(false);
 
-  const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+  const googleClientId =
+    process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ||
+    '137257860022-fc99sltg4vgbg9i0l3lsugb22ltcv3hn.apps.googleusercontent.com';
 
   // Initialize Google Identity Services safely once
   useEffect(() => {
