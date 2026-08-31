@@ -1,0 +1,103 @@
+.section {
+  padding: 100px 0;
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 50px auto;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.tableWrapper {
+  background: rgba(10, 18, 14, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(21, 188, 131, 0.2);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table th, .table td {
+  padding: 22px 28px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.table th {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.featureCol {
+  width: 40%;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.islamCol {
+  width: 30%;
+  background: rgba(21, 188, 131, 0.08);
+  font-weight: 700;
+  color: var(--emerald-light);
+  text-align: center;
+}
+
+.otherCol {
+  width: 30%;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.checkIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--emerald);
+  color: #fff;
+  font-weight: 900;
+  font-size: 0.9rem;
+}
+
+.crossIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 59, 48, 0.2);
+  color: var(--danger);
+  font-weight: 900;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .title { font-size: 2rem; }
+  .table th, .table td { padding: 14px 12px; font-size: 0.85rem; }
+}

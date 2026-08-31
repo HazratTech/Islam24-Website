@@ -167,6 +167,8 @@
   display: block;
 }
 
+
+
 @media (max-width: 992px) {
   .heroGrid {
     grid-template-columns: 1fr;

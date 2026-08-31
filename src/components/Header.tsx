@@ -29,10 +29,10 @@ export default function Header() {
         </Link>
 
         <nav className={styles.nav}>
+          <a href="#live-demos" className={styles.navLink}>Live Demos</a>
+          <a href="#comparison" className={styles.navLink}>Why Us</a>
           <Link href="/features" className={styles.navLink}>Features</Link>
-          <Link href="/acknowledgements" className={styles.navLink}>Acknowledgements</Link>
-          <Link href="/contact" className={styles.navLink}>Contact</Link>
-          <Link href="/privacy-policy" className={styles.navLink}>Privacy</Link>
+          <a href="#faq" className={styles.navLink}>FAQ</a>
           <Link href="/delete-account" className={styles.navLink}>
             {user ? (
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--emerald)' }}>
@@ -75,10 +75,10 @@ export default function Header() {
       </div>
 
       <div className={`${styles.mobileMenu} ${mobileOpen ? styles.mobileMenuOpen : ''}`}>
+        <a href="#live-demos" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Live Demos</a>
+        <a href="#comparison" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Why Us</a>
         <Link href="/features" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Features</Link>
-        <Link href="/acknowledgements" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Acknowledgements</Link>
-        <Link href="/contact" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Contact</Link>
-        <Link href="/privacy-policy" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Privacy</Link>
+        <a href="#faq" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>FAQ</a>
         <Link href="/delete-account" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>
           {user ? `Account (${user.name || user.email})` : 'Account & Delete'}
         </Link>

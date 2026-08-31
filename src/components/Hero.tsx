@@ -13,11 +13,11 @@ const getAppStats = unstable_cache(
       };
     } catch (e) {
       console.error('Failed to fetch Play Store stats:', e);
-      return { scoreText: '4.8', installs: '100+' }; // fallback if API fails
+      return { scoreText: '4.8', installs: '100+' };
     }
   },
   ['play-store-stats'],
-  { revalidate: 86400 } // Cache for 24 hours to prevent rate limits
+  { revalidate: 86400 }
 );
 
 export default async function Hero() {
@@ -30,26 +30,23 @@ export default async function Hero() {
       <div className={`container ${styles.heroGrid}`}>
         <div className={styles.content}>
           <div className={styles.badge}>
-            Ad-Free &bull; Privacy First
+            ✨ 100% Ad-Free &bull; Zero Data Tracking
           </div>
 
           <h1 className={styles.title}>
-            Your Companion for
+            Your Distraction-Free
             <br />
-            <span className={styles.gradientText}>Daily Islamic</span>
-            <br />
-            Practices
+            <span className={styles.gradientText}>Islamic Companion</span>
           </h1>
 
           <p className={styles.description}>
-            Accurate prayer times, Qibla direction, complete offline Quran,
-            and daily Azkar — all in one beautiful, distraction-free app.
+            Accurate prayer times, Qibla direction, complete offline Quran with verse audio, and daily Azkar — designed purely for spiritual focus.
           </p>
 
           <div className={styles.stats}>
             <div className={styles.stat}>
-              <span className={styles.statNumber}>{stats.scoreText}</span>
-              <span className={styles.statLabel}>★ Rating</span>
+              <span className={styles.statNumber}>{stats.scoreText} ★</span>
+              <span className={styles.statLabel}>Rating</span>
             </div>
             <div className={styles.statDivider}></div>
             <div className={styles.stat}>
@@ -59,7 +56,7 @@ export default async function Hero() {
             <div className={styles.statDivider}></div>
             <div className={styles.stat}>
               <span className={styles.statNumber}>0</span>
-              <span className={styles.statLabel}>Ads</span>
+              <span className={styles.statLabel}>Commercial Ads</span>
             </div>
           </div>
 
@@ -68,13 +65,17 @@ export default async function Hero() {
               href="https://play.google.com/store/apps/details?id=com.hazrat.islam24"
               target="_blank"
               rel="noopener noreferrer"
-              className={`btn btn-dark ${styles.storeBtn}`}
+              className={`btn btn-primary ${styles.storeBtn}`}
             >
               <svg viewBox="0 0 512 512" width="22" height="22" fill="currentColor"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
               <div className={styles.storeBtnText}>
                 <small>GET IT ON</small>
                 <strong>Google Play</strong>
               </div>
+            </a>
+
+            <a href="#live-demos" className="btn btn-dark">
+              <span>▶ Test Live Demo</span>
             </a>
           </div>
         </div>
