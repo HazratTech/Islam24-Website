@@ -1,6 +1,5 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import InteractiveDemos from '@/components/InteractiveDemos';
 import AppScreenshots from '@/components/AppScreenshots';
 import Features from '@/components/Features';
 import ComparisonMatrix from '@/components/ComparisonMatrix';
@@ -57,7 +56,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <InteractiveDemos />
         <AppScreenshots />
         <Features />
         <ComparisonMatrix />

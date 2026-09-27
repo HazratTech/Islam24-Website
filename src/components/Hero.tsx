@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styles from './Hero.module.css';
 import gplay from 'google-play-scraper';
 import { unstable_cache } from 'next/cache';
@@ -74,9 +75,9 @@ export default async function Hero() {
               </div>
             </a>
 
-            <a href="#live-demos" className="btn btn-dark">
-              <span>▶ Test Live Demo</span>
-            </a>
+            <Link href="/features" className="btn btn-dark">
+              <span>Explore Features</span>
+            </Link>
           </div>
         </div>
 
