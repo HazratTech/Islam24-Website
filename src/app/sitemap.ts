@@ -6,8 +6,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const publicRoutes = [
     { route: '', priority: 1.0, changeFreq: 'daily' as const },
-    { route: '/features', priority: 0.9, changeFreq: 'weekly' as const },
-    { route: '/about-us', priority: 0.8, changeFreq: 'monthly' as const },
+    { route: '/quran', priority: 0.9, changeFreq: 'weekly' as const },
+    { route: '/prayer-times', priority: 0.9, changeFreq: 'weekly' as const },
+    { route: '/qibla-finder', priority: 0.9, changeFreq: 'weekly' as const },
+    { route: '/zakat-calculator', priority: 0.9, changeFreq: 'weekly' as const },
+    { route: '/azkar-dua', priority: 0.9, changeFreq: 'weekly' as const },
+    { route: '/features', priority: 0.8, changeFreq: 'monthly' as const },
+    { route: '/about-us', priority: 0.7, changeFreq: 'monthly' as const },
     { route: '/contact', priority: 0.6, changeFreq: 'monthly' as const },
     { route: '/acknowledgements', priority: 0.5, changeFreq: 'monthly' as const },
     { route: '/privacy-policy', priority: 0.4, changeFreq: 'yearly' as const },

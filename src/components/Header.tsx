@@ -24,15 +24,16 @@ export default function Header() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
         <Link href="/" className={styles.logo}>
-          <Image src="/logo.svg" alt="Islam24" width={36} height={36} />
+          <Image src="/logo.svg" alt="Islam24 — Free Ad-Free Islamic App" width={36} height={36} />
           <span className={styles.logoText}>Islam<span className={styles.logoAccent}>24</span></span>
         </Link>
 
         <nav className={styles.nav}>
-          <a href="#live-demos" className={styles.navLink}>Live Demos</a>
-          <a href="#comparison" className={styles.navLink}>Why Us</a>
+          <Link href="/quran" className={styles.navLink}>Quran App</Link>
+          <Link href="/prayer-times" className={styles.navLink}>Prayer Times</Link>
+          <Link href="/qibla-finder" className={styles.navLink}>Qibla Finder</Link>
+          <Link href="/zakat-calculator" className={styles.navLink}>Zakat Tool</Link>
           <Link href="/features" className={styles.navLink}>Features</Link>
-          <a href="#faq" className={styles.navLink}>FAQ</a>
           <Link href="/delete-account" className={styles.navLink}>
             {user ? (
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--emerald)' }}>
@@ -75,10 +76,12 @@ export default function Header() {
       </div>
 
       <div className={`${styles.mobileMenu} ${mobileOpen ? styles.mobileMenuOpen : ''}`}>
-        <a href="#live-demos" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Live Demos</a>
-        <a href="#comparison" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Why Us</a>
-        <Link href="/features" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Features</Link>
-        <a href="#faq" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>FAQ</a>
+        <Link href="/quran" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Quran App</Link>
+        <Link href="/prayer-times" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Prayer Times</Link>
+        <Link href="/qibla-finder" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Qibla Finder</Link>
+        <Link href="/zakat-calculator" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Zakat Calculator</Link>
+        <Link href="/azkar-dua" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>Azkar &amp; Dua</Link>
+        <Link href="/features" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>All Features</Link>
         <Link href="/delete-account" className={styles.mobileLink} onClick={() => setMobileOpen(false)}>
           {user ? `Account (${user.name || user.email})` : 'Account & Delete'}
         </Link>

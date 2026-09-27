@@ -7,21 +7,25 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Islam24 — Accurate, Ad-Free Islamic App | Prayer Times & Offline Quran",
-  description: "Your reliable, distraction-free companion for daily Islamic practices. Accurate prayer times, Qibla compass, complete offline Quran with translations, daily Azkar, and Zakat calculator.",
+  title: "Islam24 — Free & Ad-Free Islamic App | Offline Quran & Prayer Times App",
+  description: "The #1 100% Free & Ad-Free Islamic App for Android. Accurate prayer times, Qibla compass, complete offline Quran with verse audio recitations, daily Azkar, and instant Zakat calculator with zero data tracking.",
   keywords: [
-    "islam24",
-    "ad-free islamic app",
-    "accurate prayer times",
-    "athan app",
-    "qibla compass",
-    "offline quran",
-    "azkar and dua",
-    "zakat calculator",
-    "salat times",
-    "muslim app"
+    "free islamic app",
+    "ads free islamic app",
+    "no tracking islamic app",
+    "quran islamic app",
+    "quran app",
+    "prayer time app",
+    "offline quran app",
+    "qibla direction online",
+    "qibla finder app",
+    "zakat calculator app",
+    "azkar and dua app",
+    "salat times app",
+    "athan notification app",
+    "islam24"
   ],
-  authors: [{ name: "Hazrat Ummar Shaikh", url: siteUrl }],
+  authors: [{ name: "Islam24 Team", url: siteUrl }],
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -36,26 +40,26 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   openGraph: {
-    title: "Islam24 — Accurate, Ad-Free Islamic App",
-    description: "Accurate prayer times, Qibla compass, complete offline Quran, and daily Azkar — all in one beautiful, distraction-free app.",
+    title: "Islam24 — Free & Ad-Free Islamic App | Offline Quran & Prayer Times",
+    description: "100% Free & Ad-Free Islamic app for Android. Accurate prayer times, Qibla compass, complete offline Quran, and daily Azkar — distraction-free.",
     url: siteUrl,
     type: "website",
     locale: "en_US",
     siteName: "Islam24",
     images: [
       {
-        url: `${siteUrl}/logo.svg`,
-        width: 512,
-        height: 512,
-        alt: "Islam24 App Logo",
+        url: `${siteUrl}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "Islam24 — Free & Ad-Free Islamic App",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Islam24 — Accurate, Ad-Free Islamic App",
-    description: "Accurate prayer times, Qibla compass, complete offline Quran, and daily Azkar — distraction-free.",
-    images: [`${siteUrl}/logo.svg`],
+    title: "Islam24 — Free & Ad-Free Islamic App",
+    description: "100% Free, Ad-Free, & Privacy-First Islamic App with Offline Quran, Accurate Prayer Times, and Qibla Finder.",
+    images: [`${siteUrl}/og-image.png`],
   },
   robots: {
     index: true,
@@ -89,21 +93,51 @@ const appJsonLd = {
         "ratingValue": "4.8",
         "ratingCount": "100"
       },
-      "description": "Ad-free Islamic app with accurate prayer times, Qibla direction, complete offline Quran with translations, daily Azkar, and Zakat calculator.",
+      "description": "100% Free and Ad-free Islamic app featuring accurate prayer times, Athan notifications, Qibla compass, complete offline Quran with verse audio, daily Azkar, and Zakat calculator.",
       "featureList": [
-        "100% Ad-free and privacy focused",
-        "Accurate prayer times & Athan notifications",
-        "Qibla direction compass",
-        "Complete offline Quran with translations",
-        "Daily Azkar & Dua",
-        "Zakat calculator"
+        "100% Free and Ad-Free",
+        "Zero Data Tracking & 100% Privacy Focused",
+        "Accurate Prayer Times & Athan Notifications",
+        "Offline Quran with Verse Audio & Translations",
+        "Qibla Compass & Mecca Direction Finder",
+        "Daily Azkar, Duas & Digital Tasbih",
+        "Instant Zakat Calculator"
       ]
     },
     {
       "@type": "WebSite",
       "name": "Islam24",
       "url": siteUrl,
-      "description": "Official website for Islam24 — Accurate, Ad-Free Islamic App."
+      "description": "Official website for Islam24 — 100% Free, Ad-Free, & Privacy-First Islamic App."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Features",
+          "item": `${siteUrl}/features`
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Offline Quran App",
+          "item": `${siteUrl}/quran`
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Prayer Times App",
+          "item": `${siteUrl}/prayer-times`
+        }
+      ]
     }
   ]
 };

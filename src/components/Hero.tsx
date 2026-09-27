@@ -30,17 +30,17 @@ export default async function Hero() {
       <div className={`container ${styles.heroGrid}`}>
         <div className={styles.content}>
           <div className={styles.badge}>
-            ✨ 100% Ad-Free &bull; Zero Data Tracking
+            ✨ 100% Free &bull; Ad-Free &bull; No Data Tracking
           </div>
 
           <h1 className={styles.title}>
-            Your Distraction-Free
+            100% Free &amp; Ad-Free
             <br />
-            <span className={styles.gradientText}>Islamic Companion</span>
+            <span className={styles.gradientText}>Islamic App</span>
           </h1>
 
           <p className={styles.description}>
-            Accurate prayer times, Qibla direction, complete offline Quran with verse audio, and daily Azkar — designed purely for spiritual focus.
+            The ultimate privacy-first Muslim companion app. Get accurate prayer times, Athan alerts, complete offline Quran with audio recitations, Qibla direction, daily Azkar, and instant Zakat calculator.
           </p>
 
           <div className={styles.stats}>
@@ -87,7 +87,7 @@ export default async function Hero() {
                 poster="/videos/poster.jpg"
                 webm="/videos/app-preview.webm"
                 mp4="/videos/app-preview.mp4"
-                alt="Islam24 App Screen Preview Video"
+                alt="Free Ad-Free Islamic App Screen Preview Video"
                 width={280}
                 height={560}
                 priority
