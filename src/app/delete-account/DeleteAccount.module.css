@@ -1,59 +1,61 @@
 .main {
   min-height: 100vh;
   padding-top: 130px;
-  padding-bottom: 100px;
+  padding-bottom: 90px;
   background-color: var(--bg-primary);
   background-image: 
     radial-gradient(circle at 50% 0%, rgba(13, 105, 69, 0.06) 0%, transparent 60%),
     radial-gradient(circle at 100% 50%, rgba(184, 134, 11, 0.04) 0%, transparent 50%),
     url('/islamic-pattern-light.svg');
   background-repeat: repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
   padding: 0 24px;
-}
-
-.card {
-  width: 100%;
-  max-width: 680px;
-  background: #FFFFFF;
-  border: 1px solid var(--emerald-border);
-  box-shadow: var(--shadow-lg), 0 2px 12px rgba(13, 105, 69, 0.04);
-  border-radius: var(--radius-xl);
-  padding: 44px;
-  transition: border-color 0.3s ease;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 48px;
 }
 
 .title {
   font-family: var(--font-display);
-  font-size: 2.2rem;
+  font-size: 3rem;
   font-weight: 800;
-  margin: 16px 0 8px 0;
+  margin: 16px 0 12px 0;
   color: var(--text-primary);
   letter-spacing: -0.5px;
 }
 
 .subtitle {
   color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: 480px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  max-width: 680px;
   margin: 0 auto;
 }
 
-/* Unauthenticated Login Card */
+/* Two-Column Layout */
+.portalGrid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 36px;
+  align-items: start;
+  margin-bottom: 60px;
+}
+
+.card {
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
+  box-shadow: var(--shadow-lg), 0 2px 12px rgba(13, 105, 69, 0.04);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+}
+
+/* Login Hub */
 .loginSection {
   display: flex;
   flex-direction: column;
@@ -63,20 +65,35 @@
   border: 1px solid var(--emerald-border);
   border-radius: var(--radius-lg);
   padding: 36px 24px;
+  margin-top: 16px;
+}
+
+.loginPromptIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--emerald);
+  margin-bottom: 16px;
 }
 
 .googleBtnWrapper {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 16px;
+  margin-top: 12px;
+  min-height: 48px;
 }
 
 /* Profile Section Styles */
 .profileSection {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
 }
 
 .profileCardHeader {
@@ -87,8 +104,8 @@
   text-align: center;
   background: linear-gradient(180deg, #F2F8F4 0%, #FFFFFF 100%);
   border: 1px solid var(--emerald-border);
-  border-radius: var(--radius-xl);
-  padding: 32px 24px;
+  border-radius: var(--radius-lg);
+  padding: 28px 20px;
   overflow: hidden;
 }
 
@@ -99,24 +116,24 @@
   background: var(--bg-card-tint);
   color: var(--emerald-dark);
   border: 1px solid var(--emerald-border);
-  padding: 6px 14px;
+  padding: 5px 14px;
   border-radius: var(--radius-pill);
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .avatarRing {
   position: relative;
-  width: 96px;
-  height: 96px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
-  padding: 4px;
+  padding: 3px;
   background: linear-gradient(135deg, var(--emerald) 0%, var(--gold) 100%);
-  box-shadow: 0 4px 18px rgba(13, 105, 69, 0.2);
-  margin-bottom: 16px;
+  box-shadow: 0 4px 16px rgba(13, 105, 69, 0.2);
+  margin-bottom: 14px;
 }
 
 .avatar {
@@ -128,7 +145,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 800;
   overflow: hidden;
 }
@@ -141,7 +158,7 @@
 
 .userName {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: var(--text-primary);
   margin: 0;
@@ -150,31 +167,26 @@
 .userEmail {
   color: var(--text-secondary);
   font-size: 0.95rem;
-  margin: 6px 0 20px 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  justify-content: center;
+  margin: 4px 0 16px 0;
 }
 
 .metaGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   width: 100%;
-  margin-top: 10px;
 }
 
 .metaItem {
   background: #FAF8F5;
   border: 1px solid var(--emerald-border);
-  padding: 12px 16px;
-  border-radius: 14px;
+  padding: 10px 14px;
+  border-radius: 12px;
   text-align: left;
 }
 
 .metaLabel {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -182,7 +194,7 @@
 }
 
 .metaValue {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   color: var(--text-primary);
   font-weight: 700;
   margin-top: 4px;
@@ -201,11 +213,6 @@
   font-weight: 700;
   padding: 2px 6px;
   border-radius: 4px;
-  transition: background 0.2s;
-}
-
-.copyBtn:hover {
-  background: rgba(13, 105, 69, 0.1);
 }
 
 .statusIndicator {
@@ -223,49 +230,11 @@
   box-shadow: 0 0 6px rgba(13, 105, 69, 0.5);
 }
 
-/* Features Grid */
-.featuresGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-}
-
-.featureCard {
-  background: #FAF8F5;
-  border: 1px solid var(--emerald-border);
-  border-radius: 16px;
-  padding: 20px;
-  transition: transform 0.2s, border-color 0.2s;
-}
-
-.featureCard:hover {
-  border-color: var(--emerald);
-  transform: translateY(-2px);
-}
-
-.featureIcon {
-  font-size: 1.5rem;
-  margin-bottom: 12px;
-}
-
-.featureTitle {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 4px;
-}
-
-.featureDesc {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
-
 /* Actions */
 .actionsBar {
   display: flex;
-  gap: 16px;
-  margin-top: 10px;
+  gap: 14px;
+  margin-top: 6px;
 }
 
 .signOutBtn {
@@ -274,8 +243,9 @@
   color: var(--text-primary);
   border: 1px solid var(--emerald-border);
   border-radius: var(--radius-pill);
-  padding: 14px;
+  padding: 12px;
   font-weight: 700;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: var(--shadow-sm);
@@ -284,34 +254,34 @@
 .signOutBtn:hover {
   background: var(--bg-card-tint);
   border-color: var(--emerald);
-  transform: translateY(-1px);
 }
 
 /* Danger Zone Card */
 .dangerZoneCard {
   background: #FEF2F2;
   border: 1px solid #FECACA;
-  border-radius: 20px;
+  border-radius: var(--radius-lg);
   padding: 24px;
-  margin-top: 10px;
+  margin-top: 6px;
 }
 
 .dangerHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .dangerBadge {
   background: #FEE2E2;
   color: #DC2626;
   border: 1px solid #FCA5A5;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: var(--radius-pill);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
 }
 
 .dangerTitle {
@@ -324,11 +294,11 @@
   color: var(--text-secondary);
   font-size: 0.88rem;
   line-height: 1.5;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .dangerList {
-  margin: 0 0 20px 20px;
+  margin: 0 0 18px 20px;
   color: var(--text-secondary);
   font-size: 0.85rem;
 }
@@ -362,93 +332,160 @@
   cursor: not-allowed;
 }
 
-/* Confirmation Modal */
-.modalOverlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(20, 35, 28, 0.5);
-  backdrop-filter: blur(8px);
+/* Sidebar Information Cards */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.infoCard {
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
+  border-radius: var(--radius-xl);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.infoCardTitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--emerald-dark);
+  margin-bottom: 16px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 20px;
+  gap: 10px;
 }
 
-.modalContent {
-  background: #FFFFFF;
-  border: 1px solid #FECACA;
-  border-radius: 24px;
-  padding: 32px;
-  max-width: 480px;
-  width: 100%;
-  box-shadow: var(--shadow-lg), 0 20px 40px rgba(0, 0, 0, 0.15);
-  text-align: center;
-}
-
-.modalIcon {
-  font-size: 2.5rem;
-  margin-bottom: 16px;
-  color: #DC2626;
-}
-
-.modalTitle {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  margin-bottom: 10px;
-}
-
-.modalDesc {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 24px;
-}
-
-.modalActions {
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
+  flex-direction: column;
   gap: 12px;
 }
 
-.modalCancelBtn {
-  flex: 1;
+.checklistItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.checkIconRed {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #FEE2E2;
+  color: #DC2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checkIconGreen {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #DCFCE7;
+  color: #166534;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Bottom Compliance & FAQ */
+.faqSection {
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
+  border-radius: var(--radius-xl);
+  padding: 40px 32px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 40px;
+}
+
+.faqTitle {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.faqSubtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 28px;
+}
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.faqItem {
   background: #FAF8F5;
   border: 1px solid var(--emerald-border);
-  color: var(--text-primary);
-  border-radius: var(--radius-pill);
-  padding: 12px;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+.faqQuestion {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
   font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
+  color: var(--emerald-dark);
+  margin-bottom: 8px;
 }
 
-.modalCancelBtn:hover {
-  background: var(--bg-card-tint);
+.faqAnswer {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
-.modalConfirmBtn {
-  flex: 1;
-  background: #DC2626;
-  border: none;
-  color: #ffffff;
-  border-radius: var(--radius-pill);
-  padding: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s;
+.successMessage {
+  padding: 16px 20px;
+  background: #F0FDF4;
+  border: 1px solid #86EFAC;
+  border-radius: var(--radius-md);
+  color: #166534;
+  margin-bottom: 24px;
+  font-weight: 600;
 }
 
-.modalConfirmBtn:hover:not(:disabled) {
-  background: #B91C1C;
+.errorMessage {
+  padding: 14px 18px;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: var(--radius-md);
+  color: #991B1B;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
 }
 
-@media (max-width: 768px) {
-  .card {
-    padding: 28px 20px;
+@media (max-width: 900px) {
+  .portalGrid {
+    grid-template-columns: 1fr;
   }
   .title {
-    font-size: 1.8rem;
+    font-size: 2.3rem;
+  }
+  .card {
+    padding: 28px 20px;
   }
 }
