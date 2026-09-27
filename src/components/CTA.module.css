@@ -1,5 +1,5 @@
 .section {
-  padding: 120px 0;
+  padding: 110px 0;
   background-color: var(--bg-primary);
   position: relative;
   overflow: hidden;
@@ -13,7 +13,7 @@
   transform: translate(-50%, -50%);
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(21, 188, 131, 0.2) 0%, rgba(212, 175, 55, 0.08) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(13, 105, 69, 0.08) 0%, rgba(184, 134, 11, 0.04) 50%, transparent 70%);
   filter: blur(60px);
   pointer-events: none;
   z-index: 0;
@@ -22,50 +22,55 @@
 .bgPattern {
   position: absolute;
   inset: 0;
-  background-image: url('/islamic-pattern.svg');
+  background-image: url('/islamic-pattern-light.svg');
   background-repeat: repeat;
-  opacity: 0.35;
+  opacity: 0.6;
   pointer-events: none;
 }
 
 .inner {
   position: relative;
   z-index: 1;
-  max-width: 800px;
+  max-width: 820px;
   margin: 0 auto;
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
+  border-radius: var(--radius-xl);
+  padding: 60px 40px;
+  box-shadow: var(--shadow-lg), 0 4px 25px rgba(13, 105, 69, 0.05);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
+  gap: 22px;
 }
 
 .arabicAyah {
   font-family: var(--font-arabic);
   font-size: 2.2rem;
-  color: var(--gold-light);
+  color: var(--gold-dark);
   direction: rtl;
-  margin-bottom: -10px;
-  text-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+  margin-bottom: -6px;
+  font-weight: 700;
 }
 
 .title {
   font-family: var(--font-display);
-  font-size: 3.2rem;
+  font-size: 3rem;
   font-weight: 800;
   line-height: 1.15;
-  letter-spacing: -1.5px;
+  letter-spacing: -1px;
   color: var(--text-primary);
 }
 
 .highlight {
-  background: linear-gradient(135deg, var(--emerald-light) 0%, var(--emerald) 50%, var(--gold) 100%);
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 60%, var(--gold) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .description {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: var(--text-secondary);
   line-height: 1.7;
   max-width: 620px;
@@ -74,32 +79,33 @@
 .trustPills {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .trustPill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 14px;
+  padding: 6px 16px;
   border-radius: var(--radius-pill);
-  background: rgba(13, 22, 18, 0.8);
-  border: 1px solid rgba(21, 188, 131, 0.25);
+  background: var(--bg-card-tint);
+  border: 1px solid var(--emerald-border);
   font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--emerald-light);
+  color: var(--emerald-dark);
 }
 
 .storeBtn {
-  padding: 14px 34px;
-  border-radius: 18px;
-  box-shadow: 0 10px 40px rgba(21, 188, 131, 0.4);
+  padding: 16px 36px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 25px rgba(13, 105, 69, 0.28);
 }
 
 @media (max-width: 768px) {
-  .title { font-size: 2.4rem; }
+  .inner { padding: 40px 24px; }
+  .title { font-size: 2.2rem; }
   .arabicAyah { font-size: 1.8rem; }
 }

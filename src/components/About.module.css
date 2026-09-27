@@ -1,6 +1,6 @@
 .section {
   padding: 120px 0;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   position: relative;
   overflow: hidden;
 }
@@ -26,10 +26,11 @@
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -1px;
+  color: var(--text-primary);
 }
 
 .highlight {
-  background: linear-gradient(135deg, var(--emerald-light) 0%, var(--emerald) 50%, var(--gold) 100%);
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 60%, var(--gold) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -48,34 +49,33 @@
 }
 
 .pillarCard {
-  background: rgba(13, 22, 18, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(21, 188, 131, 0.2);
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
   border-radius: var(--radius-lg);
   padding: 26px 28px;
   display: flex;
   align-items: flex-start;
   gap: 20px;
+  box-shadow: var(--shadow-sm);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pillarCard:hover {
   transform: translateX(6px);
-  border-color: rgba(21, 188, 131, 0.45);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  border-color: var(--emerald-light);
+  box-shadow: var(--shadow-md);
 }
 
 .iconBox {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: var(--radius-md);
-  background: rgba(21, 188, 131, 0.12);
-  border: 1px solid rgba(21, 188, 131, 0.25);
+  background: var(--bg-card-tint);
+  border: 1px solid var(--emerald-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--emerald-light);
+  color: var(--emerald);
   flex-shrink: 0;
 }
 

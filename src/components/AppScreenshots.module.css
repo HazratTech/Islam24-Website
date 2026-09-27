@@ -1,6 +1,6 @@
 .section {
-  padding: 100px 0;
-  background: var(--bg-primary);
+  padding: 110px 0;
+  background-color: var(--bg-primary);
   position: relative;
 }
 
@@ -11,15 +11,17 @@
 }
 
 .title {
-  font-size: 2.6rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 800;
   margin-bottom: 16px;
   letter-spacing: -1px;
+  color: var(--text-primary);
 }
 
 .subtitle {
   color: var(--text-secondary);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   line-height: 1.6;
 }
 
@@ -33,15 +35,15 @@
 /* Featured Video Section */
 .featuredVideoContainer {
   width: 100%;
-  max-width: 900px;
-  background: linear-gradient(180deg, rgba(21, 188, 131, 0.05) 0%, rgba(13, 21, 18, 0.6) 100%);
-  border: 1px solid rgba(21, 188, 131, 0.2);
-  border-radius: 32px;
-  padding: 40px;
+  max-width: 920px;
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
+  border-radius: var(--radius-xl);
+  padding: 44px;
   display: flex;
   align-items: center;
   gap: 40px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-lg);
 }
 
 .featuredContent {
@@ -55,11 +57,12 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(21, 188, 131, 0.15);
-  color: var(--emerald-light);
-  border: 1px solid rgba(21, 188, 131, 0.3);
+  background: var(--bg-card-tint);
+  color: var(--emerald-dark);
+  border: 1px solid var(--emerald-border);
   padding: 6px 14px;
   border-radius: var(--radius-pill);
+  font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 1px;
@@ -68,7 +71,8 @@
 }
 
 .featuredTitle {
-  font-size: 1.8rem;
+  font-family: var(--font-display);
+  font-size: 2rem;
   font-weight: 800;
   color: var(--text-primary);
   line-height: 1.2;
@@ -76,19 +80,17 @@
 
 .featuredDesc {
   color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.65;
 }
 
 .featuredPhone {
   width: 270px;
   height: 540px;
   border-radius: 40px;
-  background: linear-gradient(145deg, #1a2f25, #111E19);
+  background: linear-gradient(145deg, #1A2F25, #0E1A14);
   padding: 8px;
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 60px rgba(18, 32, 25, 0.22);
   position: relative;
   flex-shrink: 0;
 }
@@ -118,8 +120,9 @@
 }
 
 .subTitle {
-  font-size: 1.4rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
   color: var(--text-primary);
 }
 
@@ -144,13 +147,10 @@
   width: 220px;
   height: 440px;
   border-radius: 32px;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: #FFFFFF;
   padding: 8px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 
-              inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--emerald-border);
 }
 
 .phoneScreen {

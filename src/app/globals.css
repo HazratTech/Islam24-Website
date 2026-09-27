@@ -1,39 +1,44 @@
 /* ============================================
-   Islam24 — Modern Production-Grade Design System
+   Islam24 — Serene Light Islamic Design System
+   Palette: Warm Parchment & Medina Marble Cream
+   Accents: Royal Forest Emerald & Artisan Antique Gold
    Fonts: Outfit (Display), Plus Jakarta Sans (Body), Amiri (Arabic)
-   Theme: Serene Dark Emerald with Gold Accents
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --bg-primary: #050B08;
-  --bg-secondary: #0A130F;
-  --bg-card: rgba(13, 22, 18, 0.7);
-  --bg-card-hover: rgba(18, 32, 26, 0.85);
+  /* Warm Parchment / Medina Marble Light Palette */
+  --bg-primary: #FAF8F5;
+  --bg-secondary: #F3EFE6;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #FFFFFF;
+  --bg-card-tint: #F2F8F4;
 
-  /* Emerald Green */
-  --emerald: #15BC83;
-  --emerald-light: #1FD69A;
-  --emerald-dark: #0F885F;
-  --emerald-glow: rgba(21, 188, 131, 0.15);
-  --emerald-border: rgba(21, 188, 131, 0.25);
+  /* Islamic Royal Emerald */
+  --emerald: #0D6945;
+  --emerald-light: #12885A;
+  --emerald-dark: #08432B;
+  --emerald-glow: rgba(13, 105, 69, 0.08);
+  --emerald-border: rgba(13, 105, 69, 0.14);
 
-  /* Islamic Gold */
-  --gold: #D4AF37;
-  --gold-light: #F3E5AB;
-  --gold-glow: rgba(212, 175, 55, 0.15);
-  --gold-border: rgba(212, 175, 55, 0.3);
+  /* Artisan Antique Gold / Ochre */
+  --gold: #B8860B;
+  --gold-light: #D4AF37;
+  --gold-dark: #8C6504;
+  --gold-glow: rgba(184, 134, 11, 0.08);
+  --gold-border: rgba(184, 134, 11, 0.22);
 
   /* Danger Red */
-  --danger: #FF3B30;
-  --danger-glow: rgba(255, 59, 48, 0.15);
+  --danger: #DC2626;
+  --danger-glow: rgba(220, 38, 38, 0.1);
 
-  /* Text Hierarchy */
-  --text-primary: #FFFFFF;
-  --text-secondary: #C2D3CC;
-  --text-muted: #7E948B;
-  --text-gold: #F0D060;
+  /* High-Contrast Readable Text */
+  --text-primary: #14231C;
+  --text-secondary: #3B4E44;
+  --text-muted: #6B7F74;
+  --text-gold: #8C6504;
+  --text-on-emerald: #FFFFFF;
 
   /* Fonts */
   --font-display: 'Outfit', sans-serif;
@@ -42,15 +47,16 @@
 
   /* Radii */
   --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --radius-xl: 32px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
   --radius-pill: 9999px;
 
   /* Shadows */
-  --shadow-glow: 0 0 35px rgba(21, 188, 131, 0.2);
-  --shadow-gold-glow: 0 0 35px rgba(212, 175, 55, 0.2);
-  --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 2px 8px rgba(18, 32, 25, 0.04);
+  --shadow-md: 0 10px 25px rgba(18, 32, 25, 0.06), 0 1px 3px rgba(18, 32, 25, 0.04);
+  --shadow-lg: 0 20px 45px rgba(18, 32, 25, 0.08), 0 2px 6px rgba(18, 32, 25, 0.04);
+  --shadow-glow: 0 8px 30px rgba(13, 105, 69, 0.14);
 }
 
 *, *::before, *::after {
@@ -89,36 +95,36 @@ img, video { max-width: 100%; height: auto; }
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 18px;
+  padding: 7px 18px;
   border-radius: var(--radius-pill);
   font-family: var(--font-display);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   border: 1px solid var(--emerald-border);
-  color: var(--emerald-light);
-  background: var(--emerald-glow);
+  color: var(--emerald-dark);
+  background: var(--bg-card-tint);
   margin-bottom: 16px;
-  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
 }
 
 .section-badge-gold {
   border-color: var(--gold-border);
-  color: var(--gold-light);
-  background: var(--gold-glow);
+  color: var(--gold-dark);
+  background: #FFF9ED;
 }
 
 /* Typography Highlights */
 .highlight {
-  background: linear-gradient(135deg, var(--emerald-light) 0%, var(--emerald) 50%, var(--gold) 100%);
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-light) 60%, var(--gold) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .highlight-gold {
-  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%);
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -149,44 +155,64 @@ img, video { max-width: 100%; height: auto; }
 
 .btn-primary {
   background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-dark) 100%);
-  color: #fff;
-  box-shadow: 0 4px 20px rgba(21, 188, 131, 0.3);
+  color: #FFFFFF;
+  box-shadow: 0 4px 18px rgba(13, 105, 69, 0.25);
 }
 
 .btn-primary:hover {
   background: linear-gradient(135deg, var(--emerald-light) 0%, var(--emerald) 100%);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(21, 188, 131, 0.45);
+  box-shadow: 0 8px 25px rgba(13, 105, 69, 0.35);
 }
 
 .btn-dark {
-  background: rgba(18, 30, 24, 0.8);
+  background: #FFFFFF;
   color: var(--text-primary);
   border: 1px solid var(--emerald-border);
-  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-dark:hover {
-  background: rgba(25, 42, 34, 0.9);
+  background: var(--bg-card-tint);
   border-color: var(--emerald);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-md);
+}
+
+/* Islamic Heritage Background Utility */
+.islamic-bg {
+  background-image: 
+    radial-gradient(circle at 50% -10%, rgba(13, 105, 69, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 85% 30%, rgba(184, 134, 11, 0.05) 0%, transparent 50%),
+    url('/islamic-pattern-light.svg');
+  background-repeat: repeat;
+}
+
+.islamic-card {
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.islamic-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--emerald-light);
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(13, 105, 69, 0.08);
 }
 
 /* Animations */
 @keyframes pulseGlow {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.05); }
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
 }
 
 @keyframes floatAnimation {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  50% { transform: translateY(-8px); }
 }
 
 .animate-pulse {
@@ -197,59 +223,94 @@ img, video { max-width: 100%; height: auto; }
   animation: floatAnimation 6s infinite ease-in-out;
 }
 
-/* Islamic Heritage Utilities */
-.islamic-bg {
-  background-image: 
-    radial-gradient(circle at 50% -10%, rgba(21, 188, 131, 0.15) 0%, transparent 60%),
-    radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-    url('/islamic-pattern.svg');
-  background-repeat: repeat;
-}
-
-.islamic-card {
-  background: rgba(10, 18, 14, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(21, 188, 131, 0.18);
+/* Prose & Legal Documentation Styling (Light Islamic Theme) */
+.prose {
+  max-width: 860px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
   border-radius: var(--radius-xl);
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  overflow: hidden;
+  padding: 48px;
+  box-shadow: var(--shadow-md);
+  color: var(--text-primary);
+  line-height: 1.8;
 }
 
-.islamic-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, rgba(21, 188, 131, 0.4), rgba(212, 175, 55, 0.4), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
+.prose h1 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--emerald-dark);
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
 }
 
-.islamic-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(21, 188, 131, 0.45);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5), 0 0 25px rgba(21, 188, 131, 0.15);
+.prose > p:first-of-type {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--emerald-border);
+  padding-bottom: 16px;
 }
 
-.islamic-card:hover::before {
-  opacity: 1;
+.prose h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--emerald-dark);
+  margin-top: 36px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.gold-gradient-text {
-  background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA7C11 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.prose h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: var(--emerald);
+  border-radius: 4px;
 }
 
-.emerald-gradient-text {
-  background: linear-gradient(135deg, #A8FFDB 0%, #1FD69A 50%, #15BC83 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.prose p {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 16px;
 }
 
+.prose ul, .prose ol {
+  margin: 16px 0 24px 24px;
+  color: var(--text-secondary);
+}
+
+.prose li {
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+
+.prose strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.prose a {
+  color: var(--emerald);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.prose a:hover {
+  color: var(--emerald-light);
+}
+
+@media (max-width: 768px) {
+  .prose {
+    padding: 28px 20px;
+  }
+  .prose h1 {
+    font-size: 2rem;
+  }
+}

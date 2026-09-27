@@ -3,150 +3,163 @@
   min-height: 100vh;
   padding-top: 140px;
   padding-bottom: 100px;
-  overflow: hidden;
   background-color: var(--bg-primary);
-}
-
-.blob1 {
-  position: absolute;
-  top: 10%;
-  left: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(21,188,131,0.15) 0%, rgba(0,0,0,0) 70%);
-  border-radius: 50%;
-  filter: blur(40px);
-  z-index: 0;
-}
-
-.blob2 {
-  position: absolute;
-  bottom: -10%;
-  right: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, rgba(0,0,0,0) 70%);
-  border-radius: 50%;
-  filter: blur(50px);
-  z-index: 0;
+  background-image: 
+    radial-gradient(circle at 20% 20%, rgba(13, 105, 69, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(184, 134, 11, 0.05) 0%, transparent 50%),
+    url('/islamic-pattern-light.svg');
+  background-repeat: repeat;
+  overflow: hidden;
 }
 
 .container {
   position: relative;
   z-index: 10;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 70px;
+  align-items: start;
 }
 
 .textSection {
-  max-width: 500px;
+  max-width: 520px;
+}
+
+.bismillah {
+  font-family: var(--font-arabic);
+  font-size: 1.8rem;
+  color: var(--gold-dark);
+  margin-bottom: 10px;
+  direction: rtl;
 }
 
 .title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  line-height: 1.1;
-  margin: 20px 0;
-  letter-spacing: -1px;
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 16px 0 20px 0;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
 }
 
 .subtitle {
   font-size: 1.15rem;
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 40px;
+  line-height: 1.7;
+  margin-bottom: 36px;
 }
 
 .infoCards {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
 }
 
 .infoCard {
   display: flex;
   align-items: center;
   gap: 20px;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease;
+  padding: 22px 24px;
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .infoCard:hover {
-  transform: translateX(5px);
-  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+  border-color: var(--emerald);
+  box-shadow: var(--shadow-md);
 }
 
 .icon {
-  font-size: 1.5rem;
-  background: var(--emerald-glow);
   width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: var(--radius-md);
+  background: var(--bg-card-tint);
+  color: var(--emerald);
+  border: 1px solid var(--emerald-border);
+  flex-shrink: 0;
 }
 
 .infoCard h4 {
-  font-size: 1rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
   color: var(--text-primary);
+  margin-bottom: 4px;
 }
 
 .infoCard p {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0;
 }
 
-/* Glassmorphism Form */
+/* Light Islamic Ceramic Form */
 .formSection {
   position: relative;
 }
 
 .glassForm {
-  background: rgba(17, 30, 25, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  border-radius: 24px;
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
+  box-shadow: var(--shadow-lg), 0 2px 10px rgba(13, 105, 69, 0.04);
+  border-radius: var(--radius-xl);
   padding: 40px;
 }
 
 .formTitle {
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 30px;
-  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--emerald-dark);
+}
+
+.formSubtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 28px;
 }
 
 .inputGroup {
   margin-bottom: 20px;
 }
 
+.inputLabel {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
 .input {
   width: 100%;
-  padding: 16px 20px;
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  background: #FAF8F5;
+  border: 1px solid var(--emerald-border);
+  border-radius: var(--radius-md);
   color: var(--text-primary);
-  font-family: var(--font);
-  font-size: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
   outline: none;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .input:focus {
+  background: #FFFFFF;
   border-color: var(--emerald);
-  background: rgba(0, 0, 0, 0.4);
-  box-shadow: 0 0 0 4px var(--emerald-glow);
+  box-shadow: 0 0 0 4px rgba(13, 105, 69, 0.12);
 }
 
 .input::placeholder {
@@ -155,44 +168,57 @@
 
 textarea.input {
   resize: vertical;
+  min-height: 120px;
 }
 
 .submitBtn {
   width: 100%;
   padding: 16px;
-  font-size: 1.1rem;
-  border-radius: var(--radius-sm);
+  font-size: 1.05rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .successMessage {
-  padding: 16px;
-  background: rgba(21, 188, 131, 0.1);
-  border: 1px solid var(--emerald);
-  border-radius: var(--radius-sm);
-  color: var(--emerald);
+  padding: 16px 20px;
+  background: #F0FDF4;
+  border: 1px solid #86EFAC;
+  border-radius: var(--radius-md);
+  color: #166534;
   margin-bottom: 24px;
-  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .errorMessage {
-  padding: 16px;
-  background: rgba(255, 59, 48, 0.1);
-  border: 1px solid #FF3B30;
-  border-radius: var(--radius-sm);
-  color: #FF3B30;
+  padding: 16px 20px;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  border-radius: var(--radius-md);
+  color: #991B1B;
   margin-bottom: 24px;
-  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
 }
 
 @media (max-width: 992px) {
   .container {
     grid-template-columns: 1fr;
-    gap: 60px;
+    gap: 50px;
   }
   .title {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
   }
   .glassForm {
-    padding: 30px 20px;
+    padding: 30px 24px;
   }
 }

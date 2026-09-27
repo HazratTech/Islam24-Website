@@ -41,36 +41,49 @@ export default function ContactPage() {
     <div className="layout-wrapper">
       <Header />
       <main className={styles.main}>
-        {/* Background Decorative Blobs */}
-        <div className={styles.blob1}></div>
-        <div className={styles.blob2}></div>
-
         <div className={`container ${styles.container}`}>
           <div className={styles.textSection}>
-            <span className="section-badge">Get In Touch</span>
-            <h1 className={styles.title}>Let&apos;s talk about your <span className="highlight">experience</span>.</h1>
+            <div className={styles.bismillah}>بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+            <span className="section-badge section-badge-gold">Get In Touch</span>
+            <h1 className={styles.title}>
+              Let&apos;s talk about your <span className="highlight">experience</span>.
+            </h1>
             <p className={styles.subtitle}>
-              Whether you have a suggestion, found a bug, or just want to say salam, we&apos;d love to hear from you.
+              Whether you have a feature suggestion, discovered a calculation variance, or simply want to say salam — we welcome your message with an open heart.
             </p>
 
             <div className={styles.infoCards}>
-              <a href="https://discord.gg/SP3xHrENJ5" target="_blank" rel="noopener noreferrer" className={styles.infoCard} style={{ textDecoration: 'none' }}>
-                <div className={styles.icon}>💬</div>
+              <a href="https://discord.gg/SP3xHrENJ5" target="_blank" rel="noopener noreferrer" className={styles.infoCard}>
+                <div className={styles.icon}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+                </div>
                 <div>
-                  <h4>Community</h4>
-                  <p>Join our Discord</p>
+                  <h4>Community &amp; Live Chat</h4>
+                  <p>Join our active Discord server for direct feedback</p>
                 </div>
               </a>
+
+              <div className={styles.infoCard}>
+                <div className={styles.icon}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <div>
+                  <h4>Developer Team Response</h4>
+                  <p>Messages directly reviewed by the Islam24 engineering team</p>
+                </div>
+              </div>
             </div>
           </div>
 
           <div className={styles.formSection}>
             <form onSubmit={handleSubmit} className={styles.glassForm}>
-              <h3 className={styles.formTitle}>Send a Message</h3>
+              <h3 className={styles.formTitle}>Send a Direct Message</h3>
+              <p className={styles.formSubtitle}>We will get back to you as soon as possible, insha&apos;Allah.</p>
 
               {status === 'success' && (
                 <div className={styles.successMessage}>
-                  Thank you! Your message has been sent successfully.
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                  <span>Jazakallahu Khair! Your message has been sent successfully.</span>
                 </div>
               )}
 
@@ -81,11 +94,12 @@ export default function ContactPage() {
               )}
 
               <div className={styles.inputGroup}>
+                <label className={styles.inputLabel}>YOUR NAME</label>
                 <input
                   type="text"
                   name="name"
                   required
-                  placeholder="Your Name"
+                  placeholder="e.g. Abdullah Ahmad"
                   value={formData.name}
                   onChange={handleChange}
                   className={styles.input}
@@ -93,11 +107,12 @@ export default function ContactPage() {
               </div>
 
               <div className={styles.inputGroup}>
+                <label className={styles.inputLabel}>EMAIL ADDRESS</label>
                 <input
                   type="email"
                   name="email"
                   required
-                  placeholder="Your Email"
+                  placeholder="your.email@example.com"
                   value={formData.email}
                   onChange={handleChange}
                   className={styles.input}
@@ -105,10 +120,12 @@ export default function ContactPage() {
               </div>
 
               <div className={styles.inputGroup}>
+                <label className={styles.inputLabel}>SUBJECT</label>
                 <input
                   type="text"
                   name="subject"
-                  placeholder="Subject (Optional)"
+                  required
+                  placeholder="Feature request, Bug report, etc."
                   value={formData.subject}
                   onChange={handleChange}
                   className={styles.input}
@@ -116,15 +133,16 @@ export default function ContactPage() {
               </div>
 
               <div className={styles.inputGroup}>
+                <label className={styles.inputLabel}>MESSAGE</label>
                 <textarea
                   name="message"
                   required
-                  rows={5}
-                  placeholder="How can we help?"
+                  rows={4}
+                  placeholder="Write your message here..."
                   value={formData.message}
                   onChange={handleChange}
                   className={styles.input}
-                ></textarea>
+                />
               </div>
 
               <button
@@ -132,7 +150,7 @@ export default function ContactPage() {
                 disabled={status === 'loading'}
                 className={`btn btn-primary ${styles.submitBtn}`}
               >
-                {status === 'loading' ? 'Sending...' : 'Send Message'}
+                {status === 'loading' ? 'Sending Message...' : 'Send Message'}
               </button>
             </form>
           </div>

@@ -1,6 +1,6 @@
 .section {
-  padding: 100px 0;
-  background: var(--bg-secondary);
+  padding: 110px 0;
+  background-color: var(--bg-primary);
   position: relative;
 }
 
@@ -12,24 +12,24 @@
 
 .title {
   font-family: var(--font-display);
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   font-weight: 800;
   letter-spacing: -1px;
   margin-bottom: 16px;
+  color: var(--text-primary);
 }
 
 .subtitle {
   color: var(--text-secondary);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
 }
 
 .tableWrapper {
-  background: rgba(10, 18, 14, 0.85);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(21, 188, 131, 0.2);
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--shadow-md);
 }
 
 .table {
@@ -40,7 +40,7 @@
 
 .table th, .table td {
   padding: 22px 28px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(18, 32, 25, 0.06);
 }
 
 .table th {
@@ -48,25 +48,26 @@
   font-size: 1.05rem;
   font-weight: 800;
   color: var(--text-primary);
-  background: rgba(0, 0, 0, 0.4);
+  background: var(--bg-card-tint);
 }
 
 .featureCol {
-  width: 40%;
+  width: 42%;
+  font-family: var(--font-display);
   font-weight: 700;
   color: var(--text-primary);
 }
 
 .islamCol {
-  width: 30%;
-  background: rgba(21, 188, 131, 0.08);
+  width: 29%;
+  background: rgba(13, 105, 69, 0.04);
   font-weight: 700;
-  color: var(--emerald-light);
+  color: var(--emerald-dark);
   text-align: center;
 }
 
 .otherCol {
-  width: 30%;
+  width: 29%;
   color: var(--text-muted);
   text-align: center;
 }
@@ -79,7 +80,7 @@
   height: 28px;
   border-radius: 50%;
   background: var(--emerald);
-  color: #fff;
+  color: #FFFFFF;
   font-weight: 900;
   font-size: 0.9rem;
 }
@@ -91,13 +92,13 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: rgba(255, 59, 48, 0.2);
+  background: rgba(220, 38, 38, 0.12);
   color: var(--danger);
   font-weight: 900;
   font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {
-  .title { font-size: 2rem; }
+  .title { font-size: 2.1rem; }
   .table th, .table td { padding: 14px 12px; font-size: 0.85rem; }
 }
