@@ -8,7 +8,7 @@
 }
 
 .container {
-  max-width: 960px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -21,7 +21,7 @@
 .bismillah {
   font-family: var(--font-arabic);
   font-size: 2.2rem;
-  color: var(--gold-dark);
+  color: #0D6945;
   margin-bottom: 12px;
   font-weight: 700;
   direction: rtl;
