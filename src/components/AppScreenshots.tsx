@@ -40,9 +40,9 @@ export default function AppScreenshots() {
           <div className={styles.featuredPhone}>
             <div className={styles.featuredPhoneScreen}>
               <OptimizedVideoPlayer
-                poster="/videos/full-app-poster.jpg"
-                webm="/videos/full-app-walkthrough.webm"
-                mp4="/videos/full-app-walkthrough.mp4"
+                poster="/videos/walkthrough-poster-v2.jpg"
+                webm="/videos/walkthrough-v2.webm"
+                mp4="/videos/walkthrough-v2.mp4"
                 alt="Islam24 Full App Walkthrough Video"
                 width={270}
                 height={540}

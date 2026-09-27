@@ -100,9 +100,9 @@ export default async function Hero() {
           <div className={styles.phone}>
             <div className={styles.phoneScreen}>
               <OptimizedVideoPlayer
-                poster="/videos/poster.jpg"
-                webm="/videos/app-preview.webm"
-                mp4="/videos/app-preview.mp4"
+                poster="/videos/hero-poster-v2.jpg"
+                webm="/videos/hero-preview-v2.webm"
+                mp4="/videos/hero-preview-v2.mp4"
                 alt="Free Ad-Free Islamic App Screen Preview Video"
                 width={290}
                 height={580}
