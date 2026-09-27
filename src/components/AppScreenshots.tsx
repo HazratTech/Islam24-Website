@@ -19,7 +19,7 @@ export default function AppScreenshots() {
             Designed for <span className="highlight">Quiet Reverence</span>
           </h2>
           <p className={styles.subtitle}>
-            A serene, dark-emerald interface tuned for nighttime Quran recitations, early Fajr prayers, and distraction-free devotion.
+            A serene, distraction-free interface thoughtfully crafted for sacred Quran recitations, daily Salat, and continuous devotion.
           </p>
         </div>
 

@@ -28,21 +28,21 @@
 .showcaseLayout {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 60px;
 }
 
 /* Featured Video Section */
 .featuredVideoContainer {
   width: 100%;
-  max-width: 920px;
   background: #FFFFFF;
   border: 1px solid var(--emerald-border);
   border-radius: var(--radius-xl);
-  padding: 44px;
+  padding: 50px 60px;
   display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: space-between;
+  gap: 50px;
   box-shadow: var(--shadow-lg);
 }
 

@@ -5,14 +5,6 @@
   overflow: hidden;
 }
 
-.bgPattern {
-  position: absolute;
-  inset: 0;
-  background-image: url('/islamic-pattern-light.svg');
-  background-repeat: repeat;
-  opacity: 0.65;
-  pointer-events: none;
-}
 
 .header {
   text-align: center;
@@ -149,7 +141,7 @@
 .arabicAyah {
   font-family: var(--font-arabic);
   font-size: 1.9rem;
-  color: var(--gold-dark);
+  color: #0D6945;
   text-align: right;
   direction: rtl;
   line-height: 1.8;
@@ -163,46 +155,50 @@
   font-style: italic;
 }
 
-/* Prayer Times Visualizer */
-.prayerPills {
+/* Prayer Waqt Names (5 Daily Prayers without hardcoded times) */
+.prayerWaqtContainer {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 8px;
   margin-top: auto;
+  padding-top: 16px;
+  width: 100%;
 }
 
-.prayerPill {
+.waqtPill {
   flex: 1;
-  min-width: 60px;
-  background: var(--bg-primary);
-  border: 1px solid rgba(18, 32, 25, 0.08);
-  border-radius: var(--radius-sm);
-  padding: 10px 8px;
-  text-align: center;
-}
-
-.pillActive {
   background: var(--bg-card-tint);
+  border: 1px solid var(--emerald-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 4px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.25s ease;
+}
+
+.waqtPill:hover {
+  background: #E8F5EE;
   border-color: var(--emerald);
-  box-shadow: 0 4px 12px rgba(13, 105, 69, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(13, 105, 69, 0.1);
 }
 
-.pillName {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  font-weight: 700;
-}
-
-.pillActive .pillName {
-  color: var(--emerald-dark);
-}
-
-.pillTime {
-  font-family: var(--font-display);
+.waqtArabic {
+  font-family: var(--font-arabic);
   font-size: 0.95rem;
-  font-weight: 800;
+  font-weight: 700;
+  color: var(--emerald-dark);
+  line-height: 1.2;
+}
+
+.waqtName {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
   color: var(--text-primary);
-  margin-top: 4px;
+  letter-spacing: 0.2px;
 }
 
 /* Pledge Card */

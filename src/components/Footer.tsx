@@ -9,7 +9,13 @@ export default function Footer() {
       <div className={`container ${styles.grid}`}>
         <div className={styles.brand}>
           <Link href="/" className={styles.logo}>
-            <Image src="/logo.svg" alt="Islam24 — Free Ad-Free Islamic App" width={32} height={32} />
+            <Image
+              src="/logo-with-bg.svg"
+              alt="Islam24 — Free Ad-Free Islamic App"
+              width={34}
+              height={34}
+              style={{ borderRadius: '8px' }}
+            />
             <span>Islam<span className={styles.logoAccent}>24</span></span>
           </Link>
           <p className={styles.tagline}>

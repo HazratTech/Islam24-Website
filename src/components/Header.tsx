@@ -24,7 +24,14 @@ export default function Header() {
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
       <div className={`container ${styles.inner}`}>
         <Link href="/" className={styles.logo}>
-          <Image src="/logo.svg" alt="Islam24 — Free Ad-Free Islamic App" width={36} height={36} />
+          <Image
+            src="/logo-with-bg.svg"
+            alt="Islam24 — Free Ad-Free Islamic App"
+            width={38}
+            height={38}
+            style={{ borderRadius: '10px', boxShadow: '0 2px 8px rgba(13, 105, 69, 0.2)' }}
+            priority
+          />
           <span className={styles.logoText}>Islam<span className={styles.logoAccent}>24</span></span>
         </Link>
 

@@ -4,8 +4,6 @@ import styles from './Features.module.css';
 export default function Features() {
   return (
     <section className={styles.section} id="features">
-      <div className={styles.bgPattern}></div>
-
       <div className="container">
         <div className={styles.header}>
           <span className="section-badge section-badge-gold">Sanctuary of Features</span>
@@ -61,21 +59,29 @@ export default function Features() {
 
             <h3 className={styles.cardTitle}>Accurate Prayer Times</h3>
             <p className={styles.cardDesc}>
-              Location-based calculation supporting MWL, ISNA, Umm Al-Qura, and Karachi standards with custom Adhan audio alerts.
+              Astronomical calculation supporting MWL, ISNA, Umm Al-Qura, and Karachi standards for all 5 daily prayers with custom Adhan alerts.
             </p>
 
-            <div className={styles.prayerPills}>
-              <div className={styles.prayerPill}>
-                <div className={styles.pillName}>Fajr</div>
-                <div className={styles.pillTime}>04:12</div>
+            <div className={styles.prayerWaqtContainer}>
+              <div className={styles.waqtPill}>
+                <span className={styles.waqtArabic}>الفجر</span>
+                <span className={styles.waqtName}>Fajr</span>
               </div>
-              <div className={`${styles.prayerPill} ${styles.pillActive}`}>
-                <div className={styles.pillName}>Asr</div>
-                <div className={styles.pillTime}>03:45</div>
+              <div className={styles.waqtPill}>
+                <span className={styles.waqtArabic}>الظهر</span>
+                <span className={styles.waqtName}>Dhuhr</span>
               </div>
-              <div className={styles.prayerPill}>
-                <div className={styles.pillName}>Maghrib</div>
-                <div className={styles.pillTime}>06:52</div>
+              <div className={styles.waqtPill}>
+                <span className={styles.waqtArabic}>العصر</span>
+                <span className={styles.waqtName}>Asr</span>
+              </div>
+              <div className={styles.waqtPill}>
+                <span className={styles.waqtArabic}>المغرب</span>
+                <span className={styles.waqtName}>Maghrib</span>
+              </div>
+              <div className={styles.waqtPill}>
+                <span className={styles.waqtArabic}>العشاء</span>
+                <span className={styles.waqtName}>Isha</span>
               </div>
             </div>
           </div>
