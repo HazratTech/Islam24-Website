@@ -1,94 +1,102 @@
 .section {
-  position: relative;
   padding: 120px 0;
-  background: var(--bg-secondary);
+  background-color: var(--bg-primary);
+  position: relative;
   overflow: hidden;
-}
-
-.bgLine {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(21, 188, 131, 0.3) 50%, transparent 100%);
 }
 
 .inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: flex-start;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .title {
+  font-family: var(--font-display);
   font-size: 2.8rem;
-  font-weight: 700;
-  letter-spacing: -1px;
-  color: var(--text-primary);
-  margin-bottom: 20px;
+  font-weight: 800;
   line-height: 1.15;
+  letter-spacing: -1px;
 }
 
 .highlight {
-  color: var(--emerald);
+  background: linear-gradient(135deg, var(--emerald-light) 0%, var(--emerald) 50%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .description {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
+  line-height: 1.8;
   color: var(--text-secondary);
-  line-height: 1.7;
-  max-width: 420px;
 }
 
 .right {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .pillarCard {
+  background: rgba(13, 22, 18, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(21, 188, 131, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 26px 28px;
   display: flex;
   align-items: flex-start;
   gap: 20px;
-  padding: 28px;
-  border-radius: var(--radius-lg);
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .pillarCard:hover {
-  border-color: var(--border-hover);
-  transform: translateX(4px);
+  transform: translateX(6px);
+  border-color: rgba(21, 188, 131, 0.45);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
-.pillarEmoji {
-  flex-shrink: 0;
-  font-size: 1.5rem;
+.iconBox {
   width: 48px;
   height: 48px;
+  border-radius: var(--radius-md);
+  background: rgba(21, 188, 131, 0.12);
+  border: 1px solid rgba(21, 188, 131, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
+  color: var(--emerald-light);
+  flex-shrink: 0;
 }
 
 .pillarTitle {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 6px;
 }
 
 .pillarDesc {
-  font-size: 0.9rem;
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
   line-height: 1.6;
 }
 
-@media (max-width: 992px) {
-  .inner { grid-template-columns: 1fr; gap: 48px; }
-  .left { text-align: center; }
-  .description { max-width: 100%; }
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
   .title { font-size: 2.2rem; }
 }

@@ -1,0 +1,19 @@
+<svg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'>
+  <defs>
+    <pattern id='islamicGrid' width='80' height='80' patternUnits='userSpaceOnUse'>
+      <!-- Outer boundary -->
+      <path d='M0 40 L40 0 L80 40 L40 80 Z' fill='none' stroke='rgba(21,188,131,0.08)' stroke-width='1'/>
+      <path d='M40 0 L40 80 M0 40 L80 40' stroke='rgba(212,175,55,0.06)' stroke-width='0.75'/>
+      <!-- 8-point star in center -->
+      <rect x='28' y='28' width='24' height='24' fill='none' stroke='rgba(21,188,131,0.12)' stroke-width='1'/>
+      <rect x='28' y='28' width='24' height='24' transform='rotate(45 40 40)' fill='none' stroke='rgba(212,175,55,0.12)' stroke-width='1'/>
+      <circle cx='40' cy='40' r='5' fill='none' stroke='rgba(21,188,131,0.15)' stroke-width='0.75'/>
+      <!-- Corner stars -->
+      <circle cx='0' cy='0' r='8' fill='none' stroke='rgba(212,175,55,0.08)' stroke-width='0.75'/>
+      <circle cx='80' cy='0' r='8' fill='none' stroke='rgba(212,175,55,0.08)' stroke-width='0.75'/>
+      <circle cx='0' cy='80' r='8' fill='none' stroke='rgba(212,175,55,0.08)' stroke-width='0.75'/>
+      <circle cx='80' cy='80' r='8' fill='none' stroke='rgba(212,175,55,0.08)' stroke-width='0.75'/>
+    </pattern>
+  </defs>
+  <rect width='80' height='80' fill='url(#islamicGrid)'/>
+</svg>

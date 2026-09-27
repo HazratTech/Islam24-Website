@@ -30,29 +30,31 @@ export default async function Hero() {
 
       <div className={`container ${styles.heroGrid}`}>
         <div className={styles.content}>
+          <div className={styles.bismillah}>بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+
           <div className={styles.badge}>
             ✨ 100% Free &bull; Ad-Free &bull; No Data Tracking
           </div>
 
           <h1 className={styles.title}>
-            100% Free &amp; Ad-Free
+            A Sacred Sanctuary for
             <br />
-            <span className={styles.gradientText}>Islamic App</span>
+            <span className={styles.gradientText}>Your Daily Worship</span>
           </h1>
 
           <p className={styles.description}>
-            The ultimate privacy-first Muslim companion app. Get accurate prayer times, Athan alerts, complete offline Quran with audio recitations, Qibla direction, daily Azkar, and instant Zakat calculator.
+            Experience your Deen with absolute peace of mind. Accurate prayer times, precise Qibla direction, complete offline Quran with audio recitations, and daily Azkar — with zero ads or tracking.
           </p>
 
           <div className={styles.stats}>
             <div className={styles.stat}>
               <span className={styles.statNumber}>{stats.scoreText} ★</span>
-              <span className={styles.statLabel}>Rating</span>
+              <span className={styles.statLabel}>Play Store Rating</span>
             </div>
             <div className={styles.statDivider}></div>
             <div className={styles.stat}>
               <span className={styles.statNumber}>{stats.installs}</span>
-              <span className={styles.statLabel}>Downloads</span>
+              <span className={styles.statLabel}>Active Downloads</span>
             </div>
             <div className={styles.statDivider}></div>
             <div className={styles.stat}>
@@ -70,7 +72,7 @@ export default async function Hero() {
             >
               <svg viewBox="0 0 512 512" width="22" height="22" fill="currentColor"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
               <div className={styles.storeBtnText}>
-                <small>GET IT ON</small>
+                <small>DOWNLOAD FREE</small>
                 <strong>Google Play</strong>
               </div>
             </a>
@@ -82,6 +84,19 @@ export default async function Hero() {
         </div>
 
         <div className={styles.mockupArea}>
+          <div className={styles.mockupGlow}></div>
+
+          {/* Floating Spiritual Badges */}
+          <div className={`${styles.chip} ${styles.chipTopLeft}`}>
+            <span className={styles.chipIcon}>🕌</span>
+            <span>Accurate Athan Alerts</span>
+          </div>
+
+          <div className={`${styles.chip} ${styles.chipBottomRight}`}>
+            <span className={styles.chipIcon}>📖</span>
+            <span>100% Offline Quran</span>
+          </div>
+
           <div className={styles.phone}>
             <div className={styles.phoneScreen}>
               <OptimizedVideoPlayer
@@ -89,8 +104,8 @@ export default async function Hero() {
                 webm="/videos/app-preview.webm"
                 mp4="/videos/app-preview.mp4"
                 alt="Free Ad-Free Islamic App Screen Preview Video"
-                width={280}
-                height={560}
+                width={290}
+                height={580}
                 priority
                 className={styles.appVideo}
               />

@@ -1,80 +1,230 @@
 .section {
-  position: relative;
   padding: 120px 0;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.bgPattern {
+  position: absolute;
+  inset: 0;
+  background-image: url('/islamic-pattern.svg');
+  background-repeat: repeat;
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 .header {
   text-align: center;
-  max-width: 600px;
-  margin: 0 auto 72px auto;
+  max-width: 680px;
+  margin: 0 auto 60px auto;
+  position: relative;
+  z-index: 1;
 }
 
 .title {
+  font-family: var(--font-display);
   font-size: 2.8rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -1px;
-  color: var(--text-primary);
   margin-bottom: 16px;
-  line-height: 1.15;
-}
-
-.highlight {
-  color: var(--emerald);
+  color: var(--text-primary);
 }
 
 .subtitle {
-  font-size: 1.1rem;
   color: var(--text-secondary);
-  line-height: 1.6;
+  font-size: 1.15rem;
+  line-height: 1.7;
 }
 
-.grid {
+/* Bento Grid */
+.bentoGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+  position: relative;
+  z-index: 1;
 }
 
 .card {
-  padding: 32px 28px;
-  border-radius: var(--radius-lg);
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  transition: all 0.3s ease;
-  cursor: default;
+  background: rgba(13, 22, 18, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(21, 188, 131, 0.2);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  border-color: var(--border-hover);
-  box-shadow: var(--shadow-card);
+  transform: translateY(-5px);
+  border-color: rgba(21, 188, 131, 0.5);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(21, 188, 131, 0.15);
 }
 
-.emoji {
-  font-size: 2rem;
+/* Column spans */
+.colSpan8 { grid-column: span 8; }
+.colSpan4 { grid-column: span 4; }
+.colSpan6 { grid-column: span 6; }
+.colSpan12 { grid-column: span 12; }
+
+/* Quran Feature Card */
+.quranCard {
+  background: linear-gradient(135deg, rgba(21, 188, 131, 0.12) 0%, rgba(10, 18, 14, 0.85) 100%);
+  border-color: rgba(21, 188, 131, 0.3);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.cardTitle {
-  font-size: 1.1rem;
+.iconWrap {
+  width: 54px;
+  height: 54px;
+  border-radius: var(--radius-md);
+  background: rgba(21, 188, 131, 0.15);
+  border: 1px solid rgba(21, 188, 131, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--emerald-light);
+}
+
+.iconWrapGold {
+  background: rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.35);
+  color: var(--gold-light);
+}
+
+.cardTag {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
   font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--emerald-light);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(21, 188, 131, 0.1);
+  border: 1px solid rgba(21, 188, 131, 0.25);
+}
+
+.cardTagGold {
+  color: var(--gold-light);
+  background: rgba(212, 175, 55, 0.1);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .cardDesc {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* Quran Calligraphy Snippet */
+.quranSnippet {
+  background: rgba(5, 11, 8, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-top: auto;
+}
+
+.arabicAyah {
+  font-family: var(--font-arabic);
+  font-size: 1.8rem;
+  color: var(--gold-light);
+  text-align: right;
+  direction: rtl;
+  line-height: 1.8;
+  margin-bottom: 8px;
+}
+
+.englishAyah {
   font-size: 0.9rem;
   color: var(--text-muted);
-  line-height: 1.6;
+  font-style: italic;
+}
+
+/* Prayer Times Visualizer */
+.prayerPills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.prayerPill {
+  flex: 1;
+  min-width: 60px;
+  background: rgba(5, 11, 8, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.pillActive {
+  background: rgba(21, 188, 131, 0.2);
+  border-color: var(--emerald-light);
+  box-shadow: 0 0 15px rgba(21, 188, 131, 0.25);
+}
+
+.pillName {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.pillActive .pillName {
+  color: var(--emerald-light);
+}
+
+.pillTime {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+  margin-top: 4px;
+}
+
+/* Pledge Card */
+.pledgeCard {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(13, 22, 18, 0.9) 100%);
+  border: 1px solid var(--gold-border);
+  text-align: center;
+  align-items: center;
+}
+
+.pledgeArabic {
+  font-family: var(--font-arabic);
+  font-size: 2rem;
+  color: var(--gold-light);
+  direction: rtl;
+  margin-bottom: 12px;
 }
 
 @media (max-width: 992px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-  .title { font-size: 2.2rem; }
-}
+  .colSpan8, .colSpan4, .colSpan6 {
+    grid-column: span 12;
+  }
 
-@media (max-width: 600px) {
-  .section { padding: 80px 0; }
-  .grid { grid-template-columns: 1fr; }
-  .title { font-size: 1.8rem; }
+  .title { font-size: 2.2rem; }
+  .card { padding: 26px 20px; }
 }
