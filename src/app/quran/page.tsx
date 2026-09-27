@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
+import FeatureScreenshots from '@/components/FeatureScreenshots';
 import QuranReaderClient from './QuranReaderClient';
 
 export const metadata = {
@@ -217,6 +218,31 @@ export default function QuranPage() {
             </div>
           </div>
         </div>
+
+        {/* Real App Screenshots Showcase */}
+        <FeatureScreenshots
+          badge="Sacred Interface"
+          title="Designed for Tranquil Recitation"
+          subtitle="Explore the serene Quran reader, authenticated Arabic typography, and intuitive Khatam planner inside Islam24."
+          screens={[
+            {
+              src: '/screenshot/quran-ayah.webp',
+              alt: 'Holy Quran Ayah Recitation with Verse Audio Player and English Translation',
+              label: 'Ayah Recitation & Audio',
+            },
+            {
+              src: '/screenshot/quran-surah.webp',
+              alt: 'Complete 114 Surahs Index with Revelation Info and Quick Search',
+              label: 'Surah Catalog',
+            },
+            {
+              src: '/screenshot/quran-khatam.webp',
+              alt: 'Personalized Quran Khatam Tracker and Daily Reading Streak',
+              label: 'Khatam Planner & Streak',
+            },
+          ]}
+        />
+
         <CTA />
       </main>
       <Footer />

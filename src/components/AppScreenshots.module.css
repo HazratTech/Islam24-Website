@@ -167,6 +167,31 @@
   object-fit: cover;
 }
 
+.screenLabelWrap {
+  margin-top: 14px;
+  text-align: center;
+}
+
+.screenLabel {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: #FFFFFF;
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--emerald-border);
+  box-shadow: var(--shadow-sm);
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+
+.mockupContainer:hover .screenLabel {
+  background: var(--bg-card-tint);
+  border-color: var(--emerald);
+  color: var(--emerald-dark);
+}
+
 @media (max-width: 900px) {
   .featuredVideoContainer {
     flex-direction: column;

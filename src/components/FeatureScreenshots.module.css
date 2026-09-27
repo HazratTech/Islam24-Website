@@ -1,0 +1,113 @@
+.section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 48px auto;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.mockupContainer {
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mockupContainer:hover {
+  transform: translateY(-8px);
+}
+
+.phone {
+  width: 220px;
+  height: 440px;
+  border-radius: 32px;
+  background: #FFFFFF;
+  padding: 8px;
+  box-shadow: 0 12px 30px rgba(18, 32, 25, 0.08);
+  border: 1px solid var(--emerald-border);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mockupContainer:hover .phone {
+  border-color: var(--emerald-light);
+  box-shadow: 0 20px 40px rgba(13, 105, 69, 0.12);
+}
+
+.phoneScreen {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #000;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.labelWrap {
+  margin-top: 14px;
+  text-align: center;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: #FFFFFF;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--emerald-border);
+  box-shadow: var(--shadow-sm);
+  display: inline-block;
+  transition: all 0.25s ease;
+}
+
+.mockupContainer:hover .label {
+  background: var(--bg-card-tint);
+  border-color: var(--emerald);
+  color: var(--emerald-dark);
+}
+
+@media (max-width: 600px) {
+  .phone {
+    width: 180px;
+    height: 360px;
+    border-radius: 26px;
+    padding: 6px;
+  }
+  .phoneScreen {
+    border-radius: 20px;
+  }
+}

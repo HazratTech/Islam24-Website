@@ -3,10 +3,12 @@ import styles from './AppScreenshots.module.css';
 import OptimizedVideoPlayer from '@/components/OptimizedVideoPlayer';
 
 const screenshots = [
-  { src: '/screenshot/Home.png', alt: 'Islam24 Home Screen & Daily Dua' },
-  { src: '/screenshot/PrayerTime.png', alt: 'Accurate Prayer Times & Athan Timetable' },
-  { src: '/screenshot/Quran.png', alt: 'Holy Quran Reading with Translations' },
-  { src: '/screenshot/SurahScreen.png', alt: 'Surah Details & Audio Player' },
+  { src: '/screenshot/home-main.webp', alt: 'Islam24 Android Home Screen with Prayer Timetable and Daily Hadith', label: 'Home & Prayer Times' },
+  { src: '/screenshot/prayer-times.webp', alt: 'Accurate Islamic Prayer Times and Live Athan Notifications', label: 'Salat Timetable' },
+  { src: '/screenshot/quran-ayah.webp', alt: 'Holy Quran Uthmani Script with Verse Audio Recitation', label: 'Offline Quran' },
+  { src: '/screenshot/qibla-compass.webp', alt: 'Precision Real-Time Qibla Compass to Kaaba in Makkah', label: 'Qibla Finder' },
+  { src: '/screenshot/tasbih-counter.webp', alt: 'Digital Tasbih Counter with Haptic Touch for Dhikr', label: 'Digital Tasbih' },
+  { src: '/screenshot/azkar-dua.webp', alt: 'Authentic Hisnul Muslim Daily Morning and Evening Azkar', label: 'Hisnul Muslim & Dua' },
 ];
 
 export default function AppScreenshots() {
@@ -64,8 +66,12 @@ export default function AppScreenshots() {
                       width={220}
                       height={440}
                       className={styles.image}
+                      loading="lazy"
                     />
                   </div>
+                </div>
+                <div className={styles.screenLabelWrap}>
+                  <span className={styles.screenLabel}>{screen.label}</span>
                 </div>
               </div>
             ))}

@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
+import FeatureScreenshots from '@/components/FeatureScreenshots';
 import AzkarDuaClient from './AzkarDuaClient';
 
 export const metadata = {
@@ -216,6 +217,36 @@ export default function AzkarDuaPage() {
             </div>
           </div>
         </div>
+
+        {/* Real App Screenshots Showcase */}
+        <FeatureScreenshots
+          badge="Daily Supplications"
+          title="Engineered for Continuous Remembrance"
+          subtitle="Explore authentic Hisnul Muslim supplications, haptic digital Tasbih beads, and the 99 Divine Names of Allah."
+          screens={[
+            {
+              src: '/screenshot/azkar-dua.webp',
+              alt: 'Hisnul Muslim Daily Morning and Evening Azkar Categories',
+              label: 'Hisnul Muslim Categories',
+            },
+            {
+              src: '/screenshot/dua-list.webp',
+              alt: 'Dua Details with Arabic Text, Transliteration, and Verified Hadith Source',
+              label: 'Verified Supplications',
+            },
+            {
+              src: '/screenshot/tasbih-counter.webp',
+              alt: 'Interactive Digital Tasbih Clicker with Haptic Feedback and Azkar Presets',
+              label: 'Haptic Digital Tasbih',
+            },
+            {
+              src: '/screenshot/names-of-allah.webp',
+              alt: 'Asmaul Husna 99 Beautiful Names of Allah with Meanings and Audio',
+              label: '99 Names of Allah',
+            },
+          ]}
+        />
+
         <CTA />
       </main>
       <Footer />

@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
+import FeatureScreenshots from '@/components/FeatureScreenshots';
 import QiblaFinderClient from './QiblaFinderClient';
 
 export const metadata = {
@@ -240,6 +241,26 @@ export default function QiblaFinderPage() {
             </p>
           </div>
         </div>
+
+        {/* Real App Screenshots Showcase */}
+        <FeatureScreenshots
+          badge="Global Precision"
+          title="Engineered for Sacred Direction"
+          subtitle="Real-time magnetometer guidance, Kaaba distance metrics, and seamless visual feedback wherever you travel."
+          screens={[
+            {
+              src: '/screenshot/qibla-compass.webp',
+              alt: 'Real-Time Precision Qibla Compass pointing to Kaaba in Makkah',
+              label: 'Precision Qibla Compass',
+            },
+            {
+              src: '/screenshot/home-main.webp',
+              alt: 'Islam24 Home Screen with One-Tap Qibla Access',
+              label: 'Instant Home Access',
+            },
+          ]}
+        />
+
         <CTA />
       </main>
       <Footer />

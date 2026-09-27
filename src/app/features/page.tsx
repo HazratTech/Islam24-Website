@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
+import FeatureScreenshots from '@/components/FeatureScreenshots';
 import Link from 'next/link';
 
 interface FeatureItem {
@@ -252,6 +253,46 @@ export default function FeaturesPage() {
             ))}
           </div>
         </div>
+
+        {/* Real App Screenshots Showcase */}
+        <FeatureScreenshots
+          badge="Complete Visual Sanctuary"
+          title="Designed for Reverence & Focus"
+          subtitle="Explore the intuitive design language, dark aesthetic, and distraction-free workflow crafted across every feature."
+          screens={[
+            {
+              src: '/screenshot/home-main.webp',
+              alt: 'Islam24 Home Screen with Daily Hadith, Salat Times and Fast Access',
+              label: 'Home Sanctuary',
+            },
+            {
+              src: '/screenshot/prayer-timetable.webp',
+              alt: 'Accurate Five Daily Prayer Timetable with Athan Alerts',
+              label: 'Prayer Timetable',
+            },
+            {
+              src: '/screenshot/quran-ayah.webp',
+              alt: 'Holy Quran Uthmani Script Recitation with Verse Audio',
+              label: 'Noble Quran Reader',
+            },
+            {
+              src: '/screenshot/qibla-compass.webp',
+              alt: 'Real-Time Precision Kaaba Compass for Qibla Orientation',
+              label: 'Qibla Finder',
+            },
+            {
+              src: '/screenshot/tasbih-counter.webp',
+              alt: 'Digital Tasbih Counter with Haptic Vibration for Dhikr',
+              label: 'Digital Tasbih',
+            },
+            {
+              src: '/screenshot/azkar-dua.webp',
+              alt: 'Authentic Hisnul Muslim Daily Morning and Evening Azkar Categories',
+              label: 'Hisnul Muslim & Dua',
+            },
+          ]}
+        />
+
         <CTA />
       </main>
       <Footer />

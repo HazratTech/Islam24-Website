@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
+import FeatureScreenshots from '@/components/FeatureScreenshots';
 import PrayerTimesClient from './PrayerTimesClient';
 
 export const metadata = {
@@ -216,6 +217,31 @@ export default function PrayerTimesPage() {
             </div>
           </div>
         </div>
+
+        {/* Real App Screenshots Showcase */}
+        <FeatureScreenshots
+          badge="Live Timetable"
+          title="Engineered for Daily Salat Punctuality"
+          subtitle="Astronomical accuracy, live countdown timers, and glanceable home screen widgets for your daily five prayers."
+          screens={[
+            {
+              src: '/screenshot/prayer-times.webp',
+              alt: 'Live Next Prayer Countdown and Accurate Athan Alerts',
+              label: 'Countdown & Next Prayer',
+            },
+            {
+              src: '/screenshot/prayer-timetable.webp',
+              alt: 'Complete Five Daily Prayer Times Timetable Fajr Dhuhr Asr Maghrib Isha',
+              label: 'Full Salat Timetable',
+            },
+            {
+              src: '/screenshot/home-widgets.webp',
+              alt: 'Android Glanceable Home Screen Widgets for Prayer Times and Daily Dhikr',
+              label: 'Glanceable Widgets',
+            },
+          ]}
+        />
+
         <CTA />
       </main>
       <Footer />
