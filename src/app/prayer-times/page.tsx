@@ -1,10 +1,13 @@
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
 import FeatureScreenshots from '@/components/FeatureScreenshots';
 import PrayerTimesClient from './PrayerTimesClient';
 
-export const metadata = {
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
+
+export const metadata: Metadata = {
   title: 'Accurate Prayer Time App & Athan Notifications | Islam24',
   description: 'Get precise daily prayer times (Salat) and custom Athan notifications based on your exact location. Supports MWL, ISNA, Umm Al-Qura & Karachi algorithms — 100% Free & Ad-Free.',
   keywords: [
@@ -17,35 +20,70 @@ export const metadata = {
     'free prayer times android',
     'muslim prayer time no ads',
   ],
+  alternates: {
+    canonical: '/prayer-times',
+  },
+  openGraph: {
+    title: 'Accurate Prayer Time App & Athan Notifications | Islam24',
+    description: 'Get precise daily prayer times (Salat) and custom Athan notifications based on your exact location. Supports MWL, ISNA, Umm Al-Qura & Karachi algorithms — 100% Free & Ad-Free.',
+    url: '/prayer-times',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Accurate Prayer Time App & Athan Notifications | Islam24',
+    description: 'Get precise daily prayer times (Salat) and custom Athan notifications based on your exact location.',
+  },
 };
 
-const prayerFaqSchema = {
+const prayerSchema = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "How does Islam24 ensure accurate prayer times worldwide?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Islam24 calculates solar declination angles using standard astronomical algorithms vetted by major global organizations including the Muslim World League, ISNA, and Umm Al-Qura (Makkah)."
-      }
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Prayer Times App",
+          "item": `${siteUrl}/prayer-times`
+        }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Can I choose between Shafi and Hanafi for Asr prayer?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. You can toggle between Standard (Shafi, Maliki, Hanbali - shadow length = object height) and Hanafi (shadow length = 2x object height) with a single tap."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does Islam24 track my location for prayer times?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Your device GPS coordinates are processed solely on-device. Islam24 never logs, tracks, or uploads your location to remote servers."
-      }
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does Islam24 ensure accurate prayer times worldwide?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Islam24 calculates solar declination angles using standard astronomical algorithms vetted by major global organizations including the Muslim World League, ISNA, and Umm Al-Qura (Makkah)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I choose between Shafi and Hanafi for Asr prayer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can toggle between Standard (Shafi, Maliki, Hanbali - shadow length = object height) and Hanafi (shadow length = 2x object height) with a single tap."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Islam24 track my location for prayer times?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Your device GPS coordinates are processed solely on-device. Islam24 never logs, tracks, or uploads your location to remote servers."
+          }
+        }
+      ]
     }
   ]
 };
@@ -55,7 +93,7 @@ export default function PrayerTimesPage() {
     <div className="layout-wrapper" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(prayerFaqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(prayerSchema) }}
       />
       <Header />
       <main className="page-content" style={{ paddingTop: '130px', paddingBottom: '70px' }}>

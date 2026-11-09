@@ -4,15 +4,70 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
+
 export const metadata: Metadata = {
   title: 'About Islam24 — Sacred Purpose & 100% Ad-Free Commitment',
   description: 'Learn about Islam24’s mission to provide the global Muslim Ummah with a completely free, ad-free, and privacy-respecting digital Islamic companion.',
-  keywords: ['about islam24', 'free islamic app mission', 'ad free muslim app', 'islamic app without ads', 'halal app privacy'],
+  keywords: ['about islam24', 'free islamic app mission', 'ad free muslim app', 'islamic app without ads', 'halal app privacy', 'no tracking islamic app'],
+  alternates: {
+    canonical: '/about-us',
+  },
+  openGraph: {
+    title: 'About Islam24 — Sacred Purpose & 100% Ad-Free Commitment',
+    description: 'Learn about Islam24’s mission to provide the global Muslim Ummah with a completely free, ad-free, and privacy-respecting digital Islamic companion.',
+    url: '/about-us',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Islam24 — Sacred Purpose & 100% Ad-Free Commitment',
+    description: 'Learn about Islam24’s mission to provide a completely free, ad-free, and privacy-respecting digital Islamic companion.',
+  },
+};
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About Us",
+          "item": `${siteUrl}/about-us`
+        }
+      ]
+    },
+    {
+      "@type": "AboutPage",
+      "name": "About Islam24",
+      "url": `${siteUrl}/about-us`,
+      "description": "Our mission to provide an ad-free, privacy-first Islamic digital companion for Muslims worldwide.",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Islam24",
+        "url": siteUrl,
+        "logo": `${siteUrl}/logo-with-bg.svg`
+      }
+    }
+  ]
 };
 
 export default function AboutUsPage() {
   return (
     <div className="layout-wrapper">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+      />
       <Header />
       <main className={styles.main}>
         <div className={styles.container}>

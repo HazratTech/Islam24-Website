@@ -1,10 +1,13 @@
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
 import FeatureScreenshots from '@/components/FeatureScreenshots';
 import AzkarDuaClient from './AzkarDuaClient';
 
-export const metadata = {
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
+
+export const metadata: Metadata = {
   title: 'Daily Azkar & Dua App with Digital Tasbih Counter | Islam24',
   description: 'Access authentic daily Azkar, morning and evening supplications from Hisnul Muslim, Quranic Duas, and an interactive digital Tasbih clicker — 100% Free & Ad-Free.',
   keywords: [
@@ -17,35 +20,70 @@ export const metadata = {
     'subhanallah tasbih online',
     'daily dhikr app',
   ],
+  alternates: {
+    canonical: '/azkar-dua',
+  },
+  openGraph: {
+    title: 'Daily Azkar & Dua App with Digital Tasbih Counter | Islam24',
+    description: 'Access authentic daily Azkar, morning and evening supplications from Hisnul Muslim, Quranic Duas, and an interactive digital Tasbih clicker — 100% Free & Ad-Free.',
+    url: '/azkar-dua',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Daily Azkar & Dua App with Digital Tasbih Counter | Islam24',
+    description: 'Access authentic daily Azkar, morning and evening supplications from Hisnul Muslim, and digital Tasbih clicker.',
+  },
 };
 
-const azkarFaqSchema = {
+const azkarSchema = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "Are the Duas and Azkar in Islam24 authentic?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. All morning, evening, and daily supplications in Islam24 are sourced directly from verified collections including Hisnul Muslim (Fortress of the Muslim), Sahih al-Bukhari, Sahih Muslim, and authenticated Sunan."
-      }
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Daily Azkar & Dua",
+          "item": `${siteUrl}/azkar-dua`
+        }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Does the digital Tasbih work offline?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, the digital Tasbih clicker and complete Azkar library are fully functional offline with local device count persistence."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are there banner ads interrupting Dhikr?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Never. Islam24 is strictly 100% ad-free, popup-free, and commercial sponsor-free."
-      }
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are the Duas and Azkar in Islam24 authentic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. All morning, evening, and daily supplications in Islam24 are sourced directly from verified collections including Hisnul Muslim (Fortress of the Muslim), Sahih al-Bukhari, Sahih Muslim, and authenticated Sunan."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the digital Tasbih work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, the digital Tasbih clicker and complete Azkar library are fully functional offline with local device count persistence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there banner ads interrupting Dhikr?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Never. Islam24 is strictly 100% ad-free, popup-free, and commercial sponsor-free."
+          }
+        }
+      ]
     }
   ]
 };
@@ -55,7 +93,7 @@ export default function AzkarDuaPage() {
     <div className="layout-wrapper" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(azkarFaqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(azkarSchema) }}
       />
       <Header />
       <main className="page-content" style={{ paddingTop: '130px', paddingBottom: '70px' }}>

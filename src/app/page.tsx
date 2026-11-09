@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import AppScreenshots from '@/components/AppScreenshots';
@@ -7,6 +8,20 @@ import About from '@/components/About';
 import FaqSection from '@/components/FaqSection';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
+
+export const metadata: Metadata = {
+  title: 'Islam24 — 100% Free & Ad-Free Islamic App for Android',
+  description: '100% free and ad-free Islamic app for Android. Accurate prayer times, Qibla compass, offline Holy Quran with verse audio, and daily Azkar with zero tracking.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Islam24 — 100% Free & Ad-Free Islamic App for Android',
+    description: '100% free and ad-free Islamic app for Android. Accurate prayer times, Qibla compass, offline Holy Quran with verse audio, and daily Azkar with zero tracking.',
+    url: '/',
+    type: 'website',
+  },
+};
 
 const faqJsonLd = {
   "@context": "https://schema.org",

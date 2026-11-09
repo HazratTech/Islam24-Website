@@ -1,382 +1,183 @@
-'use client';
-
-/* eslint-disable @next/next/no-img-element */
-import { useState, useEffect, useRef } from 'react';
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { useAuth } from '@/context/AuthContext';
+import DeleteAccountClient from './DeleteAccountClient';
 import styles from './DeleteAccount.module.css';
 
-interface GoogleIdAccounts {
-  initialize: (config: { client_id: string; callback: (res: { credential?: string }) => void }) => void;
-  renderButton: (parent: HTMLElement, options: Record<string, unknown>) => void;
-}
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
 
-interface CustomWindow extends Window {
-  google?: {
-    accounts?: {
-      id?: GoogleIdAccounts;
-    };
-  };
-}
+export const metadata: Metadata = {
+  title: 'Delete Account & User Data — Google Play Compliant | Islam24',
+  description: 'Request permanent deletion of your Islam24 account and associated synchronized data in full compliance with Google Play Developer policies.',
+  keywords: [
+    'delete islam24 account',
+    'islam24 data deletion',
+    'delete account and data',
+    'google play data deletion compliant',
+    'remove user data islam24'
+  ],
+  alternates: {
+    canonical: '/delete-account',
+  },
+  openGraph: {
+    title: 'Delete Account & User Data — Google Play Compliant | Islam24',
+    description: 'Request permanent deletion of your Islam24 account and associated synchronized data in full compliance with Google Play Developer policies.',
+    url: '/delete-account',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Delete Account & User Data | Islam24',
+    description: 'Request permanent deletion of your Islam24 account and associated synchronized data.',
+  },
+};
+
+const deleteAccountSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Delete Account",
+          "item": `${siteUrl}/delete-account`
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What data is permanently deleted when I delete my account?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your user profile, Google authentication identifier, and all synchronized bookmarks (saved Ayahs, Surahs, and Duas) are permanently removed from production databases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take for my data to be deleted?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Self-service deletion through this portal executes immediately in real-time. Manual email requests are processed within 48 hours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need an account to use Islam24?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Islam24 is 100% functional without an account. Accounts are strictly optional for cloud bookmark syncing across devices."
+          }
+        }
+      ]
+    }
+  ]
+};
 
 export default function DeleteAccountPage() {
-  const { user, loading, error, loginWithGoogleIdToken, logout, deleteAccount, clearError } = useAuth();
-  const [deleteSuccess, setDeleteSuccess] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [localError, setLocalError] = useState<string | null>(null);
-  const [copied, setCopied] = useState(false);
-  const [imgError, setImgError] = useState(false);
-  const googleBtnRef = useRef<HTMLDivElement>(null);
-  const gsiInitializedRef = useRef(false);
-
-  const googleClientId =
-    process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ||
-    '137257860022-fc99sltg4vgbg9i0l3lsugb22ltcv3hn.apps.googleusercontent.com';
-
-  // Initialize Google Identity Services
-  useEffect(() => {
-    if (user || !googleClientId || gsiInitializedRef.current) return;
-
-    const initGoogle = () => {
-      const winGoogle = (window as unknown as CustomWindow).google;
-      if (winGoogle?.accounts?.id && googleBtnRef.current) {
-        try {
-          if (!gsiInitializedRef.current) {
-            winGoogle.accounts.id.initialize({
-              client_id: googleClientId,
-              callback: async (response: { credential?: string }) => {
-                if (response.credential) {
-                  setLocalError(null);
-                  clearError();
-                  try {
-                    await loginWithGoogleIdToken(response.credential);
-                  } catch (err: unknown) {
-                    const msg = err instanceof Error ? err.message : 'Failed to authenticate with Google';
-                    setLocalError(msg);
-                  }
-                }
-              },
-            });
-            gsiInitializedRef.current = true;
-          }
-
-          googleBtnRef.current.innerHTML = '';
-          winGoogle.accounts.id.renderButton(googleBtnRef.current, {
-            theme: 'outline',
-            size: 'large',
-            type: 'standard',
-            shape: 'rectangular',
-            width: 300,
-            logo_alignment: 'left',
-          });
-        } catch (e: unknown) {
-          console.error('Error rendering Google Sign-In button:', e);
-        }
-      }
-    };
-
-    const winGoogle = (window as unknown as CustomWindow).google;
-    if (winGoogle?.accounts?.id) {
-      initGoogle();
-    } else {
-      const interval = setInterval(() => {
-        const checkGoogle = (window as unknown as CustomWindow).google;
-        if (checkGoogle?.accounts?.id) {
-          initGoogle();
-          clearInterval(interval);
-        }
-      }, 300);
-      return () => clearInterval(interval);
-    }
-  }, [user, googleClientId, loginWithGoogleIdToken, clearError]);
-
-  const handleDelete = async () => {
-    if (!user) return;
-
-    const confirmDelete = window.confirm(
-      "Are you absolutely certain you want to delete your Islam24 account? This will immediately and permanently erase all cloud-synced bookmarks, tasbih counts, and preferences. This action cannot be undone."
-    );
-    if (!confirmDelete) return;
-
-    setIsDeleting(true);
-    setLocalError(null);
-    clearError();
-
-    try {
-      await deleteAccount();
-      setDeleteSuccess(true);
-    } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : 'An error occurred while deleting your account';
-      setLocalError(msg);
-    } finally {
-      setIsDeleting(false);
-    }
-  };
-
-  const handleLogout = async () => {
-    setLocalError(null);
-    clearError();
-    gsiInitializedRef.current = false;
-    await logout();
-  };
-
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const displayError = localError || error;
-
-  const formatDate = (dateString?: string) => {
-    if (!dateString) return 'Active Member';
-    try {
-      return new Date(dateString).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      });
-    } catch {
-      return dateString;
-    }
-  };
-
   return (
     <div className="layout-wrapper">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(deleteAccountSchema) }}
+      />
       <Header />
       <main className={styles.main}>
-        <div className={`container ${styles.container}`}>
-          {/* Page Header */}
+        <div className={styles.container}>
+          {/* Header */}
           <div className={styles.header}>
-            <span className="section-badge section-badge-gold">Data Privacy &amp; Ownership</span>
+            <div className={styles.bismillah}>بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+            <span className="section-badge section-badge-gold">Account Management</span>
             <h1 className={styles.title}>
-              Manage Account &amp; <span className="highlight">Data Deletion</span>
+              Delete Account &amp; <span className="highlight">Associated Data</span>
             </h1>
             <p className={styles.subtitle}>
-              At Islam24, you maintain absolute ownership over your spiritual data. Authenticate below to manage your synchronized profile or permanently erase your account and all stored records.
+              In accordance with Google Play Developer Data Safety policies and our strict commitment to user privacy, you have full control over your data. Use this self-service portal to permanently delete your Islam24 account and all associated cloud-stored data.
             </p>
           </div>
 
-          {/* Success or Error Notice */}
-          {deleteSuccess && (
-            <div className={styles.successMessage}>
-              <h3 style={{ fontSize: '1.15rem', margin: '0 0 6px 0' }}>✓ Account Permanently Deleted</h3>
-              <p style={{ margin: 0, fontSize: '0.95rem' }}>
-                Your account, profile record, and all cloud-synchronized bookmarks and tasbih records have been permanently purged from Islam24 systems in accordance with Google Play Data Safety policies.
-              </p>
-            </div>
-          )}
+          {/* Interactive Deletion Client Component */}
+          <DeleteAccountClient />
 
-          {displayError && (
-            <div className={styles.errorMessage}>
-              {displayError}
-            </div>
-          )}
-
-          {/* Two-Column Portal Grid */}
-          <div className={styles.portalGrid}>
-            {/* Left Column: Interactive Account / Deletion Card */}
-            <div className={styles.card}>
-              {loading ? (
-                <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--text-secondary)' }}>
-                  Loading account credentials...
+          {/* Detailed Data Deletion Policy (Google Play Policy Compliance) */}
+          <div className={styles.policySection}>
+            <h3 className={styles.policyTitle}>Data Deletion &amp; Retention Policy</h3>
+            <div className={styles.policyGrid}>
+              <div className={styles.policyCard}>
+                <div className={styles.policyIcon}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                 </div>
-              ) : !user ? (
-                <div>
-                  <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
-                    Step 1: Authenticate Ownership
-                  </h2>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '24px' }}>
-                    To safeguard against unauthorized data loss, please authenticate with the Google account connected to your Islam24 mobile app.
-                  </p>
-
-                  <div className={styles.loginSection}>
-                    <div className={styles.loginPromptIcon}>
-                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                    </div>
-                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '6px' }}>
-                      Sign In with Google
-                    </h3>
-                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', maxWidth: '380px', margin: '0 auto 18px auto' }}>
-                      Uses Google OAuth 2.0 Identity Services. Once authenticated, your profile details and one-click deletion will be available below.
-                    </p>
-
-                    <div className={styles.googleBtnWrapper}>
-                      <div ref={googleBtnRef} />
-                    </div>
-                  </div>
-
-                  <div style={{ marginTop: '28px', padding: '18px 20px', background: '#FAF8F5', borderRadius: 'var(--radius-md)', border: '1px solid var(--emerald-border)', fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                    <strong>Alternative Request Method:</strong> If your browser blocks external Google scripts, you may submit a manual data erasure request by emailing <a href="mailto:support@islam24.app" style={{ color: 'var(--emerald)', fontWeight: 700 }}>support@islam24.app</a> with your registered email address. Manual requests are processed within 24 hours.
-                  </div>
-                </div>
-              ) : (
-                /* Authenticated Profile View */
-                <div className={styles.profileSection}>
-                  <div className={styles.profileCardHeader}>
-                    <div className={styles.verifiedBadge}>
-                      <span>✓ Authenticated Islam24 Account</span>
-                    </div>
-
-                    <div className={styles.avatarRing}>
-                      <div className={styles.avatar}>
-                        {user.picture && !imgError ? (
-                          <img
-                            src={user.picture}
-                            alt=""
-                            referrerPolicy="no-referrer"
-                            onError={() => setImgError(true)}
-                          />
-                        ) : (
-                          (user.name || user.email || 'U').charAt(0).toUpperCase()
-                        )}
-                      </div>
-                    </div>
-
-                    <h2 className={styles.userName}>{user.name || 'Islam24 User'}</h2>
-                    <p className={styles.userEmail}>{user.email}</p>
-
-                    <div className={styles.metaGrid}>
-                      <div className={styles.metaItem}>
-                        <div className={styles.metaLabel}>Account Status</div>
-                        <div className={styles.metaValue}>
-                          <span className={styles.statusIndicator}>
-                            <span className={styles.statusDot}></span> Active
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className={styles.metaItem}>
-                        <div className={styles.metaLabel}>Member Since</div>
-                        <div className={styles.metaValue}>
-                          {formatDate(user.createdAt)}
-                        </div>
-                      </div>
-
-                      <div className={styles.metaItem} style={{ gridColumn: '1 / -1' }}>
-                        <div className={styles.metaLabel}>User ID</div>
-                        <div className={styles.metaValue}>
-                          <span style={{ fontFamily: 'monospace', fontSize: '0.78rem' }}>{user.id}</span>
-                          <button
-                            onClick={() => copyToClipboard(user.id)}
-                            className={styles.copyBtn}
-                            title="Copy User ID"
-                          >
-                            {copied ? 'Copied ✓' : 'Copy'}
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className={styles.actionsBar}>
-                    <button onClick={handleLogout} className={styles.signOutBtn}>
-                      Sign Out
-                    </button>
-                  </div>
-
-                  {/* Danger Zone: Permanent Account Deletion */}
-                  <div className={styles.dangerZoneCard}>
-                    <div className={styles.dangerHeader}>
-                      <span className={styles.dangerTitle}>Permanent Account Deletion</span>
-                      <span className={styles.dangerBadge}>Irreversible</span>
-                    </div>
-                    <p className={styles.dangerText}>
-                      Deleting your account will immediately and permanently erase all associated cloud data from our production database:
-                    </p>
-                    <ul className={styles.dangerList}>
-                      <li>Quran bookmarks, last read Surah, and reading milestones</li>
-                      <li>Custom Tasbih counter targets and historical counts</li>
-                      <li>Authentication session credentials and user profile</li>
-                    </ul>
-
-                    <button
-                      onClick={handleDelete}
-                      disabled={isDeleting}
-                      className={styles.deleteBtn}
-                    >
-                      {isDeleting ? 'Deleting All Account Data...' : 'Permanently Delete My Account & Data'}
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Right Column (Sidebar): Data Breakdown & Deletion Guarantee */}
-            <div className={styles.sidebar}>
-              <div className={styles.infoCard}>
-                <h3 className={styles.infoCardTitle}>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-                  What Happens Upon Deletion
-                </h3>
-                <ul className={styles.checklist}>
-                  <li className={styles.checklistItem}>
-                    <span className={styles.checkIconRed}>✕</span>
-                    <div>
-                      <strong>Immediate Cloud Wipe:</strong> Your account record is instantly purged from our servers within seconds.
-                    </div>
-                  </li>
-                  <li className={styles.checklistItem}>
-                    <span className={styles.checkIconRed}>✕</span>
-                    <div>
-                      <strong>Zero Retention Grace Period:</strong> We do not retain &ldquo;soft-deleted&rdquo; user records or archive backups of deleted accounts.
-                    </div>
-                  </li>
-                  <li className={styles.checklistItem}>
-                    <span className={styles.checkIconRed}>✕</span>
-                    <div>
-                      <strong>OAuth Tokens Revoked:</strong> Your Google authentication session token is immediately invalidated.
-                    </div>
-                  </li>
-                  <li className={styles.checklistItem}>
-                    <span className={styles.checkIconGreen}>✓</span>
-                    <div>
-                      <strong>Physical Phone Data:</strong> To clear offline cached Quran recitations on your device, simply uninstall the app or clear App Storage.
-                    </div>
-                  </li>
+                <h4>What Data Is Permanently Deleted</h4>
+                <p>
+                  When you delete your account, our systems immediately and permanently purge:
+                </p>
+                <ul>
+                  <li>Your user account record and unique internal ID</li>
+                  <li>Your email address and associated Google profile information</li>
+                  <li>All synchronized Quran bookmarks, last-read positions, and saved Ayahs</li>
+                  <li>All saved favorite Duas and Azkar counter data</li>
+                  <li>Active authentication sessions and refresh tokens</li>
                 </ul>
               </div>
 
-              <div className={styles.infoCard}>
-                <h3 className={styles.infoCardTitle}>
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                  Data We NEVER Collect
-                </h3>
-                <ul className={styles.checklist}>
-                  <li className={styles.checklistItem}>
-                    <span className={styles.checkIconGreen}>✓</span>
-                    <div>
-                      <strong>GPS Location:</strong> Prayer times and Qibla math are computed 100% on your device hardware. Coordinates are never uploaded.
-                    </div>
-                  </li>
-                  <li className={styles.checklistItem}>
-                    <span className={styles.checkIconGreen}>✓</span>
-                    <div>
-                      <strong>Search &amp; Audio Telemetry:</strong> We do not track what Surahs you recite or your private Dhikr frequency.
-                    </div>
-                  </li>
-                  <li className={styles.checklistItem}>
-                    <span className={styles.checkIconGreen}>✓</span>
-                    <div>
-                      <strong>Ad Identifiers:</strong> Islam24 contains zero advertising SDKs or third-party marketing trackers.
-                    </div>
-                  </li>
+              <div className={styles.policyCard}>
+                <div className={styles.policyIcon}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <h4>Data That Never Leaves Your Device</h4>
+                <p>
+                  Islam24 was engineered with on-device computing by default:
+                </p>
+                <ul>
+                  <li><strong>Location Data:</strong> Your GPS coordinates for prayer times and Qibla direction are calculated strictly on your phone hardware. Location data is never sent to our servers.</li>
+                  <li><strong>Zakat Calculations:</strong> All asset entries and calculations stay on your device and are never transmitted.</li>
+                  <li><strong>Offline Audio:</strong> Downloaded Quran audio files are stored in your device storage and deleted upon uninstall.</li>
                 </ul>
+              </div>
+
+              <div className={styles.policyCard}>
+                <div className={styles.policyIcon}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <h4>Retention Timelines</h4>
+                <p>
+                  We adhere to strict minimal retention principles:
+                </p>
+                <ul>
+                  <li><strong>Immediate Deletion:</strong> Self-service deletion via this page purges records in real-time.</li>
+                  <li><strong>Email Requests:</strong> Deletion requests sent to support@islam24.app are processed within 48 hours.</li>
+                  <li><strong>Zero Retention Grace Period:</strong> We do not retain &ldquo;soft-deleted&rdquo; user records or archive backups of deleted accounts.</li>
+                </ul>
+              </div>
+
+              <div className={styles.policyCard}>
+                <div className={styles.policyIcon}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <h4>Anonymous App Usage</h4>
+                <p>
+                  Islam24 does not require an account. You can use all core features — Quran reading and recitation, prayer times, Qibla compass, Azkar, and Zakat calculator — completely anonymously without any account creation or personal data sharing.
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Bottom Section: Google Play Compliance & FAQ Accordion */}
+          {/* FAQ Section */}
           <div className={styles.faqSection}>
-            <h2 className={styles.faqTitle}>Frequently Asked Questions &amp; Data Safety</h2>
-            <p className={styles.faqSubtitle}>
-              Transparency regarding our compliance with Google Play Store User Data policies and user privacy rights.
-            </p>
-
-            <div className={styles.faqGrid}>
+            <h3 className={styles.faqTitle}>Frequently Asked Questions</h3>
+            <div className={styles.faqList}>
               <div className={styles.faqItem}>
-                <h4 className={styles.faqQuestion}>How long does account deletion take to complete?</h4>
+                <h4 className={styles.faqQuestion}>How long does it take for my data to be deleted?</h4>
                 <p className={styles.faqAnswer}>
                   Self-service deletion through this portal executes immediately in real-time. Your account record, tokens, and synchronized bookmarks are permanently removed from production databases within seconds.
                 </p>

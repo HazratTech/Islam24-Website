@@ -1,10 +1,13 @@
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
 import FeatureScreenshots from '@/components/FeatureScreenshots';
 import QuranReaderClient from './QuranReaderClient';
 
-export const metadata = {
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
+
+export const metadata: Metadata = {
   title: 'Free Offline Quran App with Audio Recitations | Islam24',
   description: 'Read and listen to the complete Holy Quran offline with verse-by-verse audio recitations, authentic Uthmani script, English and Bengali translations — 100% Free and Ad-Free.',
   keywords: [
@@ -18,35 +21,70 @@ export const metadata = {
     'quran with bangla translation',
     'ad free quran app',
   ],
+  alternates: {
+    canonical: '/quran',
+  },
+  openGraph: {
+    title: 'Free Offline Quran App with Audio Recitations | Islam24',
+    description: 'Read and listen to the complete Holy Quran offline with verse-by-verse audio recitations, authentic Uthmani script, English and Bengali translations — 100% Free and Ad-Free.',
+    url: '/quran',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Free Offline Quran App with Audio Recitations | Islam24',
+    description: 'Read and listen to the complete Holy Quran offline with verse-by-verse audio recitations, authentic Uthmani script, English and Bengali translations.',
+  },
 };
 
-const quranFaqSchema = {
+const quranSchema = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "Can I read the Quran completely offline in Islam24?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. All 114 Surahs and 6,236 verses in authentic Uthmani calligraphy with full English and Bengali translations are stored locally for 100% offline access."
-      }
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Offline Quran App",
+          "item": `${siteUrl}/quran`
+        }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Which reciters are available for verse-by-verse audio?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Islam24 includes world-renowned Qaris including Mishary Rashid Alafasy, Abdul Basit Abdul Samad, and Saad Al-Ghamdi with offline download capabilities."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are there banner ads or commercial interruptions during recitation?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Never. Islam24 is strictly 100% ad-free forever. The Holy Quran is sacred and will never be monetized with commercial advertisements."
-      }
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can I read the Quran completely offline in Islam24?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. All 114 Surahs and 6,236 verses in authentic Uthmani calligraphy with full English and Bengali translations are stored locally for 100% offline access."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which reciters are available for verse-by-verse audio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Islam24 includes world-renowned Qaris including Mishary Rashid Alafasy, Abdul Basit Abdul Samad, and Saad Al-Ghamdi with offline download capabilities."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there banner ads or commercial interruptions during recitation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Never. Islam24 is strictly 100% ad-free forever. The Holy Quran is sacred and will never be monetized with commercial advertisements."
+          }
+        }
+      ]
     }
   ]
 };
@@ -56,7 +94,7 @@ export default function QuranPage() {
     <div className="layout-wrapper" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(quranFaqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(quranSchema) }}
       />
       <Header />
       <main className="page-content" style={{ paddingTop: '130px', paddingBottom: '70px' }}>

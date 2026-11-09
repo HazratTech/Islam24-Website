@@ -4,14 +4,57 @@ import Footer from '@/components/Footer';
 import Link from 'next/link';
 import styles from '../legal.module.css';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
+
 export const metadata: Metadata = {
   title: 'Terms of Service — Clear & Transparent Guidelines | Islam24',
   description: 'Terms of Service for Islam24. Read our guidelines on permitted personal use, open Quranic licensing, and data deletion rights.',
+  alternates: {
+    canonical: '/terms-of-service',
+  },
+  openGraph: {
+    title: 'Terms of Service — Clear & Transparent Guidelines | Islam24',
+    description: 'Terms of Service for Islam24. Read our guidelines on permitted personal use, open Quranic licensing, and data deletion rights.',
+    url: '/terms-of-service',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service | Islam24',
+    description: 'Terms of Service for Islam24. Read our guidelines on permitted personal use and open Quranic licensing.',
+  },
+};
+
+const termsSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Terms of Service",
+          "item": `${siteUrl}/terms-of-service`
+        }
+      ]
+    }
+  ]
 };
 
 export default function TermsOfServicePage() {
   return (
     <div className="layout-wrapper">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(termsSchema) }}
+      />
       <Header />
       <main className={styles.main}>
         <div className={`container ${styles.container}`}>

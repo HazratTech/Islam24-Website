@@ -1,10 +1,13 @@
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
 import FeatureScreenshots from '@/components/FeatureScreenshots';
 import QiblaFinderClient from './QiblaFinderClient';
 
-export const metadata = {
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
+
+export const metadata: Metadata = {
   title: 'Precise Qibla Direction & Compass Finder App | Islam24',
   description: 'Find the exact Qibla direction towards the Kaaba in Makkah from anywhere in the world using our high-precision digital compass app — 100% Free, Offline, and Ad-Free.',
   keywords: [
@@ -17,35 +20,70 @@ export const metadata = {
     'free qibla app android',
     'kaaba compass',
   ],
+  alternates: {
+    canonical: '/qibla-finder',
+  },
+  openGraph: {
+    title: 'Precise Qibla Direction & Compass Finder App | Islam24',
+    description: 'Find the exact Qibla direction towards the Kaaba in Makkah from anywhere in the world using our high-precision digital compass app — 100% Free, Offline, and Ad-Free.',
+    url: '/qibla-finder',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Precise Qibla Direction & Compass Finder App | Islam24',
+    description: 'Find the exact Qibla direction towards the Kaaba in Makkah from anywhere in the world using our high-precision digital compass app.',
+  },
 };
 
-const qiblaFaqSchema = {
+const qiblaSchema = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "How does the Islam24 Qibla Compass calculate direction to the Kaaba?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Islam24 calculates the Qibla using great-circle spherical trigonometry (the forward azimuth formula) based on your coordinates and the exact geographic location of the Kaaba in Makkah (21.4225° N, 39.8262° E)."
-      }
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Qibla Finder App",
+          "item": `${siteUrl}/qibla-finder`
+        }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Does the Qibla compass work without an active internet connection?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Once your location is determined, Islam24 utilizes your device's built-in magnetometer and accelerometer hardware to orient towards the Kaaba completely offline."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are there video ads or popups before showing Qibla direction?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Never. Islam24 is strictly 100% ad-free. The Qibla compass opens instantaneously without commercial interruptions."
-      }
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does the Islam24 Qibla Compass calculate direction to the Kaaba?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Islam24 calculates the Qibla using great-circle spherical trigonometry (the forward azimuth formula) based on your coordinates and the exact geographic location of the Kaaba in Makkah (21.4225° N, 39.8262° E)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the Qibla compass work without an active internet connection?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Once your location is determined, Islam24 utilizes your device's built-in magnetometer and accelerometer hardware to orient towards the Kaaba completely offline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are there video ads or popups before showing Qibla direction?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Never. Islam24 is strictly 100% ad-free. The Qibla compass opens instantaneously without commercial interruptions."
+          }
+        }
+      ]
     }
   ]
 };
@@ -55,7 +93,7 @@ export default function QiblaFinderPage() {
     <div className="layout-wrapper" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(qiblaFaqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(qiblaSchema) }}
       />
       <Header />
       <main className="page-content" style={{ paddingTop: '130px', paddingBottom: '70px' }}>

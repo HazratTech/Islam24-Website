@@ -1,9 +1,12 @@
+import type { Metadata } from 'next';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
 import ZakatCalculatorClient from './ZakatCalculatorClient';
 
-export const metadata = {
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
+
+export const metadata: Metadata = {
   title: 'Free Zakat Calculator App & Nisab Estimator | Islam24',
   description: 'Accurately calculate your annual 2.5% Zakat obligation based on cash savings, gold, silver, investments, and business inventory with live Nisab thresholds.',
   keywords: [
@@ -16,35 +19,70 @@ export const metadata = {
     'silver nisab threshold',
     'free zakat app android',
   ],
+  alternates: {
+    canonical: '/zakat-calculator',
+  },
+  openGraph: {
+    title: 'Free Zakat Calculator App & Nisab Estimator | Islam24',
+    description: 'Accurately calculate your annual 2.5% Zakat obligation based on cash savings, gold, silver, investments, and business inventory with live Nisab thresholds.',
+    url: '/zakat-calculator',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Free Zakat Calculator App & Nisab Estimator | Islam24',
+    description: 'Accurately calculate your annual 2.5% Zakat obligation with live Nisab thresholds.',
+  },
 };
 
-const zakatFaqSchema = {
+const zakatSchema = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "What is the Nisab threshold for Zakat?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The Nisab is the minimum qualifying wealth a Muslim must possess before Zakat becomes obligatory. In Classical Islamic jurisprudence, it is defined as 87.48 grams of gold or 612.36 grams of pure silver."
-      }
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Zakat Calculator",
+          "item": `${siteUrl}/zakat-calculator`
+        }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "What is Hawl in Zakat calculation?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Hawl refers to the completion of one full Islamic lunar year (approximately 354 days) during which the wealth remains continuously above the Nisab threshold."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does Islam24 store my financial calculations?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Islam24 never logs, stores, or transmits your financial numbers to any server. All calculations happen strictly in your device's memory."
-      }
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the Nisab threshold for Zakat?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Nisab is the minimum qualifying wealth a Muslim must possess before Zakat becomes obligatory. In Classical Islamic jurisprudence, it is defined as 87.48 grams of gold or 612.36 grams of pure silver."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Hawl in Zakat calculation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hawl refers to the completion of one full Islamic lunar year (approximately 354 days) during which the wealth remains continuously above the Nisab threshold."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Islam24 store my financial calculations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Islam24 never logs, stores, or transmits your financial numbers to any server. All calculations happen strictly in your device's memory."
+          }
+        }
+      ]
     }
   ]
 };
@@ -54,7 +92,7 @@ export default function ZakatCalculatorPage() {
     <div className="layout-wrapper" style={{ backgroundColor: 'var(--bg-primary)' }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(zakatFaqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(zakatSchema) }}
       />
       <Header />
       <main className="page-content" style={{ paddingTop: '130px', paddingBottom: '70px' }}>

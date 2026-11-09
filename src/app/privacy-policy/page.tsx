@@ -4,15 +4,58 @@ import Footer from '@/components/Footer';
 import Link from 'next/link';
 import styles from '../legal.module.css';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
+
 export const metadata: Metadata = {
   title: 'Privacy Policy — Strict Zero-Tracking Commitment | Islam24',
   description: 'Privacy Policy for Islam24. Learn how your location and usage data remain 100% private and processed on-device without third-party trackers.',
-  keywords: ['islam24 privacy policy', 'ad free islamic app privacy', 'no tracking muslim app', 'local location prayer times'],
+  keywords: ['islam24 privacy policy', 'ad free islamic app privacy', 'no tracking muslim app', 'local location prayer times', 'no tracking islamic app'],
+  alternates: {
+    canonical: '/privacy-policy',
+  },
+  openGraph: {
+    title: 'Privacy Policy — Strict Zero-Tracking Commitment | Islam24',
+    description: 'Privacy Policy for Islam24. Learn how your location and usage data remain 100% private and processed on-device without third-party trackers.',
+    url: '/privacy-policy',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy — Strict Zero-Tracking Commitment | Islam24',
+    description: 'Privacy Policy for Islam24. Learn how your location and usage data remain 100% private and processed on-device.',
+  },
+};
+
+const privacySchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Privacy Policy",
+          "item": `${siteUrl}/privacy-policy`
+        }
+      ]
+    }
+  ]
 };
 
 export default function PrivacyPolicyPage() {
   return (
     <div className="layout-wrapper">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(privacySchema) }}
+      />
       <Header />
       <main className={styles.main}>
         <div className={`container ${styles.container}`}>

@@ -4,14 +4,57 @@ import Footer from '@/components/Footer';
 import Link from 'next/link';
 import styles from '../legal.module.css';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
+
 export const metadata: Metadata = {
   title: 'Acknowledgements & Credits — Open Source & Community | Islam24',
   description: 'Credits and acknowledgements for the open-source projects, fonts, APIs, and community datasets that made Islam24 possible.',
+  alternates: {
+    canonical: '/acknowledgements',
+  },
+  openGraph: {
+    title: 'Acknowledgements & Credits — Open Source & Community | Islam24',
+    description: 'Credits and acknowledgements for the open-source projects, fonts, APIs, and community datasets that made Islam24 possible.',
+    url: '/acknowledgements',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Acknowledgements & Credits | Islam24',
+    description: 'Credits and acknowledgements for the open-source projects, fonts, and community datasets that made Islam24 possible.',
+  },
+};
+
+const ackSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": siteUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Acknowledgements",
+          "item": `${siteUrl}/acknowledgements`
+        }
+      ]
+    }
+  ]
 };
 
 export default function AcknowledgementsPage() {
   return (
     <div className="layout-wrapper">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(ackSchema) }}
+      />
       <Header />
       <main className={styles.main}>
         <div className={`container ${styles.container}`}>

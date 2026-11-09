@@ -33,17 +33,17 @@ export default async function Hero() {
           <div className={styles.bismillah}>بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
 
           <div className={styles.badge}>
-            ✨ 100% Free &bull; Ad-Free &bull; No Data Tracking
+            ✨ Sacred Sanctuary &bull; 0 Ads &bull; Zero Tracking
           </div>
 
           <h1 className={styles.title}>
-            A Sacred Sanctuary for
+            The 100% Free &amp;
             <br />
-            <span className={styles.gradientText}>Your Daily Worship</span>
+            <span className={styles.gradientText}>Ad-Free Islamic App</span>
           </h1>
 
           <p className={styles.description}>
-            Experience your Deen with absolute peace of mind. Accurate prayer times, precise Qibla direction, complete offline Quran with audio recitations, and daily Azkar — with zero ads or tracking.
+            Experience your Deen with absolute peace of mind. Accurate prayer times, precise Qibla direction, complete offline Quran with audio recitations, and daily Azkar — 100% free with zero ads or tracking.
           </p>
 
           <div className={styles.stats}>

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
 
@@ -7,8 +6,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Islam24 — Free & Ad-Free Islamic App | Offline Quran & Prayer Times App",
-  description: "The #1 100% Free & Ad-Free Islamic App for Android. Accurate prayer times, Qibla compass, complete offline Quran with verse audio recitations, daily Azkar, and instant Zakat calculator with zero data tracking.",
+  title: {
+    default: "Islam24 — 100% Free & Ad-Free Islamic App for Android",
+    template: "%s",
+  },
+  description: "100% free and ad-free Islamic app for Android. Accurate prayer times, Qibla compass, offline Holy Quran with verse audio, and daily Azkar with zero tracking.",
   keywords: [
     "free islamic app",
     "ads free islamic app",
@@ -37,11 +39,11 @@ export const metadata: Metadata = {
     ],
   },
   alternates: {
-    canonical: siteUrl,
+    canonical: './',
   },
   openGraph: {
-    title: "Islam24 — Free & Ad-Free Islamic App | Offline Quran & Prayer Times",
-    description: "100% Free & Ad-Free Islamic app for Android. Accurate prayer times, Qibla compass, complete offline Quran, and daily Azkar — distraction-free.",
+    title: "Islam24 — 100% Free & Ad-Free Islamic App for Android",
+    description: "100% free and ad-free Islamic app for Android. Accurate prayer times, Qibla compass, offline Holy Quran with verse audio, and daily Azkar with zero tracking.",
     url: siteUrl,
     type: "website",
     locale: "en_US",
@@ -83,6 +85,15 @@ const appJsonLd = {
       "operatingSystem": "Android",
       "applicationCategory": "LifestyleApplication",
       "downloadUrl": "https://play.google.com/store/apps/details?id=com.hazrat.islam24",
+      "image": `${siteUrl}/og-image.png`,
+      "screenshot": [
+        `${siteUrl}/screenshot/home-main.webp`,
+        `${siteUrl}/screenshot/prayer-times.webp`,
+        `${siteUrl}/screenshot/quran-ayah.webp`,
+        `${siteUrl}/screenshot/qibla-compass.webp`,
+        `${siteUrl}/screenshot/tasbih-counter.webp`,
+        `${siteUrl}/screenshot/azkar-dua.webp`,
+      ],
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -92,6 +103,18 @@ const appJsonLd = {
         "@type": "AggregateRating",
         "ratingValue": "4.8",
         "ratingCount": "100"
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Islam24",
+        "url": siteUrl,
+        "logo": `${siteUrl}/logo-with-bg.svg`
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Islam24",
+        "url": siteUrl,
+        "logo": `${siteUrl}/logo-with-bg.svg`
       },
       "description": "100% Free and Ad-free Islamic app featuring accurate prayer times, Athan notifications, Qibla compass, complete offline Quran with verse audio, daily Azkar, and Zakat calculator.",
       "featureList": [
@@ -108,36 +131,13 @@ const appJsonLd = {
       "@type": "WebSite",
       "name": "Islam24",
       "url": siteUrl,
-      "description": "Official website for Islam24 — 100% Free, Ad-Free, & Privacy-First Islamic App."
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": siteUrl
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Features",
-          "item": `${siteUrl}/features`
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Offline Quran App",
-          "item": `${siteUrl}/quran`
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Prayer Times App",
-          "item": `${siteUrl}/prayer-times`
-        }
-      ]
+      "description": "Official website for Islam24 — 100% Free, Ad-Free, & Privacy-First Islamic App for Android.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Islam24",
+        "url": siteUrl,
+        "logo": `${siteUrl}/logo-with-bg.svg`
+      }
     }
   ]
 };
@@ -156,7 +156,6 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Script src="https://accounts.google.com/gsi/client" strategy="afterInteractive" />
         <AuthProvider>
           {children}
         </AuthProvider>
