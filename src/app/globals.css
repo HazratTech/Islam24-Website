@@ -8,19 +8,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Warm Parchment / Medina Marble Light Palette */
+  /* Warm Parchment / Medina Marble Light Palette (Inspired by mymind & Literal) */
   --bg-primary: #FAF8F5;
   --bg-secondary: #F3EFE6;
   --bg-card: #FFFFFF;
   --bg-card-hover: #FFFFFF;
   --bg-card-tint: #F2F8F4;
+  --bg-surface-sage: #EDF5F0;
+  --bg-surface-parchment: #F8F4EA;
+  --bg-surface-gold: #FFF9ED;
 
   /* Islamic Royal Emerald */
   --emerald: #0D6945;
-  --emerald-light: #12885A;
+  --emerald-light: #158358;
   --emerald-dark: #08432B;
   --emerald-glow: rgba(13, 105, 69, 0.08);
   --emerald-border: rgba(13, 105, 69, 0.14);
+  --emerald-border-subtle: rgba(13, 105, 69, 0.08);
 
   /* Artisan Antique Gold / Ochre */
   --gold: #B8860B;
@@ -34,9 +38,9 @@
   --danger-glow: rgba(220, 38, 38, 0.1);
 
   /* High-Contrast Readable Text */
-  --text-primary: #14231C;
-  --text-secondary: #3B4E44;
-  --text-muted: #6B7F74;
+  --text-primary: #122019;
+  --text-secondary: #364A3F;
+  --text-muted: #667B70;
   --text-gold: #8C6504;
   --text-on-emerald: #FFFFFF;
 
@@ -46,17 +50,19 @@
   --font-arabic: 'Amiri', serif;
 
   /* Radii */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
   --radius-pill: 9999px;
 
-  /* Shadows */
+  /* Shadows (Curated Elevation Scale) */
   --shadow-sm: 0 2px 8px rgba(18, 32, 25, 0.04);
-  --shadow-md: 0 10px 25px rgba(18, 32, 25, 0.06), 0 1px 3px rgba(18, 32, 25, 0.04);
-  --shadow-lg: 0 20px 45px rgba(18, 32, 25, 0.08), 0 2px 6px rgba(18, 32, 25, 0.04);
+  --shadow-md: 0 10px 30px rgba(18, 32, 25, 0.06), 0 1px 3px rgba(18, 32, 25, 0.03);
+  --shadow-lg: 0 20px 50px rgba(18, 32, 25, 0.08), 0 2px 6px rgba(18, 32, 25, 0.04);
   --shadow-glow: 0 8px 30px rgba(13, 105, 69, 0.14);
+  --shadow-glow-gold: 0 8px 30px rgba(184, 134, 11, 0.14);
 }
 
 *, *::before, *::after {

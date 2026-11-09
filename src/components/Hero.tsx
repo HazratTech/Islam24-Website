@@ -33,33 +33,33 @@ export default async function Hero() {
           <div className={styles.bismillah}>بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
 
           <div className={styles.badge}>
-            ✨ Sacred Sanctuary &bull; 0 Ads &bull; Zero Tracking
+            ✨ Sacred Sanctuary &bull; 0 Ads &bull; Complete Privacy
           </div>
 
           <h1 className={styles.title}>
             The 100% Free &amp;
             <br />
-            <span className={styles.gradientText}>Ad-Free Islamic App</span>
+            <span className={styles.gradientText}>Ad-Free Islamic Sanctuary</span>
           </h1>
 
           <p className={styles.description}>
-            Experience your Deen with absolute peace of mind. Accurate prayer times, precise Qibla direction, complete offline Quran with audio recitations, and daily Azkar — 100% free with zero ads or tracking.
+            Experience your Deen with absolute tranquility. Accurate prayer times, precise Qibla direction, complete offline Quran with audio recitations, and daily Azkar — 100% free forever with zero commercial advertisements or data tracking.
           </p>
 
           <div className={styles.stats}>
             <div className={styles.stat}>
               <span className={styles.statNumber}>{stats.scoreText} ★</span>
-              <span className={styles.statLabel}>Play Store Rating</span>
+              <span className={styles.statLabel}>Play Store</span>
             </div>
             <div className={styles.statDivider}></div>
             <div className={styles.stat}>
               <span className={styles.statNumber}>{stats.installs}</span>
-              <span className={styles.statLabel}>Active Downloads</span>
+              <span className={styles.statLabel}>Downloads</span>
             </div>
             <div className={styles.statDivider}></div>
             <div className={styles.stat}>
               <span className={styles.statNumber}>0</span>
-              <span className={styles.statLabel}>Commercial Ads</span>
+              <span className={styles.statLabel}>Ad Trackers</span>
             </div>
           </div>
 

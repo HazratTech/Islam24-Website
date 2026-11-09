@@ -59,7 +59,12 @@ export default function ComparisonMatrix() {
             <thead>
               <tr>
                 <th className={styles.featureCol}>App Feature / Capability</th>
-                <th className={styles.islamCol}>✨ Islam24</th>
+                <th className={styles.islamCol}>
+                  <div className={styles.islamHeaderWrap}>
+                    <span className={styles.islamBadge}>Sanctuary</span>
+                    <span>✨ Islam24</span>
+                  </div>
+                </th>
                 <th className={styles.otherCol}>Traditional Apps</th>
               </tr>
             </thead>
