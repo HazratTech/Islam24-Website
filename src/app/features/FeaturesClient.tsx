@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import styles from './FeaturesClient.module.css';
 
 export interface FeatureItem {
   title: string;
@@ -116,7 +117,7 @@ export default function FeaturesClient() {
   return (
     <>
       {/* Category Filter Pills */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center', marginBottom: '44px' }}>
+      <div className={styles.filterContainer}>
         {[
           { id: 'all', label: 'All Features' },
           { id: 'worship', label: 'Daily Worship' },
@@ -127,19 +128,7 @@ export default function FeaturesClient() {
           <button
             key={tab.id}
             onClick={() => setSelectedCategory(tab.id as 'all' | 'worship' | 'quran' | 'tools' | 'privacy')}
-            style={{
-              padding: '8px 20px',
-              borderRadius: 'var(--radius-pill)',
-              fontSize: '0.85rem',
-              fontFamily: 'var(--font-display)',
-              fontWeight: 700,
-              border: selectedCategory === tab.id ? '1px solid var(--emerald)' : '1px solid var(--emerald-border)',
-              background: selectedCategory === tab.id ? 'var(--emerald)' : '#FFFFFF',
-              color: selectedCategory === tab.id ? '#FFFFFF' : 'var(--text-primary)',
-              cursor: 'pointer',
-              boxShadow: selectedCategory === tab.id ? '0 4px 14px rgba(13, 105, 69, 0.25)' : 'none',
-              transition: 'all 0.2s ease',
-            }}
+            className={`${styles.filterBtn} ${selectedCategory === tab.id ? styles.filterBtnActive : ''}`}
           >
             {tab.label}
           </button>
@@ -147,76 +136,26 @@ export default function FeaturesClient() {
       </div>
 
       {/* Features Bento Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '26px', marginBottom: '90px' }}>
+      <div className={styles.grid}>
         {filteredFeatures.map((f, i) => (
-          <div
-            key={i}
-            style={{
-              background: '#FFFFFF',
-              padding: '36px 30px',
-              borderRadius: 'var(--radius-xl)',
-              border: '1px solid var(--emerald-border)',
-              boxShadow: 'var(--shadow-md)',
-              display: 'flex',
-              flexDirection: 'column',
-              transition: 'all 0.3s ease',
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-              <div
-                style={{
-                  width: '46px',
-                  height: '46px',
-                  borderRadius: 'var(--radius-md)',
-                  background: 'var(--bg-card-tint)',
-                  border: '1px solid var(--emerald-border)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--emerald)',
-                }}
-              >
+          <div key={i} className={styles.card}>
+            <div className={styles.cardTop}>
+              <div className={styles.iconBox}>
                 {f.icon}
               </div>
-
-              <span
-                style={{
-                  fontSize: '0.75rem',
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: 700,
-                  letterSpacing: '1px',
-                  textTransform: 'uppercase',
-                  color: 'var(--emerald-dark)',
-                  background: 'var(--bg-card-tint)',
-                  padding: '4px 12px',
-                  borderRadius: 'var(--radius-pill)',
-                  border: '1px solid var(--emerald-border)',
-                }}
-              >
+              <span className={styles.cardTag}>
                 {f.tag}
               </span>
             </div>
 
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', fontWeight: 800, marginBottom: '10px', color: 'var(--text-primary)' }}>
+            <h3 className={styles.cardTitle}>
               {f.title}
             </h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.65, marginBottom: '24px', flex: 1 }}>
+            <p className={styles.cardDesc}>
               {f.desc}
             </p>
 
-            <Link
-              href={f.link}
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '0.92rem',
-                fontWeight: 800,
-                color: 'var(--emerald)',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                transition: 'gap 0.2s ease',
-              }}
-            >
+            <Link href={f.link} className={styles.cardLink}>
               Explore Feature &rarr;
             </Link>
           </div>
@@ -225,4 +164,3 @@ export default function FeaturesClient() {
     </>
   );
 }
-

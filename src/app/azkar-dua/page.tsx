@@ -4,35 +4,37 @@ import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
 import FeatureScreenshots from '@/components/FeatureScreenshots';
 import AzkarDuaClient from './AzkarDuaClient';
+import styles from './AzkarDuaPage.module.css';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
 
 export const metadata: Metadata = {
-  title: 'Daily Azkar & Dua App with Digital Tasbih Counter | Islam24',
-  description: 'Access authentic daily Azkar, morning and evening supplications from Hisnul Muslim, Quranic Duas, and an interactive digital Tasbih clicker — 100% Free & Ad-Free.',
+  title: 'Authentic Hisnul Muslim Azkar & Digital Tasbih Counter | Islam24',
+  description: 'Authentic daily morning and evening supplications from Hisnul Muslim with transliteration, translation, and tactile digital Tasbih counter with haptic feedback — 100% Free & Ad-Free.',
   keywords: [
-    'azkar and dua app',
-    'morning evening azkar app',
-    'daily dua app',
-    'digital tasbih counter',
-    'hisnul muslim dua',
-    'free tasbih app android',
-    'subhanallah tasbih online',
-    'daily dhikr app',
+    'azkar and dua',
+    'hisnul muslim app',
+    'morning azkar',
+    'evening azkar',
+    'digital tasbih online',
+    'tasbeeh counter android',
+    'subhanallah alhamdulillah allahuakbar',
+    'daily islamic supplications',
+    'dua after prayer',
   ],
   alternates: {
     canonical: '/azkar-dua',
   },
   openGraph: {
-    title: 'Daily Azkar & Dua App with Digital Tasbih Counter | Islam24',
-    description: 'Access authentic daily Azkar, morning and evening supplications from Hisnul Muslim, Quranic Duas, and an interactive digital Tasbih clicker — 100% Free & Ad-Free.',
+    title: 'Authentic Hisnul Muslim Azkar & Digital Tasbih Counter | Islam24',
+    description: 'Authentic daily morning and evening supplications from Hisnul Muslim with transliteration, translation, and tactile digital Tasbih counter with haptic feedback — 100% Free & Ad-Free.',
     url: '/azkar-dua',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Daily Azkar & Dua App with Digital Tasbih Counter | Islam24',
-    description: 'Access authentic daily Azkar, morning and evening supplications from Hisnul Muslim, and digital Tasbih clicker.',
+    title: 'Authentic Hisnul Muslim Azkar & Digital Tasbih Counter | Islam24',
+    description: 'Authentic daily supplications from Hisnul Muslim with digital Tasbih clicker.',
   },
 };
 
@@ -51,7 +53,7 @@ const azkarSchema = {
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Daily Azkar & Dua",
+          "name": "Azkar & Dua",
           "item": `${siteUrl}/azkar-dua`
         }
       ]
@@ -61,26 +63,26 @@ const azkarSchema = {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Are the Duas and Azkar in Islam24 authentic?",
+          "name": "Are the supplications in Islam24 authenticated from the Sunnah?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. All morning, evening, and daily supplications in Islam24 are sourced directly from verified collections including Hisnul Muslim (Fortress of the Muslim), Sahih al-Bukhari, Sahih Muslim, and authenticated Sunan."
+            "text": "Yes. Every single Dua and Dhikr included in Islam24 is verified and referenced directly from the classic compilation Hisnul Muslim (Fortress of the Muslim) with citations from Sahih Al-Bukhari, Sahih Muslim, Abu Dawood, and At-Tirmidhi."
           }
         },
         {
           "@type": "Question",
-          "name": "Does the digital Tasbih work offline?",
+          "name": "How does the digital Tasbih counter work offline?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, the digital Tasbih clicker and complete Azkar library are fully functional offline with local device count persistence."
+            "text": "The Tasbih counter operates 100% offline on your device with native haptic vibration feedback at every tap and target completion alerts."
           }
         },
         {
           "@type": "Question",
-          "name": "Are there banner ads interrupting Dhikr?",
+          "name": "Can I save custom Dhikr phrases and counts?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Never. Islam24 is strictly 100% ad-free, popup-free, and commercial sponsor-free."
+            "text": "Yes. In the Islam24 mobile app, you can create custom Dhikr targets, track your daily consistency, and sync progress across your devices."
           }
         }
       ]
@@ -90,167 +92,66 @@ const azkarSchema = {
 
 export default function AzkarDuaPage() {
   return (
-    <div className="layout-wrapper" style={{ backgroundColor: 'var(--bg-primary)' }}>
+    <div className={`layout-wrapper ${styles.pageWrapper}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(azkarSchema) }}
       />
       <Header />
-      <main className="page-content" style={{ paddingTop: '130px', paddingBottom: '70px' }}>
+      <main className={`page-content ${styles.mainContent}`}>
         <div className="container">
           {/* Header Title */}
-          <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 50px auto' }}>
-            <div style={{ fontFamily: 'var(--font-arabic)', fontSize: '2rem', color: 'var(--gold-dark)', marginBottom: '10px', direction: 'rtl' }}>
-              الَّذِينَ آمَنُوا وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ اللَّهِ ۗ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ
+          <div className={styles.header}>
+            <div className={styles.bismillah}>
+              أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ
             </div>
-            <span className="section-badge section-badge-gold">Remembrance of Allah</span>
-            <h1
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '3.2rem',
-                fontWeight: 800,
-                marginBottom: '18px',
-                color: 'var(--text-primary)',
-                letterSpacing: '-1px',
-              }}
-            >
-              Daily <span className="highlight">Azkar &amp; Dua App</span> with Digital Tasbih
+            <span className="section-badge section-badge-gold">Daily Remembrance</span>
+            <h1 className={styles.title}>
+              Authentic <span className="highlight">Hisnul Muslim Azkar &amp; Tasbih</span>
             </h1>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', lineHeight: 1.7 }}>
-              Strengthen your spiritual connection through authentic morning &amp; evening supplications from Hisnul Muslim and an intuitive, tactile digital Tasbih clicker — 100% ad-free forever.
+            <p className={styles.subtitle}>
+              Find tranquility in the remembrance of Allah. Daily morning, evening, and post-Salat supplications paired with an intuitive digital Tasbih clicker.
             </p>
           </div>
 
           {/* Interactive Azkar & Tasbih Client Micro-Tool */}
           <AzkarDuaClient />
 
-          {/* Features Grid with SVG Icons */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '26px', marginBottom: '80px' }}>
-            <div
-              style={{
-                background: '#FFFFFF',
-                padding: '34px 28px',
-                borderRadius: 'var(--radius-xl)',
-                border: '1px solid var(--emerald-border)',
-                boxShadow: 'var(--shadow-md)',
-              }}
-            >
-              <div
-                style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: 'var(--radius-md)',
-                  background: 'var(--bg-card-tint)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--emerald)',
-                  marginBottom: '18px',
-                }}
-              >
+          {/* Features Grid */}
+          <div className={styles.featuresGrid}>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="m9 12 2 2 4-4"/></svg>
               </div>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px', color: 'var(--text-primary)' }}>
-                Authenticated Hadith Sources
+              <h3 className={styles.featureTitle}>
+                Verified Hadith Citations
               </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.65 }}>
-                Every single Dua includes exact chapter and verse citations from Sahih al-Bukhari, Sahih Muslim, and Abu Dawud as compiled in Hisnul Muslim.
+              <p className={styles.featureDesc}>
+                Direct references to Bukhari, Muslim, and Abu Dawood so you recite with complete certainty and scholarly peace of mind.
               </p>
             </div>
 
-            <div
-              style={{
-                background: '#FFFFFF',
-                padding: '34px 28px',
-                borderRadius: 'var(--radius-xl)',
-                border: '1px solid var(--emerald-border)',
-                boxShadow: 'var(--shadow-md)',
-              }}
-            >
-              <div
-                style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: 'var(--radius-md)',
-                  background: 'var(--bg-card-tint)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--emerald)',
-                  marginBottom: '18px',
-                }}
-              >
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
               </div>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px', color: 'var(--text-primary)' }}>
-                Haptic &amp; Sound Feedback
+              <h3 className={styles.featureTitle}>
+                Tactile Haptic Tasbih
               </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.65 }}>
-                Recite without looking down at your screen using gentle vibration pulses on every count and distinct vibrations when completing sets of 33 or 100.
+              <p className={styles.featureDesc}>
+                Engaging physical click feedback with target milestones (33, 100) to keep your focus on Allah during your commute or downtime.
               </p>
             </div>
 
-            <div
-              style={{
-                background: '#FFFFFF',
-                padding: '34px 28px',
-                borderRadius: 'var(--radius-xl)',
-                border: '1px solid var(--emerald-border)',
-                boxShadow: 'var(--shadow-md)',
-              }}
-            >
-              <div
-                style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: 'var(--radius-md)',
-                  background: 'var(--bg-card-tint)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--emerald)',
-                  marginBottom: '18px',
-                }}
-              >
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-              </div>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px', color: 'var(--text-primary)' }}>
-                99 Names of Allah (Asma ul Husna)
-              </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.65 }}>
-                Contemplate the divine attributes with clear Arabic pronunciation, English translations, and spiritual explanations for daily reflection.
-              </p>
-            </div>
-
-            <div
-              style={{
-                background: '#FFFFFF',
-                padding: '34px 28px',
-                borderRadius: 'var(--radius-xl)',
-                border: '1px solid var(--emerald-border)',
-                boxShadow: 'var(--shadow-md)',
-              }}
-            >
-              <div
-                style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: 'var(--radius-md)',
-                  background: 'var(--bg-card-tint)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--emerald)',
-                  marginBottom: '18px',
-                }}
-              >
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
               </div>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 800, marginBottom: '10px', color: 'var(--text-primary)' }}>
-                Zero Commercial Distractions
+              <h3 className={styles.featureTitle}>
+                100% Free &amp; Ad-Free
               </h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.65 }}>
-                Your sacred moments of Dhikr and dua will never be interrupted by loud video ads or distracting commercial popups. Pure worship, pure peace.
+              <p className={styles.featureDesc}>
+                Remembrance of Allah is a sacred trust. Never subjected to third-party commercials, banners, or tracking.
               </p>
             </div>
           </div>
@@ -258,29 +159,24 @@ export default function AzkarDuaPage() {
 
         {/* Real App Screenshots Showcase */}
         <FeatureScreenshots
-          badge="Daily Supplications"
-          title="Engineered for Continuous Remembrance"
-          subtitle="Explore authentic Hisnul Muslim supplications, haptic digital Tasbih beads, and the 99 Divine Names of Allah."
+          badge="Azkar & Tasbih"
+          title="Engineered for Daily Remembrance"
+          subtitle="Explore the morning and evening Azkar categories, transliterations, and audio pronunciation in Islam24."
           screens={[
             {
               src: '/screenshot/azkar-dua.webp',
-              alt: 'Hisnul Muslim Daily Morning and Evening Azkar Categories',
-              label: 'Hisnul Muslim Categories',
-            },
-            {
-              src: '/screenshot/dua-list.webp',
-              alt: 'Dua Details with Arabic Text, Transliteration, and Verified Hadith Source',
-              label: 'Verified Supplications',
+              alt: 'Hisnul Muslim Daily Categories in Islam24',
+              label: 'Hisnul Muslim',
             },
             {
               src: '/screenshot/tasbih-counter.webp',
-              alt: 'Interactive Digital Tasbih Clicker with Haptic Feedback and Azkar Presets',
-              label: 'Haptic Digital Tasbih',
+              alt: 'Digital Tasbih Counter with Custom Targets',
+              label: 'Digital Tasbih',
             },
             {
-              src: '/screenshot/names-of-allah.webp',
-              alt: 'Asmaul Husna 99 Beautiful Names of Allah with Meanings and Audio',
-              label: '99 Names of Allah',
+              src: '/screenshot/home-main.webp',
+              alt: 'Daily Hadith and Dhikr on Home Screen',
+              label: 'Daily Hadith',
             },
           ]}
         />

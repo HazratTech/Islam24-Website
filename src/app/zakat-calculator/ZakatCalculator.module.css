@@ -1,0 +1,329 @@
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.calcCard {
+  background: #FFFFFF;
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-xl);
+  padding: 44px 36px;
+  box-shadow: var(--shadow-lg), 0 4px 24px rgba(184, 134, 11, 0.05);
+  margin-bottom: 74px;
+}
+
+.cardHeader {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.cardBadge {
+  font-size: 0.78rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  background: #FFF9ED;
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--gold-border);
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.cardSubtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Controls Bar */
+.controlsBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  background: #FAF8F5;
+  padding: 16px 20px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gold-border);
+  margin-bottom: 32px;
+}
+
+.currencyGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.controlLabel {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.currencyPills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.currencyBtn {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  border: 1px solid var(--gold-border);
+  background: #FFFFFF;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.currencyBtnActive {
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  border-color: transparent;
+  color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(184, 134, 11, 0.25);
+}
+
+.nisabGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nisabSegment {
+  display: flex;
+  background: #FFFFFF;
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--gold-border);
+}
+
+.nisabBtn {
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nisabBtnActive {
+  background: var(--gold);
+  color: #FFFFFF;
+}
+
+/* 2-Column Calculator Body */
+.calcLayout {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.inputsCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputLabel {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  justify-content: space-between;
+}
+
+.inputHint {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currencyPrefix {
+  position: absolute;
+  left: 14px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.numInput {
+  width: 100%;
+  padding: 10px 14px 10px 32px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--emerald-border);
+  background: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.numInput:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.15);
+}
+
+.actionsBar {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.sampleBtn {
+  background: #FAF8F5;
+  border: 1px solid var(--gold-border);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  cursor: pointer;
+}
+
+.resetBtn {
+  background: transparent;
+  border: 1px solid var(--emerald-border);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+/* Result Column */
+.resultCard {
+  background: linear-gradient(180deg, #FFFDF9 0%, #FAF8F5 100%);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  position: sticky;
+  top: 100px;
+}
+
+.resultTitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gold-border);
+}
+
+.breakdownRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  color: var(--text-secondary);
+}
+
+.breakdownVal {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.nisabStatusPill {
+  margin: 18px 0;
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.nisabEligible {
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  color: #065F46;
+}
+
+.nisabExempt {
+  background: #FEF3C7;
+  border: 1px solid #FDE68A;
+  color: #92400E;
+}
+
+.dueSection {
+  background: #FFFFFF;
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(184, 134, 11, 0.08);
+}
+
+.dueLabel {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+  margin-bottom: 4px;
+}
+
+.dueAmount {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--emerald-dark);
+}
+
+.dueRate {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+@media (max-width: 800px) {
+  .calcCard {
+    padding: 24px 18px;
+  }
+  .calcLayout {
+    grid-template-columns: 1fr;
+  }
+  .resultCard {
+    position: static;
+  }
+  .controlsBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

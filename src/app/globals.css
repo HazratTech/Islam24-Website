@@ -5,7 +5,7 @@
    Fonts: Outfit (Display), Plus Jakarta Sans (Body), Amiri (Arabic)
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
   /* Warm Parchment / Medina Marble Light Palette (Inspired by mymind & Literal) */
@@ -37,16 +37,18 @@
   --danger: #DC2626;
   --danger-glow: rgba(220, 38, 38, 0.1);
 
-  /* High-Contrast Readable Text */
-  --text-primary: #122019;
-  --text-secondary: #364A3F;
-  --text-muted: #667B70;
+  /* High-Contrast Readable Deep Obsidian & Forest Text */
+  --text-primary: #0E1D16;
+  --text-secondary: #2C4236;
+  --text-muted: #567062;
   --text-gold: #8C6504;
   --text-on-emerald: #FFFFFF;
 
   /* Fonts */
-  --font-display: 'Outfit', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-display: 'Fraunces', 'Outfit', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-arabic: 'Amiri', serif;
 
   /* Radii */

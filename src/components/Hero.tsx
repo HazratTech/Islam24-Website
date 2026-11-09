@@ -36,17 +36,17 @@ export default async function Hero() {
 
           <div className={styles.badge}>
             <HiShieldCheck size={16} style={{ color: 'var(--emerald)' }} />
-            <span>Sacred Sanctuary &bull; 0 Ads &bull; Complete Privacy</span>
+            <span>100% On-Device &bull; Zero Commercial Ads &bull; Complete Privacy</span>
           </div>
 
           <h1 className={styles.title}>
-            The 100% Free &amp;
+            Worship in
             <br />
-            <span className={styles.gradientText}>Ad-Free Islamic Sanctuary</span>
+            <span className={styles.gradientText}>Absolute Stillness.</span>
           </h1>
 
           <p className={styles.description}>
-            Experience your Deen with absolute tranquility. Accurate prayer times, precise Qibla direction, complete offline Quran with audio recitations, and daily Azkar — 100% free forever with zero commercial advertisements or data tracking.
+            The distraction-free Islamic app for Android. Precise astronomical prayer times, offline Holy Quran with verse audio, Kaaba Qibla direction, and daily Azkar — engineered with zero commercial tracking.
           </p>
 
           <div className={styles.stats}>
@@ -54,7 +54,7 @@ export default async function Hero() {
               <span className={styles.statNumber}>
                 {stats.scoreText} <HiStar size={18} style={{ color: 'var(--gold)', verticalAlign: 'middle', marginTop: '-3px' }} />
               </span>
-              <span className={styles.statLabel}>Play Store</span>
+              <span className={styles.statLabel}>Google Play</span>
             </div>
             <div className={styles.statDivider}></div>
             <div className={styles.stat}>

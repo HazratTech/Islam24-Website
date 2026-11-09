@@ -1,0 +1,139 @@
+.filterContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.filterBtn {
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  border: 1px solid var(--emerald-border);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.filterBtn:hover {
+  background: var(--bg-card-tint);
+  border-color: var(--emerald);
+  color: var(--emerald-dark);
+  transform: translateY(-2px);
+}
+
+.filterBtnActive {
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-dark) 100%);
+  border-color: transparent;
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(13, 105, 69, 0.28);
+}
+
+.filterBtnActive:hover {
+  background: linear-gradient(135deg, var(--emerald-light) 0%, var(--emerald) 100%);
+  color: #FFFFFF;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  margin-bottom: 90px;
+}
+
+.card {
+  background: #FFFFFF;
+  padding: 38px 32px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--emerald-border);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  border-color: var(--emerald-light);
+  box-shadow: var(--shadow-lg), 0 0 25px rgba(13, 105, 69, 0.05);
+}
+
+.cardTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.iconBox {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--bg-card-tint);
+  border: 1px solid var(--emerald-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--emerald);
+  transition: all 0.25s ease;
+}
+
+.card:hover .iconBox {
+  background: var(--emerald);
+  color: #FFFFFF;
+}
+
+.cardTag {
+  font-size: 0.75rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--emerald-dark);
+  background: var(--bg-card-tint);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--emerald-border);
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.cardDesc {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.cardLink {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--emerald);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: gap 0.2s ease, color 0.2s ease;
+  width: fit-content;
+}
+
+.cardLink:hover {
+  color: var(--emerald-dark);
+  gap: 10px;
+}

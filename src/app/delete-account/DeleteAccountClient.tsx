@@ -157,10 +157,10 @@ export default function DeleteAccountClient() {
       {/* Success or Error Notice */}
       {deleteSuccess && (
         <div className={styles.successMessage}>
-          <h3 style={{ fontSize: '1.15rem', margin: '0 0 6px 0', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '6px' }}>
+          <h3 className={styles.successTitle}>
             <HiCheck size={18} /> Account Permanently Deleted
           </h3>
-          <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: 1.6 }}>
+          <p className={styles.successText}>
             Your account, profile record, and all cloud-synchronized bookmarks and tasbih records have been permanently purged from Islam24 systems in accordance with Google Play Data Safety policies.
           </p>
         </div>
@@ -177,15 +177,15 @@ export default function DeleteAccountClient() {
         {/* Left Column: Interactive Account / Deletion Card */}
         <div className={styles.card}>
           {loading ? (
-            <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--text-secondary)' }}>
+            <div className={styles.loadingPlaceholder}>
               Loading account credentials...
             </div>
           ) : !user ? (
             <div>
-              <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
+              <h2 className={styles.stepTitle}>
                 Step 1: Authenticate Ownership
               </h2>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '24px' }}>
+              <p className={styles.stepSubtitle}>
                 To safeguard against unauthorized data loss, please authenticate with the Google account connected to your Islam24 mobile app.
               </p>
 
@@ -193,10 +193,10 @@ export default function DeleteAccountClient() {
                 <div className={styles.loginPromptIcon}>
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 </div>
-                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '6px' }}>
+                <h3 className={styles.loginCardTitle}>
                   Sign In with Google
                 </h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', maxWidth: '380px', margin: '0 auto 18px auto', lineHeight: 1.6 }}>
+                <p className={styles.loginCardText}>
                   Uses Google OAuth 2.0 Identity Services. Once authenticated, your profile details and one-click deletion will be available below.
                 </p>
 
@@ -273,7 +273,7 @@ export default function DeleteAccountClient() {
                   <div className={styles.metaItem} style={{ gridColumn: '1 / -1' }}>
                     <div className={styles.metaLabel}>User ID</div>
                     <div className={styles.metaValue}>
-                      <span style={{ fontFamily: 'monospace', fontSize: '0.78rem' }}>{user.id}</span>
+                      <span className={styles.userIdBox}>{user.id}</span>
                       <button
                         onClick={() => copyUserId(user.id)}
                         className={styles.copyBtn}

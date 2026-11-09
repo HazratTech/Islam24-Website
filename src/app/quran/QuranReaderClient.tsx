@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { HiPlay, HiPause, HiCheck, HiStar } from 'react-icons/hi2';
+import styles from './QuranReader.module.css';
 
 interface SurahDemo {
   number: number;
@@ -142,50 +143,19 @@ export default function QuranReaderClient() {
   };
 
   return (
-    <div style={{ maxWidth: '980px', margin: '0 auto' }}>
-      <div
-        style={{
-          background: '#FFFFFF',
-          border: '1px solid var(--gold-border)',
-          borderRadius: 'var(--radius-xl)',
-          padding: '40px 32px',
-          boxShadow: 'var(--shadow-lg), 0 4px 20px rgba(184, 134, 11, 0.05)',
-          marginBottom: '70px',
-        }}
-      >
+    <div className={styles.container}>
+      <div className={styles.readerCard}>
         {/* Controls Toolbar */}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '16px',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            background: 'var(--bg-card-tint)',
-            padding: '16px 20px',
-            borderRadius: 'var(--radius-lg)',
-            border: '1px solid var(--emerald-border)',
-            marginBottom: '32px',
-          }}
-        >
+        <div className={styles.toolbar}>
           {/* Surah Dropdown Switcher */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)' }}>Surah:</span>
-            <div style={{ display: 'flex', gap: '6px' }}>
+          <div className={styles.surahGroup}>
+            <span className={styles.toolbarLabel}>Surah:</span>
+            <div className={styles.surahPills}>
               {SURAH_DATA.map((s) => (
                 <button
                   key={s.number}
                   onClick={() => setSelectedSurah(s)}
-                  style={{
-                    padding: '6px 14px',
-                    borderRadius: 'var(--radius-pill)',
-                    fontSize: '0.8rem',
-                    fontWeight: 700,
-                    border: selectedSurah.number === s.number ? '1px solid var(--gold)' : '1px solid #CBD5E1',
-                    background: selectedSurah.number === s.number ? 'var(--gold)' : '#FFFFFF',
-                    color: selectedSurah.number === s.number ? '#FFFFFF' : 'var(--text-primary)',
-                    cursor: 'pointer',
-                  }}
+                  className={`${styles.surahBtn} ${selectedSurah.number === s.number ? styles.surahBtnActive : ''}`}
                 >
                   {s.nameEnglish.split(' ')[0]} ({s.nameArabic})
                 </button>
@@ -194,54 +164,34 @@ export default function QuranReaderClient() {
           </div>
 
           {/* Translation Toggle & Font Size */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
-            <div style={{ display: 'flex', background: '#FFFFFF', padding: '3px', borderRadius: '8px', border: '1px solid var(--emerald-border)' }}>
+          <div className={styles.actionsGroup}>
+            <div className={styles.langSegment}>
               <button
                 onClick={() => setTranslationLang('english')}
-                style={{
-                  padding: '4px 10px',
-                  borderRadius: '6px',
-                  fontSize: '0.78rem',
-                  fontWeight: 700,
-                  border: 'none',
-                  background: translationLang === 'english' ? 'var(--emerald)' : 'transparent',
-                  color: translationLang === 'english' ? '#FFFFFF' : 'var(--text-secondary)',
-                  cursor: 'pointer',
-                }}
+                className={`${styles.langBtn} ${translationLang === 'english' ? styles.langBtnActive : ''}`}
               >
                 English
               </button>
               <button
                 onClick={() => setTranslationLang('bengali')}
-                style={{
-                  padding: '4px 10px',
-                  borderRadius: '6px',
-                  fontSize: '0.78rem',
-                  fontWeight: 700,
-                  border: 'none',
-                  background: translationLang === 'bengali' ? 'var(--emerald)' : 'transparent',
-                  color: translationLang === 'bengali' ? '#FFFFFF' : 'var(--text-secondary)',
-                  cursor: 'pointer',
-                }}
+                className={`${styles.langBtn} ${translationLang === 'bengali' ? styles.langBtnActive : ''}`}
               >
                 বাংলা
               </button>
             </div>
 
-            {/* Font Zoom Controls */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px', background: '#FFFFFF', padding: '3px 8px', borderRadius: '8px', border: '1px solid var(--emerald-border)' }}>
+            <div className={styles.fontSizeControls}>
               <button
                 onClick={() => setFontSize((f) => Math.max(1.6, f - 0.2))}
-                style={{ border: 'none', background: 'none', cursor: 'pointer', fontWeight: 800, padding: '2px 6px', color: 'var(--text-secondary)' }}
-                title="Decrease Font Size"
+                className={styles.sizeBtn}
+                title="Decrease Arabic font size"
               >
                 A-
               </button>
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--text-muted)' }}>Aa</span>
               <button
                 onClick={() => setFontSize((f) => Math.min(3.2, f + 0.2))}
-                style={{ border: 'none', background: 'none', cursor: 'pointer', fontWeight: 800, padding: '2px 6px', color: 'var(--text-secondary)' }}
-                title="Increase Font Size"
+                className={styles.sizeBtn}
+                title="Increase Arabic font size"
               >
                 A+
               </button>
@@ -249,157 +199,78 @@ export default function QuranReaderClient() {
           </div>
         </div>
 
-        {/* Surah Header Card */}
-        <div
-          style={{
-            background: 'linear-gradient(135deg, #FAF8F5 0%, #F5F1E6 100%)',
-            border: '1px solid var(--gold-border)',
-            borderRadius: 'var(--radius-lg)',
-            padding: '28px 24px',
-            textAlign: 'center',
-            marginBottom: '32px',
-            boxShadow: 'var(--shadow-sm)',
-          }}
-        >
-          <div style={{ fontFamily: 'var(--font-arabic)', fontSize: '2.8rem', color: 'var(--gold-dark)', fontWeight: 700, direction: 'rtl', marginBottom: '4px' }}>
+        {/* Surah Header Banner */}
+        <div className={styles.surahBanner}>
+          <div className={styles.surahArabicTitle}>
             سُورَةُ {selectedSurah.nameArabic}
           </div>
-          <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px' }}>
+          <div className={styles.surahEnglishTitle}>
             {selectedSurah.nameEnglish}
           </div>
-          <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600, marginBottom: '16px' }}>
-            {selectedSurah.revelation}
+          <div className={styles.surahMeta}>
+            {selectedSurah.revelation} • Offline Uthmani Script
           </div>
 
-          {/* Audio Recitation Player Button */}
-          <button
-            onClick={() => setIsPlayingAudio(!isPlayingAudio)}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '10px',
-              padding: '10px 24px',
-              borderRadius: 'var(--radius-pill)',
-              background: isPlayingAudio ? 'var(--emerald)' : '#FFFFFF',
-              color: isPlayingAudio ? '#FFFFFF' : 'var(--emerald-dark)',
-              border: '1px solid var(--emerald-border)',
-              fontWeight: 700,
-              fontSize: '0.9rem',
-              cursor: 'pointer',
-              boxShadow: 'var(--shadow-sm)',
-              transition: 'all 0.2s ease',
-            }}
-          >
-            {isPlayingAudio ? (
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <HiPause size={16} /> Playing Recitation (Mishary Rashid)
-              </span>
-            ) : (
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <HiPlay size={16} /> Listen to Surah Recitation
-              </span>
-            )}
-          </button>
+          {/* Audio Recitation Bar */}
+          <div className={styles.audioBar}>
+            <button
+              onClick={() => setIsPlayingAudio(!isPlayingAudio)}
+              className={styles.playBtn}
+              aria-label={isPlayingAudio ? 'Pause recitation' : 'Play recitation'}
+            >
+              {isPlayingAudio ? <HiPause size={18} /> : <HiPlay size={18} />}
+            </button>
+            <span className={styles.audioLabel}>
+              {isPlayingAudio ? 'Reciting: Mishary Rashid Alafasy' : 'Listen to Recitation (Offline Qari)'}
+            </span>
+          </div>
         </div>
 
-        {/* Verses Container */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        {/* Verses List */}
+        <div className={styles.versesList}>
           {selectedSurah.ayahs.map((ayah) => {
             const isBookmarked = bookmarkedVerses.includes(ayah.verseNumber);
-            const translationText = translationLang === 'english' ? ayah.english : ayah.bengali;
+            const isCopied = copiedVerse === ayah.verseNumber;
+            const translationText =
+              translationLang === 'english' ? ayah.english : ayah.bengali;
 
             return (
-              <div
-                key={ayah.verseNumber}
-                style={{
-                  background: '#FFFFFF',
-                  border: isBookmarked ? '1px solid var(--gold)' : '1px solid var(--emerald-border)',
-                  borderRadius: 'var(--radius-lg)',
-                  padding: '28px 24px',
-                  boxShadow: 'var(--shadow-sm)',
-                  transition: 'all 0.25s ease',
-                }}
-              >
-                {/* Verse Header Actions */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                  <span
-                    style={{
-                      width: '32px',
-                      height: '32px',
-                      borderRadius: '50%',
-                      background: 'var(--bg-card-tint)',
-                      border: '1px solid var(--emerald-border)',
-                      color: 'var(--emerald-dark)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '0.85rem',
-                      fontWeight: 800,
-                    }}
-                  >
+              <div key={ayah.verseNumber} className={styles.ayahItem}>
+                <div className={styles.ayahHeader}>
+                  <div className={styles.ayahNumberBadge}>
                     {ayah.verseNumber}
-                  </span>
+                  </div>
 
-                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
+                  <div className={styles.ayahActions}>
                     <button
                       onClick={() => handleCopyAyah(ayah.arabic, translationText, ayah.verseNumber)}
-                      style={{
-                        background: 'none',
-                        border: 'none',
-                        cursor: 'pointer',
-                        fontSize: '0.8rem',
-                        fontWeight: 600,
-                        color: copiedVerse === ayah.verseNumber ? 'var(--emerald)' : 'var(--text-muted)',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '4px',
-                      }}
+                      className={styles.actionBtn}
+                      title="Copy Ayah text"
                     >
-                      {copiedVerse === ayah.verseNumber ? (
-                        <>
-                          <HiCheck size={14} /> Copied
-                        </>
-                      ) : (
-                        'Copy'
-                      )}
+                      {isCopied ? <><HiCheck size={14} /> Copied</> : 'Copy'}
                     </button>
-
                     <button
                       onClick={() => toggleBookmark(ayah.verseNumber)}
-                      style={{
-                        background: 'none',
-                        border: 'none',
-                        cursor: 'pointer',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        color: isBookmarked ? 'var(--gold)' : '#CBD5E1',
-                      }}
-                      title="Bookmark Verse"
+                      className={styles.actionBtn}
+                      style={{ color: isBookmarked ? 'var(--gold)' : undefined }}
+                      title="Bookmark Ayah"
                     >
-                      <HiStar size={18} />
+                      <HiStar size={14} />
+                      {isBookmarked ? 'Saved' : 'Save'}
                     </button>
                   </div>
                 </div>
 
-                {/* Arabic Text */}
                 <div
-                  style={{
-                    fontFamily: 'var(--font-arabic)',
-                    fontSize: `${fontSize}rem`,
-                    color: 'var(--text-primary)',
-                    direction: 'rtl',
-                    lineHeight: 2.1,
-                    marginBottom: '16px',
-                    fontWeight: 700,
-                  }}
+                  className={styles.ayahArabicText}
+                  style={{ fontSize: `${fontSize}rem` }}
                 >
                   {ayah.arabic}
                 </div>
 
-                {/* Translation Text */}
-                <p style={{ color: 'var(--text-secondary)', fontSize: '1.05rem', lineHeight: 1.7, margin: 0 }}>
-                  {translationText}
-                </p>
+                <div className={styles.ayahTranslation}>
+                  &ldquo;{translationText}&rdquo;
+                </div>
               </div>
             );
           })}

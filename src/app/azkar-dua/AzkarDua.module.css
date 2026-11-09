@@ -1,0 +1,342 @@
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* Tasbih Section */
+.tasbihCard {
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
+  border-radius: var(--radius-xl);
+  padding: 44px 36px;
+  box-shadow: var(--shadow-lg), 0 4px 24px rgba(13, 105, 69, 0.05);
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.cardBadge {
+  font-size: 0.78rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--emerald-dark);
+  background: var(--bg-card-tint);
+  padding: 6px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--emerald-border);
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.cardSubtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  max-width: 580px;
+  margin: 0 auto 30px auto;
+  line-height: 1.6;
+}
+
+/* Dhikr phrase selection */
+.phrasePills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 36px;
+}
+
+.phraseBtn {
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  border: 1px solid var(--emerald-border);
+  background: #FAF8F5;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.phraseBtn:hover {
+  background: #FFFFFF;
+  border-color: var(--emerald);
+  transform: translateY(-2px);
+}
+
+.phraseBtnActive {
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-dark) 100%);
+  border-color: transparent;
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(13, 105, 69, 0.25);
+}
+
+.phraseBtnActive:hover {
+  color: #FFFFFF;
+}
+
+/* Active phrase display */
+.activePhraseBlock {
+  background: radial-gradient(circle at 50% 50%, rgba(13, 105, 69, 0.06) 0%, transparent 80%), #FAF8F5;
+  border: 1px solid var(--emerald-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 36px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.activeArabic {
+  font-family: var(--font-arabic);
+  font-size: 2.4rem;
+  color: var(--emerald-dark);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.activeTranslit {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.activeTrans {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Tactile Click Disc */
+.clickerStage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.counterDisc {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #EEF6F0 100%);
+  border: 6px solid #FFFFFF;
+  box-shadow: 0 12px 32px rgba(13, 105, 69, 0.16), 0 2px 6px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.counterDisc:active {
+  transform: scale(0.94);
+  box-shadow: 0 4px 14px rgba(13, 105, 69, 0.12);
+}
+
+.countNumber {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--emerald-dark);
+  line-height: 1;
+}
+
+.countTarget {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+.tapHint {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--gold-dark);
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+.discControls {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.resetDiscBtn {
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resetDiscBtn:hover {
+  background: var(--bg-card-tint);
+  border-color: var(--emerald);
+  color: var(--emerald-dark);
+}
+
+/* Hisnul Muslim Section */
+.hisnSection {
+  margin-top: 60px;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.catTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.catBtn {
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  border: 1px solid var(--emerald-border);
+  background: #FFFFFF;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.catBtnActive {
+  background: var(--emerald);
+  color: #FFFFFF;
+  border-color: transparent;
+}
+
+.azkarGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-bottom: 80px;
+}
+
+.duaCard {
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
+  border-radius: var(--radius-xl);
+  padding: 32px 28px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.duaCard:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--emerald-light);
+}
+
+.duaTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.duaTitle {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.duaMeta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sourceBadge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--bg-card-tint);
+  border: 1px solid var(--emerald-border);
+  color: var(--emerald-dark);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.countBadge {
+  font-size: 0.72rem;
+  font-weight: 800;
+  background: #FFF9ED;
+  border: 1px solid var(--gold-border);
+  color: var(--gold-dark);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.duaArabic {
+  font-family: var(--font-arabic);
+  direction: rtl;
+  text-align: right;
+  font-size: 1.75rem;
+  line-height: 2.1;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.duaTranslit {
+  font-size: 0.95rem;
+  color: var(--emerald-dark);
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.duaTranslation {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  border-top: 1px solid var(--emerald-border);
+  padding-top: 14px;
+}
+
+@media (max-width: 768px) {
+  .tasbihCard {
+    padding: 24px 18px;
+  }
+  .counterDisc {
+    width: 170px;
+    height: 170px;
+  }
+  .countNumber {
+    font-size: 3.2rem;
+  }
+  .activeArabic {
+    font-size: 1.8rem;
+  }
+  .duaArabic {
+    font-size: 1.45rem;
+  }
+}

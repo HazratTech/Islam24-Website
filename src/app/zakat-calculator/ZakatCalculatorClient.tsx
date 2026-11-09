@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { HiCheck, HiXMark, HiLockClosed } from 'react-icons/hi2';
+import { HiCheck, HiLockClosed } from 'react-icons/hi2';
+import styles from './ZakatCalculator.module.css';
 
 const CURRENCIES = [
   { code: 'USD', symbol: '$', goldPricePerGram: 75.0, silverPricePerGram: 0.95 },
@@ -54,78 +55,36 @@ export default function ZakatCalculatorClient() {
     setLiabilities(1200);
   };
 
+  const formatCurrency = (val: number) => {
+    return `${currency.symbol}${val.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
+  };
+
   return (
-    <div style={{ maxWidth: '960px', margin: '0 auto' }}>
-      <div
-        style={{
-          background: '#FFFFFF',
-          border: '1px solid var(--gold-border)',
-          borderRadius: 'var(--radius-xl)',
-          padding: '44px 32px',
-          boxShadow: 'var(--shadow-lg), 0 4px 20px rgba(184, 134, 11, 0.06)',
-          marginBottom: '70px',
-        }}
-      >
-        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-          <span
-            style={{
-              fontSize: '0.8rem',
-              fontFamily: 'var(--font-display)',
-              fontWeight: 700,
-              letterSpacing: '1.2px',
-              textTransform: 'uppercase',
-              color: 'var(--gold-dark)',
-              background: '#FFF9ED',
-              padding: '6px 16px',
-              borderRadius: 'var(--radius-pill)',
-              border: '1px solid var(--gold-border)',
-              display: 'inline-block',
-              marginBottom: '12px',
-            }}
-          >
-            Live Zakat Calculator Tool
+    <div className={styles.container}>
+      <div className={styles.calcCard}>
+        <div className={styles.cardHeader}>
+          <span className={styles.cardBadge}>
+            Third Pillar of Islam
           </span>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
-            Calculate Your 2.5% Annual Zakat
+          <h2 className={styles.cardTitle}>
+            Instant Zakat Calculator &amp; Nisab Standard
           </h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '580px', margin: '0 auto' }}>
-            Select your currency and Nisab threshold standard, enter your qualifying assets held for one lunar year, and instantly compute your obligation.
+          <p className={styles.cardSubtitle}>
+            Determine your precise 2.5% annual Zakat liability across cash, gold, silver, shares, and business goods according to Islamic jurisprudence.
           </p>
         </div>
 
-        {/* Currency & Nisab Bar */}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '16px',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            background: 'var(--bg-card-tint)',
-            padding: '16px 20px',
-            borderRadius: 'var(--radius-lg)',
-            border: '1px solid var(--emerald-border)',
-            marginBottom: '32px',
-          }}
-        >
-          {/* Currency Switcher */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)' }}>Currency:</span>
-            <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+        {/* Controls Bar */}
+        <div className={styles.controlsBar}>
+          {/* Currency selection */}
+          <div className={styles.currencyGroup}>
+            <span className={styles.controlLabel}>Currency:</span>
+            <div className={styles.currencyPills}>
               {CURRENCIES.map((c) => (
                 <button
                   key={c.code}
                   onClick={() => setCurrency(c)}
-                  style={{
-                    padding: '4px 10px',
-                    borderRadius: '6px',
-                    fontSize: '0.8rem',
-                    fontWeight: 700,
-                    border: currency.code === c.code ? '1px solid var(--gold)' : '1px solid #CBD5E1',
-                    background: currency.code === c.code ? 'var(--gold)' : '#FFFFFF',
-                    color: currency.code === c.code ? '#FFFFFF' : 'var(--text-primary)',
-                    cursor: 'pointer',
-                  }}
+                  className={`${styles.currencyBtn} ${currency.code === c.code ? styles.currencyBtnActive : ''}`}
                 >
                   {c.code} ({c.symbol})
                 </button>
@@ -134,327 +93,184 @@ export default function ZakatCalculatorClient() {
           </div>
 
           {/* Nisab Standard Toggle */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)' }}>Nisab Standard:</span>
-            <div style={{ display: 'flex', background: '#FFFFFF', padding: '3px', borderRadius: '8px', border: '1px solid var(--emerald-border)' }}>
+          <div className={styles.nisabGroup}>
+            <span className={styles.controlLabel}>Nisab Standard:</span>
+            <div className={styles.nisabSegment}>
               <button
                 onClick={() => setNisabStandard('silver')}
-                style={{
-                  padding: '5px 12px',
-                  borderRadius: '6px',
-                  fontSize: '0.8rem',
-                  fontWeight: 700,
-                  border: 'none',
-                  background: nisabStandard === 'silver' ? 'var(--emerald)' : 'transparent',
-                  color: nisabStandard === 'silver' ? '#FFFFFF' : 'var(--text-secondary)',
-                  cursor: 'pointer',
-                }}
+                className={`${styles.nisabBtn} ${nisabStandard === 'silver' ? styles.nisabBtnActive : ''}`}
               >
-                Silver (612.36g)
+                Silver (Recommended)
               </button>
               <button
                 onClick={() => setNisabStandard('gold')}
-                style={{
-                  padding: '5px 12px',
-                  borderRadius: '6px',
-                  fontSize: '0.8rem',
-                  fontWeight: 700,
-                  border: 'none',
-                  background: nisabStandard === 'gold' ? 'var(--gold)' : 'transparent',
-                  color: nisabStandard === 'gold' ? '#FFFFFF' : 'var(--text-secondary)',
-                  cursor: 'pointer',
-                }}
+                className={`${styles.nisabBtn} ${nisabStandard === 'gold' ? styles.nisabBtnActive : ''}`}
               >
-                Gold (87.48g)
+                Gold
               </button>
             </div>
           </div>
         </div>
 
-        {/* Calculator Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', alignItems: 'start' }}>
-          {/* Inputs Section */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: 800, color: 'var(--emerald-dark)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span>1. Zakatable Assets</span>
-            </h3>
-
-            <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '6px' }}>
-                Cash in Hand &amp; Bank Accounts ({currency.symbol})
+        {/* 2-Column Calculator Body */}
+        <div className={styles.calcLayout}>
+          {/* Inputs Column */}
+          <div className={styles.inputsCol}>
+            <div className={styles.inputGroup}>
+              <label className={styles.inputLabel}>
+                Cash &amp; Bank Balances
+                <span className={styles.inputHint}>Checking, savings &amp; on-hand cash</span>
               </label>
-              <input
-                type="number"
-                min="0"
-                value={cash || ''}
-                onChange={(e) => setCash(Number(e.target.value))}
-                style={{
-                  width: '100%',
-                  padding: '12px 16px',
-                  borderRadius: 'var(--radius-md)',
-                  border: '1px solid var(--emerald-border)',
-                  background: '#FAF8F5',
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  color: 'var(--text-primary)',
-                  outline: 'none',
-                }}
-              />
+              <div className={styles.inputWrapper}>
+                <span className={styles.currencyPrefix}>{currency.symbol}</span>
+                <input
+                  type="number"
+                  value={cash || ''}
+                  onChange={(e) => setCash(Number(e.target.value))}
+                  className={styles.numInput}
+                  placeholder="0"
+                />
+              </div>
             </div>
 
-            <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '6px' }}>
-                Gold Value (Bullion, Coins, Jewelry) ({currency.symbol})
+            <div className={styles.inputGroup}>
+              <label className={styles.inputLabel}>
+                Gold &amp; Jewelry Market Value
+                <span className={styles.inputHint}>~{formatCurrency(currency.goldPricePerGram)}/gram</span>
               </label>
-              <input
-                type="number"
-                min="0"
-                value={goldValue || ''}
-                onChange={(e) => setGoldValue(Number(e.target.value))}
-                style={{
-                  width: '100%',
-                  padding: '12px 16px',
-                  borderRadius: 'var(--radius-md)',
-                  border: '1px solid var(--emerald-border)',
-                  background: '#FAF8F5',
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  color: 'var(--text-primary)',
-                  outline: 'none',
-                }}
-              />
+              <div className={styles.inputWrapper}>
+                <span className={styles.currencyPrefix}>{currency.symbol}</span>
+                <input
+                  type="number"
+                  value={goldValue || ''}
+                  onChange={(e) => setGoldValue(Number(e.target.value))}
+                  className={styles.numInput}
+                  placeholder="0"
+                />
+              </div>
             </div>
 
-            <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '6px' }}>
-                Silver Value ({currency.symbol})
+            <div className={styles.inputGroup}>
+              <label className={styles.inputLabel}>
+                Silver Market Value
+                <span className={styles.inputHint}>~{formatCurrency(currency.silverPricePerGram)}/gram</span>
               </label>
-              <input
-                type="number"
-                min="0"
-                value={silverValue || ''}
-                onChange={(e) => setSilverValue(Number(e.target.value))}
-                style={{
-                  width: '100%',
-                  padding: '12px 16px',
-                  borderRadius: 'var(--radius-md)',
-                  border: '1px solid var(--emerald-border)',
-                  background: '#FAF8F5',
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  color: 'var(--text-primary)',
-                  outline: 'none',
-                }}
-              />
+              <div className={styles.inputWrapper}>
+                <span className={styles.currencyPrefix}>{currency.symbol}</span>
+                <input
+                  type="number"
+                  value={silverValue || ''}
+                  onChange={(e) => setSilverValue(Number(e.target.value))}
+                  className={styles.numInput}
+                  placeholder="0"
+                />
+              </div>
             </div>
 
-            <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '6px' }}>
-                Shares, Mutual Funds, Retirement &amp; Crypto ({currency.symbol})
+            <div className={styles.inputGroup}>
+              <label className={styles.inputLabel}>
+                Stocks, Shares &amp; Crypto
+                <span className={styles.inputHint}>Liquid market valuations</span>
               </label>
-              <input
-                type="number"
-                min="0"
-                value={investments || ''}
-                onChange={(e) => setInvestments(Number(e.target.value))}
-                style={{
-                  width: '100%',
-                  padding: '12px 16px',
-                  borderRadius: 'var(--radius-md)',
-                  border: '1px solid var(--emerald-border)',
-                  background: '#FAF8F5',
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  color: 'var(--text-primary)',
-                  outline: 'none',
-                }}
-              />
+              <div className={styles.inputWrapper}>
+                <span className={styles.currencyPrefix}>{currency.symbol}</span>
+                <input
+                  type="number"
+                  value={investments || ''}
+                  onChange={(e) => setInvestments(Number(e.target.value))}
+                  className={styles.numInput}
+                  placeholder="0"
+                />
+              </div>
             </div>
 
-            <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '6px' }}>
-                Business Merchandise &amp; Saleable Goods ({currency.symbol})
+            <div className={styles.inputGroup}>
+              <label className={styles.inputLabel}>
+                Business Inventory &amp; Trade Goods
+                <span className={styles.inputHint}>Wholesale selling value</span>
               </label>
-              <input
-                type="number"
-                min="0"
-                value={inventory || ''}
-                onChange={(e) => setInventory(Number(e.target.value))}
-                style={{
-                  width: '100%',
-                  padding: '12px 16px',
-                  borderRadius: 'var(--radius-md)',
-                  border: '1px solid var(--emerald-border)',
-                  background: '#FAF8F5',
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  color: 'var(--text-primary)',
-                  outline: 'none',
-                }}
-              />
+              <div className={styles.inputWrapper}>
+                <span className={styles.currencyPrefix}>{currency.symbol}</span>
+                <input
+                  type="number"
+                  value={inventory || ''}
+                  onChange={(e) => setInventory(Number(e.target.value))}
+                  className={styles.numInput}
+                  placeholder="0"
+                />
+              </div>
             </div>
 
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.15rem', fontWeight: 800, color: '#DC2626', marginTop: '10px' }}>
-              2. Deductible Liabilities
-            </h3>
-
-            <div>
-              <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)', marginBottom: '6px' }}>
-                Immediate Debts &amp; Outstanding Bills Due Now ({currency.symbol})
+            <div className={styles.inputGroup}>
+              <label className={styles.inputLabel} style={{ color: '#991B1B' }}>
+                Minus: Immediate Debts &amp; Liabilities
+                <span className={styles.inputHint}>Due within this lunar month</span>
               </label>
-              <input
-                type="number"
-                min="0"
-                value={liabilities || ''}
-                onChange={(e) => setLiabilities(Number(e.target.value))}
-                style={{
-                  width: '100%',
-                  padding: '12px 16px',
-                  borderRadius: 'var(--radius-md)',
-                  border: '1px solid #FECACA',
-                  background: '#FEF2F2',
-                  fontSize: '1rem',
-                  fontWeight: 600,
-                  color: '#991B1B',
-                  outline: 'none',
-                }}
-              />
+              <div className={styles.inputWrapper}>
+                <span className={styles.currencyPrefix}>{currency.symbol}</span>
+                <input
+                  type="number"
+                  value={liabilities || ''}
+                  onChange={(e) => setLiabilities(Number(e.target.value))}
+                  className={styles.numInput}
+                  placeholder="0"
+                />
+              </div>
             </div>
 
-            <div style={{ display: 'flex', gap: '10px', marginTop: '8px' }}>
-              <button
-                type="button"
-                onClick={handleSampleFill}
-                style={{
-                  flex: 1,
-                  padding: '10px',
-                  background: '#FFFFFF',
-                  border: '1px solid var(--emerald-border)',
-                  borderRadius: 'var(--radius-pill)',
-                  fontSize: '0.85rem',
-                  fontWeight: 700,
-                  color: 'var(--emerald-dark)',
-                  cursor: 'pointer',
-                }}
-              >
-                Load Sample Figures
+            <div className={styles.actionsBar}>
+              <button onClick={handleSampleFill} className={styles.sampleBtn}>
+                Load Example Portfolio
               </button>
-              <button
-                type="button"
-                onClick={handleReset}
-                style={{
-                  flex: 1,
-                  padding: '10px',
-                  background: '#FFFFFF',
-                  border: '1px solid #E2E8F0',
-                  borderRadius: 'var(--radius-pill)',
-                  fontSize: '0.85rem',
-                  fontWeight: 700,
-                  color: 'var(--text-muted)',
-                  cursor: 'pointer',
-                }}
-              >
-                Reset All
+              <button onClick={handleReset} className={styles.resetBtn}>
+                Reset All Fields
               </button>
             </div>
           </div>
 
-          {/* Results Summary Card */}
-          <div
-            style={{
-              background: '#FAF8F5',
-              border: '2px solid var(--gold-border)',
-              borderRadius: 'var(--radius-xl)',
-              padding: '32px',
-              boxShadow: 'var(--shadow-md)',
-            }}
-          >
-            <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '20px' }}>
-              Summary &amp; Breakdown
-            </h3>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', marginBottom: '24px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
-                <span>Total Qualifying Assets:</span>
-                <strong style={{ color: 'var(--text-primary)' }}>{currency.symbol}{totalAssets.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong>
-              </div>
-
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.95rem', color: '#DC2626' }}>
-                <span>Immediate Liabilities Deducted:</span>
-                <strong>-{currency.symbol}{(liabilities || 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong>
-              </div>
-
-              <div style={{ height: '1px', background: 'var(--emerald-border)', margin: '4px 0' }} />
-
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '1rem', color: 'var(--text-primary)', fontWeight: 700 }}>
-                <span>Net Zakatable Wealth:</span>
-                <span>{currency.symbol}{netZakatableWealth.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
-              </div>
-
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                <span>Current Nisab Threshold ({nisabStandard}):</span>
-                <span>{currency.symbol}{activeNisabThreshold.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
-              </div>
+          {/* Results Summary Column */}
+          <div className={styles.resultCard}>
+            <div className={styles.resultTitle}>
+              Zakat Calculation Summary
             </div>
 
-            {/* Nisab Qualification Status Badge */}
-            <div
-              style={{
-                padding: '12px 16px',
-                borderRadius: 'var(--radius-md)',
-                background: isAboveNisab ? '#F0FDF4' : '#FFF9ED',
-                border: isAboveNisab ? '1px solid #86EFAC' : '1px solid #FDE68A',
-                color: isAboveNisab ? '#166534' : '#92400E',
-                fontSize: '0.9rem',
-                fontWeight: 700,
-                textAlign: 'center',
-                marginBottom: '24px',
-              }}
-            >
+            <div className={styles.breakdownRow}>
+              <span>Gross Assets</span>
+              <span className={styles.breakdownVal}>{formatCurrency(totalAssets)}</span>
+            </div>
+
+            <div className={styles.breakdownRow}>
+              <span>Deductible Liabilities</span>
+              <span className={styles.breakdownVal}>- {formatCurrency(liabilities || 0)}</span>
+            </div>
+
+            <div className={styles.breakdownRow} style={{ borderTop: '1px dashed var(--gold-border)', paddingTop: '10px' }}>
+              <span style={{ fontWeight: 700 }}>Net Zakatable Wealth</span>
+              <span className={styles.breakdownVal} style={{ color: 'var(--emerald-dark)' }}>{formatCurrency(netZakatableWealth)}</span>
+            </div>
+
+            <div className={styles.breakdownRow}>
+              <span>Nisab Threshold ({nisabStandard})</span>
+              <span className={styles.breakdownVal}>{formatCurrency(activeNisabThreshold)}</span>
+            </div>
+
+            <div className={`${styles.nisabStatusPill} ${isAboveNisab ? styles.nisabEligible : styles.nisabExempt}`}>
               {isAboveNisab ? (
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                  <HiCheck size={16} /> Wealth exceeds Nisab: Zakat is due (2.5%)
-                </span>
+                <span><HiCheck size={14} style={{ display: 'inline', verticalAlign: 'text-bottom' }} /> Wealth Exceeds Nisab &bull; Zakat is Fard</span>
               ) : (
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                  <HiXMark size={16} /> Wealth is below current Nisab: No Zakat obligatory
-                </span>
+                <span>Below Nisab Threshold &bull; No Zakat Due</span>
               )}
             </div>
 
-            {/* Big Payable Output */}
-            <div
-              style={{
-                background: '#FFFFFF',
-                borderRadius: 'var(--radius-lg)',
-                padding: '24px',
-                border: '1px solid var(--gold-border)',
-                textAlign: 'center',
-                boxShadow: 'var(--shadow-sm)',
-              }}
-            >
-              <div style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', color: 'var(--gold-dark)', marginBottom: '6px' }}>
-                Total Zakat Obligation Due (2.5%)
-              </div>
-              <div
-                style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '2.5rem',
-                  fontWeight: 900,
-                  color: isAboveNisab ? 'var(--emerald-dark)' : 'var(--text-muted)',
-                  lineHeight: 1.1,
-                }}
-              >
-                {currency.symbol}{zakatPayable.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-              </div>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '8px', marginBottom: 0 }}>
-                {currency.code} ({currency.symbol}) based on 2.5% of net zakatable assets held for one lunar year.
-              </p>
+            <div className={styles.dueSection}>
+              <div className={styles.dueLabel}>Total Zakat Payable (2.5%)</div>
+              <div className={styles.dueAmount}>{formatCurrency(zakatPayable)}</div>
+              <div className={styles.dueRate}>Based on 1 complete lunar year (Hawl) holding period</div>
             </div>
 
-            <div style={{ marginTop: '20px', fontSize: '0.8rem', color: 'var(--text-muted)', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
-              <HiLockClosed size={15} style={{ color: 'var(--emerald)' }} />
-              <span><strong>100% Private</strong>: Your numbers are calculated strictly on your browser hardware. Islam24 never logs or transmits financial amounts.</span>
+            <div style={{ marginTop: '16px', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
+              <HiLockClosed size={14} style={{ color: 'var(--emerald)' }} />
+              Calculations are computed strictly in your browser. No financial data is ever stored or transmitted.
             </div>
           </div>
         </div>

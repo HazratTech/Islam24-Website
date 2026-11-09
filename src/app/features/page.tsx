@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import CTA from '@/components/CTA';
 import FeatureScreenshots from '@/components/FeatureScreenshots';
 import FeaturesClient from './FeaturesClient';
+import styles from './FeaturesPage.module.css';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
 
@@ -109,33 +110,24 @@ const featuresSchema = {
 
 export default function FeaturesPage() {
   return (
-    <div className="layout-wrapper" style={{ backgroundColor: 'var(--bg-primary)' }}>
+    <div className={`layout-wrapper ${styles.pageWrapper}`}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(featuresSchema) }}
       />
       <Header />
-      <main className="page-content" style={{ paddingTop: '130px', paddingBottom: '70px' }}>
+      <main className={`page-content ${styles.mainContent}`}>
         <div className="container">
           {/* Header Title */}
-          <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 50px auto' }}>
-            <div style={{ fontFamily: 'var(--font-arabic)', fontSize: '2rem', color: 'var(--gold-dark)', marginBottom: '10px', direction: 'rtl' }}>
+          <div className={styles.header}>
+            <div className={styles.bismillah}>
               بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
             </div>
             <span className="section-badge section-badge-gold">Sanctuary of Features</span>
-            <h1
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: '3.2rem',
-                fontWeight: 800,
-                marginBottom: '18px',
-                color: 'var(--text-primary)',
-                letterSpacing: '-1px',
-              }}
-            >
+            <h1 className={styles.title}>
               Everything for Your <span className="highlight">Daily Worship</span>
             </h1>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', lineHeight: 1.7 }}>
+            <p className={styles.subtitle}>
               Engineered for Muslims who seek clarity, spiritual tranquility, and verified sources without commercial distractions. Explore our complete suite of Islamic tools.
             </p>
           </div>

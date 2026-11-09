@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import styles from './Features.module.css';
+import { HiSpeakerWave } from 'react-icons/hi2';
+import { TbBuildingMosque, TbCompass, TbCirclesRelation, TbCalculator, TbBook2 } from 'react-icons/tb';
 
 export default function Features() {
   return (
@@ -11,7 +13,7 @@ export default function Features() {
             Engineered for <span className="highlight">Spiritual Tranquility</span>
           </h2>
           <p className={styles.subtitle}>
-            Every detail crafted with reverence. Verified sources, mathematical accuracy, and an unwavering commitment to your privacy.
+            Every capability designed with Islamic reverence. Verified sources, astronomical accuracy, and an unwavering commitment to zero commercial tracking.
           </p>
         </div>
 
@@ -20,12 +22,7 @@ export default function Features() {
           <div className={`${styles.card} ${styles.colSpan8} ${styles.quranCard}`}>
             <div className={styles.cardHeader}>
               <div className={`${styles.iconWrap} ${styles.iconWrapGold}`}>
-                {/* Quran Book Icon */}
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
-                  <path d="M6 6h10"/>
-                  <path d="M6 10h10"/>
-                </svg>
+                <TbBook2 size={26} />
               </div>
               <span className={`${styles.cardTag} ${styles.cardTagGold}`}>100% Offline Access</span>
             </div>
@@ -37,10 +34,14 @@ export default function Features() {
 
             <div className={styles.quranSnippet}>
               <div className={styles.arabicAyah}>
-                اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ
+                اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ ۝١
               </div>
               <div className={styles.englishAyah}>
                 &ldquo;Recite in the name of your Lord who created.&rdquo; — [Surah Al-Alaq 96:1]
+              </div>
+              <div className={styles.audioPill}>
+                <HiSpeakerWave size={15} />
+                <span>Verse Audio: Mishary Rashid Alafasy &bull; 0 KB Internet Needed</span>
               </div>
             </div>
           </div>
@@ -49,10 +50,7 @@ export default function Features() {
           <div className={`${styles.card} ${styles.colSpan4}`}>
             <div className={styles.cardHeader}>
               <div className={styles.iconWrap}>
-                {/* Mosque Icon */}
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2v4M8 6h8M6 10h12v12H6zM10 22v-6h4v6M12 6c-3 0-5 2-5 4h10c0-2-2-4-5-4z"/>
-                </svg>
+                <TbBuildingMosque size={26} />
               </div>
               <span className={styles.cardTag}>Astronomical Accuracy</span>
             </div>
@@ -71,7 +69,7 @@ export default function Features() {
                 <span className={styles.waqtArabic}>الظهر</span>
                 <span className={styles.waqtName}>Dhuhr</span>
               </div>
-              <div className={styles.waqtPill}>
+              <div className={`${styles.waqtPill} ${styles.waqtActive}`}>
                 <span className={styles.waqtArabic}>العصر</span>
                 <span className={styles.waqtName}>Asr</span>
               </div>
@@ -86,15 +84,11 @@ export default function Features() {
             </div>
           </div>
 
-          {/* BENTO 3: CELESTIAL QIBLA ASTROLABE (4 COLS) */}
+          {/* BENTO 3: CELESTIAL QIBLA COMPASS (4 COLS) */}
           <div className={`${styles.card} ${styles.colSpan4}`}>
             <div className={styles.cardHeader}>
               <div className={styles.iconWrap}>
-                {/* Compass Icon */}
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
-                </svg>
+                <TbCompass size={26} />
               </div>
               <span className={styles.cardTag}>Sensors &bull; Offline</span>
             </div>
@@ -103,22 +97,18 @@ export default function Features() {
             <p className={styles.cardDesc}>
               Locate Kaaba in Makkah with real-time hardware magnetometer guidance, degree headings, and exact distance tracking globally.
             </p>
+
+            <div className={styles.miniWidget}>
+              <span>Kaaba Azimuth</span>
+              <span className={styles.miniWidgetValue}>58.5° NNE &bull; Makkah</span>
+            </div>
           </div>
 
           {/* BENTO 4: DAILY AZKAR & MISBAHA (4 COLS) */}
           <div className={`${styles.card} ${styles.colSpan4}`}>
             <div className={styles.cardHeader}>
               <div className={styles.iconWrap}>
-                {/* Tasbih Beads Icon */}
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="6" cy="6" r="3"/>
-                  <circle cx="12" cy="5" r="3"/>
-                  <circle cx="18" cy="6" r="3"/>
-                  <circle cx="19" cy="12" r="3"/>
-                  <circle cx="16" cy="18" r="3"/>
-                  <circle cx="10" cy="19" r="3"/>
-                  <circle cx="5" cy="14" r="3"/>
-                </svg>
+                <TbCirclesRelation size={26} />
               </div>
               <span className={styles.cardTag}>Hisnul Muslim</span>
             </div>
@@ -127,20 +117,18 @@ export default function Features() {
             <p className={styles.cardDesc}>
               Daily morning and evening supplications, Quranic Duas, and an intuitive haptic digital Tasbih clicker for remembrance.
             </p>
+
+            <div className={styles.miniWidget}>
+              <span>SubhanAllah Target</span>
+              <span className={styles.miniWidgetValue}>33 / 33 &bull; Haptic Pulse</span>
+            </div>
           </div>
 
           {/* BENTO 5: ZAKAT CALCULATOR (4 COLS) */}
           <div className={`${styles.card} ${styles.colSpan4}`}>
             <div className={styles.cardHeader}>
               <div className={`${styles.iconWrap} ${styles.iconWrapGold}`}>
-                {/* Scales of Justice Icon */}
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/>
-                  <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/>
-                  <path d="M7 21h10"/>
-                  <path d="M12 3v18"/>
-                  <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/>
-                </svg>
+                <TbCalculator size={26} />
               </div>
               <span className={`${styles.cardTag} ${styles.cardTagGold}`}>Nisab Calculator</span>
             </div>
@@ -149,11 +137,16 @@ export default function Features() {
             <p className={styles.cardDesc}>
               Calculate 2.5% Zakat obligations with 100% mathematical precision across cash, gold, silver, and business investments.
             </p>
+
+            <div className={styles.miniWidget}>
+              <span>Silver Nisab Standard</span>
+              <span className={styles.miniWidgetValue}>2.5% Net &bull; Live Calc</span>
+            </div>
           </div>
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: '40px' }}>
-          <Link href="/features" className="btn btn-dark" style={{ padding: '14px 32px' }}>
+        <div style={{ textAlign: 'center', marginTop: '48px' }}>
+          <Link href="/features" className="btn btn-dark" style={{ padding: '14px 34px', fontSize: '0.95rem' }}>
             <span>Explore All 10+ Features &amp; Tools &rarr;</span>
           </Link>
         </div>

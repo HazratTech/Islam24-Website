@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { HiSpeakerWave, HiPlay, HiMapPin } from 'react-icons/hi2';
+import { HiSpeakerWave, HiPlay, HiPause } from 'react-icons/hi2';
 import { TbSunrise, TbSun, TbSunHigh, TbSunLow, TbSunset, TbMoonStars } from 'react-icons/tb';
+import styles from './PrayerTimes.module.css';
 
 interface CityTimes {
   name: string;
@@ -92,17 +93,8 @@ const SAMPLE_CITIES: CityTimes[] = [
   },
 ];
 
-const CALC_METHODS = [
-  'Muslim World League (MWL)',
-  'ISNA (North America)',
-  'Umm Al-Qura (Makkah)',
-  'Univ. of Islamic Sciences (Karachi)',
-  'Egyptian General Authority',
-];
-
 export default function PrayerTimesClient() {
   const [selectedCity, setSelectedCity] = useState(SAMPLE_CITIES[0]);
-  const [selectedMethod, setSelectedMethod] = useState(CALC_METHODS[0]);
   const [asrSchool, setAsrSchool] = useState<'standard' | 'hanafi'>('standard');
   const [isPlayingAthan, setIsPlayingAthan] = useState(false);
 
@@ -111,91 +103,45 @@ export default function PrayerTimesClient() {
   };
 
   const prayers = [
-    { name: 'Fajr', time: selectedCity.fajr, icon: <TbSunrise size={26} style={{ color: 'var(--gold)' }} />, desc: 'Dawn Prayer' },
-    { name: 'Sunrise', time: selectedCity.sunrise, icon: <TbSunHigh size={26} style={{ color: 'var(--gold-dark)' }} />, desc: 'Shuruk' },
-    { name: 'Dhuhr', time: selectedCity.dhuhr, icon: <TbSun size={26} style={{ color: 'var(--gold)' }} />, desc: 'Noon Prayer' },
+    { name: 'Fajr', time: selectedCity.fajr, icon: <TbSunrise size={28} style={{ color: 'var(--gold)' }} />, desc: 'Dawn Salat' },
+    { name: 'Sunrise', time: selectedCity.sunrise, icon: <TbSunHigh size={28} style={{ color: 'var(--gold-dark)' }} />, desc: 'Shuruk' },
+    { name: 'Dhuhr', time: selectedCity.dhuhr, icon: <TbSun size={28} style={{ color: 'var(--gold)' }} />, desc: 'Noon Salat' },
     {
       name: 'Asr',
       time: asrSchool === 'hanafi' ? '05:22 PM' : selectedCity.asr,
-      icon: <TbSunLow size={26} style={{ color: 'var(--emerald)' }} />,
-      desc: 'Afternoon Prayer',
+      icon: <TbSunLow size={28} style={{ color: 'var(--emerald)' }} />,
+      desc: 'Afternoon Salat',
     },
-    { name: 'Maghrib', time: selectedCity.maghrib, icon: <TbSunset size={26} style={{ color: 'var(--gold-dark)' }} />, desc: 'Sunset Prayer' },
-    { name: 'Isha', time: selectedCity.isha, icon: <TbMoonStars size={26} style={{ color: 'var(--emerald-dark)' }} />, desc: 'Night Prayer' },
+    { name: 'Maghrib', time: selectedCity.maghrib, icon: <TbSunset size={28} style={{ color: 'var(--gold-dark)' }} />, desc: 'Sunset Salat' },
+    { name: 'Isha', time: selectedCity.isha, icon: <TbMoonStars size={28} style={{ color: 'var(--emerald-dark)' }} />, desc: 'Night Salat' },
   ];
 
   return (
-    <div style={{ maxWidth: '980px', margin: '0 auto' }}>
-      <div
-        style={{
-          background: '#FFFFFF',
-          border: '1px solid var(--emerald-border)',
-          borderRadius: 'var(--radius-xl)',
-          padding: '44px 32px',
-          boxShadow: 'var(--shadow-lg), 0 4px 20px rgba(13, 105, 69, 0.04)',
-          marginBottom: '70px',
-        }}
-      >
-        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-          <span
-            style={{
-              fontSize: '0.8rem',
-              fontFamily: 'var(--font-display)',
-              fontWeight: 700,
-              letterSpacing: '1.2px',
-              textTransform: 'uppercase',
-              color: 'var(--emerald-dark)',
-              background: 'var(--bg-card-tint)',
-              padding: '6px 16px',
-              borderRadius: 'var(--radius-pill)',
-              border: '1px solid var(--emerald-border)',
-              display: 'inline-block',
-              marginBottom: '12px',
-            }}
-          >
+    <div className={styles.container}>
+      <div className={styles.timetableCard}>
+        <div className={styles.cardHeader}>
+          <span className={styles.cardBadge}>
             Live Timetable Preview
           </span>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
+          <h2 className={styles.cardTitle}>
             Astronomical Daily Prayer Timetable
           </h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', maxWidth: '560px', margin: '0 auto' }}>
-            Switch calculation standards, choose your city, and test customizable Athan alert notifications with high-accuracy solar calculations.
+          <p className={styles.cardSubtitle}>
+            Select your city, adjust Asr jurisprudence, and preview customizable Athan alert notifications computed with local solar coordinates.
           </p>
         </div>
 
         {/* Controls Bar */}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '16px',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            background: 'var(--bg-card-tint)',
-            padding: '16px 20px',
-            borderRadius: 'var(--radius-lg)',
-            border: '1px solid var(--emerald-border)',
-            marginBottom: '32px',
-          }}
-        >
+        <div className={styles.controlsBar}>
           {/* City Selection */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)' }}>City:</span>
-            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+          <div className={styles.cityGroup}>
+            <span className={styles.cityLabel}>City:</span>
+            <div className={styles.cityPills}>
               {SAMPLE_CITIES.map((c) => (
                 <button
                   key={c.name}
                   onClick={() => setSelectedCity(c)}
-                  style={{
-                    padding: '5px 12px',
-                    borderRadius: 'var(--radius-pill)',
-                    fontSize: '0.8rem',
-                    fontWeight: 700,
-                    border: selectedCity.name === c.name ? '1px solid var(--emerald)' : '1px solid var(--emerald-border)',
-                    background: selectedCity.name === c.name ? 'var(--emerald)' : '#FFFFFF',
-                    color: selectedCity.name === c.name ? '#FFFFFF' : 'var(--text-primary)',
-                    cursor: 'pointer',
-                  }}
+                  className={`${styles.cityBtn} ${selectedCity.name === c.name ? styles.cityBtnActive : ''}`}
                 >
                   {c.name}
                 </button>
@@ -203,161 +149,78 @@ export default function PrayerTimesClient() {
             </div>
           </div>
 
-          {/* Asr Juristic School */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-secondary)' }}>Asr Method:</span>
-            <div style={{ display: 'flex', background: '#FFFFFF', padding: '3px', borderRadius: '8px', border: '1px solid var(--emerald-border)' }}>
+          {/* Asr School Switcher */}
+          <div className={styles.schoolGroup}>
+            <span className={styles.cityLabel}>Asr School:</span>
+            <div className={styles.schoolSegment}>
               <button
                 onClick={() => setAsrSchool('standard')}
-                style={{
-                  padding: '4px 10px',
-                  borderRadius: '6px',
-                  fontSize: '0.78rem',
-                  fontWeight: 700,
-                  border: 'none',
-                  background: asrSchool === 'standard' ? 'var(--emerald)' : 'transparent',
-                  color: asrSchool === 'standard' ? '#FFFFFF' : 'var(--text-secondary)',
-                  cursor: 'pointer',
-                }}
+                className={`${styles.schoolBtn} ${asrSchool === 'standard' ? styles.schoolBtnActive : ''}`}
               >
-                Standard (Shafi/Hanbali/Maliki)
+                Standard (Shafi/Maliki/Hanbali)
               </button>
               <button
                 onClick={() => setAsrSchool('hanafi')}
-                style={{
-                  padding: '4px 10px',
-                  borderRadius: '6px',
-                  fontSize: '0.78rem',
-                  fontWeight: 700,
-                  border: 'none',
-                  background: asrSchool === 'hanafi' ? 'var(--emerald)' : 'transparent',
-                  color: asrSchool === 'hanafi' ? '#FFFFFF' : 'var(--text-secondary)',
-                  cursor: 'pointer',
-                }}
+                className={`${styles.schoolBtn} ${asrSchool === 'hanafi' ? styles.schoolBtnActive : ''}`}
               >
-                Hanafi (2x shadow)
+                Hanafi
               </button>
             </div>
           </div>
         </div>
 
-        {/* Next Prayer Banner */}
-        <div
-          style={{
-            background: 'linear-gradient(135deg, #0D6945 0%, #08432B 100%)',
-            borderRadius: 'var(--radius-lg)',
-            padding: '20px 28px',
-            color: '#FFFFFF',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '16px',
-            marginBottom: '32px',
-            boxShadow: 'var(--shadow-md)',
-          }}
-        >
-          <div>
-            <div style={{ fontSize: '0.82rem', letterSpacing: '1px', textTransform: 'uppercase', color: '#FFDF80', fontWeight: 700 }}>
-              Current Status in {selectedCity.name}, {selectedCity.country}
-            </div>
-            <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 800 }}>
-              Next Prayer: <span style={{ color: '#FFDF80' }}>{selectedCity.nextPrayer}</span> in {selectedCity.countdown}
+        {/* Next Prayer Hero Banner */}
+        <div className={styles.nextPrayerHero}>
+          <div className={styles.nextPrayerInfo}>
+            <div className={styles.pulsingDot} />
+            <div>
+              <div className={styles.nextPrayerTag}>Upcoming Prayer</div>
+              <div className={styles.nextPrayerName}>{selectedCity.nextPrayer}</div>
             </div>
           </div>
 
-          {/* Audio Preview Button */}
-          <button
-            onClick={toggleAthanAudio}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '10px 20px',
-              borderRadius: 'var(--radius-pill)',
-              background: isPlayingAthan ? '#D4AF37' : 'rgba(255, 255, 255, 0.15)',
-              border: '1px solid rgba(255, 255, 255, 0.3)',
-              color: isPlayingAthan ? '#14231C' : '#FFFFFF',
-              fontWeight: 700,
-              fontSize: '0.88rem',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-            }}
-          >
-            {isPlayingAthan ? (
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <HiSpeakerWave size={16} /> Athan Playing (Makkah Reciter)
-              </span>
-            ) : (
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <HiPlay size={15} /> Test Athan Alert
-              </span>
-            )}
-          </button>
+          <div className={styles.countdownBox}>
+            <div className={styles.countdownLabel}>Time Remaining</div>
+            <div className={styles.countdownTime}>{selectedCity.countdown}</div>
+          </div>
         </div>
 
-        {/* 6 Prayer Timetable Cards Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '16px', marginBottom: '24px' }}>
+        {/* 6 Daily Prayer Cards */}
+        <div className={styles.prayersGrid}>
           {prayers.map((p) => {
             const isNext = p.name === selectedCity.nextPrayer;
             return (
               <div
                 key={p.name}
-                style={{
-                  background: isNext ? '#F2F8F4' : '#FFFFFF',
-                  border: isNext ? '2px solid var(--emerald)' : '1px solid var(--emerald-border)',
-                  borderRadius: 'var(--radius-lg)',
-                  padding: '20px 16px',
-                  textAlign: 'center',
-                  boxShadow: isNext ? 'var(--shadow-md)' : 'var(--shadow-sm)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                }}
+                className={`${styles.prayerCard} ${isNext ? styles.prayerCardActive : ''}`}
               >
-                {isNext && (
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: '0',
-                      left: '0',
-                      right: '0',
-                      height: '4px',
-                      background: 'var(--emerald)',
-                    }}
-                  />
-                )}
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>{p.icon}</div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px' }}>
-                  {p.name}
-                </div>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '1.25rem',
-                    fontWeight: 800,
-                    color: isNext ? 'var(--emerald-dark)' : 'var(--text-secondary)',
-                    marginBottom: '4px',
-                  }}
-                >
-                  {p.time}
-                </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                  {p.desc}
-                </div>
+                {isNext && <span className={styles.activeIndicator}>Next</span>}
+                <div className={styles.prayerIconWrap}>{p.icon}</div>
+                <div className={styles.prayerName}>{p.name}</div>
+                <div className={styles.prayerTime}>{p.time}</div>
+                <div className={styles.prayerDesc}>{p.desc}</div>
               </div>
             );
           })}
         </div>
 
-        {/* Calculation Standard Dropdown Info */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-          <div>
-            Standard Method: <strong>{selectedMethod}</strong>
+        {/* Athan Audio Preview Bar */}
+        <div className={styles.audioRow}>
+          <div className={styles.audioInfo}>
+            <HiSpeakerWave size={22} className={styles.speakerIcon} />
+            <div>
+              <div className={styles.audioTitle}>Authentic Athan Audio Notification</div>
+              <div className={styles.audioSub}>Recorded in Makkah Al-Mukarramah &amp; Al-Madinah</div>
+            </div>
           </div>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-            <HiMapPin size={15} style={{ color: 'var(--emerald)' }} />
-            <span>Coordinates computed 100% on-device (Zero data logging)</span>
-          </div>
+
+          <button
+            onClick={toggleAthanAudio}
+            className={styles.athanBtn}
+            aria-label={isPlayingAthan ? 'Stop Athan' : 'Test Athan Alert'}
+          >
+            {isPlayingAthan ? <><HiPause size={16} /> Stop Athan</> : <><HiPlay size={16} /> Test Athan Alert</>}
+          </button>
         </div>
       </div>
     </div>

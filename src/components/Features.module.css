@@ -7,10 +7,9 @@
   border-bottom: 1px solid rgba(13, 105, 69, 0.08);
 }
 
-
 .header {
   text-align: center;
-  max-width: 680px;
+  max-width: 700px;
   margin: 0 auto 60px auto;
   position: relative;
   z-index: 1;
@@ -18,11 +17,12 @@
 
 .title {
   font-family: var(--font-display);
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 800;
   letter-spacing: -1px;
   margin-bottom: 16px;
   color: var(--text-primary);
+  line-height: 1.15;
 }
 
 .subtitle {
@@ -44,9 +44,9 @@
   background: #FFFFFF;
   border: 1px solid var(--emerald-border);
   border-radius: var(--radius-xl);
-  padding: 38px 34px;
+  padding: 36px 32px;
   box-shadow: var(--shadow-sm);
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -54,9 +54,9 @@
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   border-color: var(--emerald-light);
-  box-shadow: var(--shadow-lg), 0 0 25px rgba(13, 105, 69, 0.06);
+  box-shadow: var(--shadow-lg), 0 0 25px rgba(13, 105, 69, 0.05);
 }
 
 /* Column spans */
@@ -67,8 +67,8 @@
 
 /* Quran Feature Card */
 .quranCard {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F5FAF7 100%);
-  border-color: rgba(13, 105, 69, 0.2);
+  background: linear-gradient(135deg, #FFFFFF 0%, #FDFBF7 100%);
+  border-color: rgba(184, 134, 11, 0.22);
 }
 
 .cardHeader {
@@ -79,8 +79,8 @@
 }
 
 .iconWrap {
-  width: 54px;
-  height: 54px;
+  width: 50px;
+  height: 50px;
   border-radius: var(--radius-md);
   background: var(--bg-card-tint);
   border: 1px solid var(--emerald-border);
@@ -97,10 +97,10 @@
 }
 
 .cardTag {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
   color: var(--emerald-dark);
   padding: 5px 14px;
@@ -117,16 +117,17 @@
 
 .cardTitle {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  line-height: 1.25;
 }
 
 .cardDesc {
   color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.98rem;
+  line-height: 1.65;
   margin-bottom: 24px;
 }
 
@@ -134,19 +135,19 @@
 .quranSnippet {
   background: #FFFDF8;
   border: 1px solid var(--gold-border);
-  border-radius: var(--radius-md);
-  padding: 20px 24px;
+  border-radius: var(--radius-lg);
+  padding: 22px 26px;
   margin-top: auto;
   box-shadow: inset 0 1px 3px rgba(184, 134, 11, 0.04);
 }
 
 .arabicAyah {
   font-family: var(--font-arabic);
-  font-size: 1.9rem;
-  color: #0D6945;
+  font-size: 2.1rem;
+  color: var(--emerald-dark);
   text-align: right;
   direction: rtl;
-  line-height: 1.8;
+  line-height: 1.7;
   margin-bottom: 8px;
   font-weight: 700;
 }
@@ -155,14 +156,28 @@
   font-size: 0.95rem;
   color: var(--text-secondary);
   font-style: italic;
+  margin-bottom: 12px;
 }
 
-/* Prayer Waqt Names (5 Daily Prayers without hardcoded times) */
+.audioPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card-tint);
+  border: 1px solid var(--emerald-border);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--emerald-dark);
+}
+
+/* Prayer Waqt Names (5 Daily Prayers) */
 .prayerWaqtContainer {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   margin-top: auto;
-  padding-top: 16px;
+  padding-top: 14px;
   width: 100%;
 }
 
@@ -187,6 +202,17 @@
   box-shadow: 0 4px 10px rgba(13, 105, 69, 0.1);
 }
 
+.waqtActive {
+  background: linear-gradient(135deg, var(--emerald) 0%, var(--emerald-dark) 100%);
+  border-color: transparent;
+  color: #FFFFFF;
+}
+
+.waqtActive .waqtArabic,
+.waqtActive .waqtName {
+  color: #FFFFFF;
+}
+
 .waqtArabic {
   font-family: var(--font-arabic);
   font-size: 0.95rem;
@@ -196,28 +222,32 @@
 }
 
 .waqtName {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: 0.78rem;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: 0.2px;
 }
 
-/* Pledge Card */
-.pledgeCard {
-  background: linear-gradient(135deg, #FFF9ED 0%, #FFFFFF 100%);
-  border: 1px solid var(--gold-border);
-  text-align: center;
+/* Mini Instrument Widgets */
+.miniWidget {
+  margin-top: auto;
+  background: var(--bg-card-tint);
+  border: 1px solid var(--emerald-border);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
-.pledgeArabic {
-  font-family: var(--font-arabic);
-  font-size: 2.2rem;
-  color: var(--gold-dark);
-  direction: rtl;
-  margin-bottom: 12px;
-  font-weight: 700;
+.miniWidgetValue {
+  color: var(--emerald-dark);
+  font-family: monospace;
+  font-size: 0.92rem;
 }
 
 @media (max-width: 992px) {
