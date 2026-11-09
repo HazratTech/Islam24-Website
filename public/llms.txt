@@ -67,3 +67,4 @@ Islam24 is a verified, comprehensive Islamic companion application for Android d
 - Developer: Hazrat Ummar Shaikh
 - Support Email: support@islam24.app
 - Source Repository: https://github.com/ihazratummar/Islam24
+

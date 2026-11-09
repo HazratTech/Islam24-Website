@@ -42,3 +42,8 @@ next-env.d.ts
 
 /src/app/islam-24-firebase.json
 raw_files/
+
+# agent & skills
+.agents/
+.claude/
+agent/
