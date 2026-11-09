@@ -8,6 +8,7 @@ import About from '@/components/About';
 import FaqSection from '@/components/FaqSection';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
+import HomeClientEnhancements from '@/components/HomeClientEnhancements';
 
 export const metadata: Metadata = {
   title: 'Islam24 — 100% Free & Ad-Free Islamic App for Android',
@@ -23,41 +24,71 @@ export const metadata: Metadata = {
   },
 };
 
-const faqJsonLd = {
+const structuredData = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
+  "@graph": [
     {
-      "@type": "Question",
-      "name": "Is Islam24 completely free and ad-free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, Islam24 is 100% ad-free, tracker-free, and popup-free. We believe that acts of worship like Prayer, Quran reading, and Azkar should never be interrupted by commercial advertisements."
+      "@type": "SoftwareApplication",
+      "name": "Islam24",
+      "operatingSystem": "Android",
+      "applicationCategory": "LifestyleApplication",
+      "installUrl": "https://play.google.com/store/apps/details?id=com.hazrat.islam24",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "120",
+        "bestRating": "5",
+        "worstRating": "1",
+      },
+      "description": "100% free and ad-free Islamic app for Android. Accurate prayer times, Qibla compass, offline Holy Quran with verse audio, and daily Azkar with zero tracking.",
+      "screenshot": "https://islam24.app/screenshot/home-main.webp",
+      "author": {
+        "@type": "Person",
+        "name": "Hazrat Ummar Shaikh",
+        "url": "https://github.com/ihazratummar"
       }
     },
     {
-      "@type": "Question",
-      "name": "Does Islam24 track or sell my location data?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Islam24 operates with a strict 100% privacy-first policy. Your GPS coordinates are processed locally on your phone to determine Qibla direction and prayer timings. We never upload or sell your location data to third parties."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I read the Quran and listen to audio offline?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The complete Quran text, verse-by-verse translations, and audio recitations are available for offline access so you can recite anywhere without requiring an active internet connection."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How are prayer times calculated in Islam24?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Islam24 uses high-accuracy astronomical algorithms supporting major global calculation methods including Muslim World League (MWL), ISNA, Umm Al-Qura (Makkah), Egyptian General Authority, and University of Islamic Sciences (Karachi)."
-      }
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Islam24 completely free and ad-free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Islam24 is 100% ad-free, tracker-free, and popup-free. We believe that acts of worship like Prayer, Quran reading, and Azkar should never be interrupted by commercial advertisements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Islam24 track or sell my location data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Islam24 operates with a strict 100% privacy-first policy. Your GPS coordinates are processed locally on your phone to determine Qibla direction and prayer timings. We never upload or sell your location data to third parties."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I read the Quran and listen to audio offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The complete Quran text, verse-by-verse translations, and audio recitations are available for offline access so you can recite anywhere without requiring an active internet connection."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are prayer times calculated in Islam24?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Islam24 uses high-accuracy astronomical algorithms supporting major global calculation methods including Muslim World League (MWL), ISNA, Umm Al-Qura (Makkah), Egyptian General Authority, and University of Islamic Sciences (Karachi)."
+          }
+        }
+      ]
     }
   ]
 };
@@ -67,7 +98,7 @@ export default function Home() {
     <div className="layout-wrapper">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <Header />
       <main>
@@ -80,6 +111,7 @@ export default function Home() {
         <CTA />
       </main>
       <Footer />
+      <HomeClientEnhancements />
     </div>
   );
 }

@@ -152,6 +152,31 @@
   font-weight: 700;
 }
 
+.qrBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 1px solid var(--emerald-border);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.qrBtn:hover {
+  background: var(--bg-card-tint);
+  border-color: var(--emerald);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  color: var(--emerald-dark);
+}
+
 /* Mockup Area & Floating Spiritual Chips */
 .mockupArea {
   display: flex;

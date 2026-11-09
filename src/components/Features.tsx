@@ -150,22 +150,12 @@ export default function Features() {
               Calculate 2.5% Zakat obligations with 100% mathematical precision across cash, gold, silver, and business investments.
             </p>
           </div>
+        </div>
 
-          {/* BENTO 6: THE AD-FREE PLEDGE BANNER (12 COLS) */}
-          <div className={`${styles.card} ${styles.colSpan12} ${styles.pledgeCard}`}>
-            <div className={styles.pledgeArabic}>
-              أَلَا بِذِكْرِ ٱللَّهِ تَطْمَئِنُّ ٱلْقُلُوبُ
-            </div>
-            <h3 style={{ fontSize: '1.8rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '8px' }}>
-              &ldquo;Unquestionably, by the remembrance of Allah hearts are assured.&rdquo;
-            </h3>
-            <p style={{ color: 'var(--text-secondary)', maxWidth: '640px', margin: '0 auto 20px auto', fontSize: '1.05rem', lineHeight: 1.6 }}>
-              No commercial interruptions during your Sujood. No data tracking algorithms following your spiritual journey. Islam24 is built as a pure, lifelong gift for the Ummah.
-            </p>
-            <Link href="/features" className="btn btn-primary" style={{ padding: '12px 30px' }}>
-              Explore All App Features &rarr;
-            </Link>
-          </div>
+        <div style={{ textAlign: 'center', marginTop: '40px' }}>
+          <Link href="/features" className="btn btn-dark" style={{ padding: '14px 32px' }}>
+            <span>Explore All 10+ Features &amp; Tools &rarr;</span>
+          </Link>
         </div>
       </div>
     </section>
