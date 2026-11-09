@@ -4,6 +4,7 @@ import Hero from '@/components/Hero';
 import AppScreenshots from '@/components/AppScreenshots';
 import Features from '@/components/Features';
 import ComparisonMatrix from '@/components/ComparisonMatrix';
+import Testimonials from '@/components/Testimonials';
 import About from '@/components/About';
 import FaqSection from '@/components/FaqSection';
 import CTA from '@/components/CTA';
@@ -106,6 +107,7 @@ export default function Home() {
         <AppScreenshots />
         <Features />
         <ComparisonMatrix />
+        <Testimonials />
         <About />
         <FaqSection />
         <CTA />

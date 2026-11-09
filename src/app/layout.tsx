@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AuthProvider } from "@/context/AuthContext";
+import StickyDownloadPill from "@/components/StickyDownloadPill";
 import "./globals.css";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://islam24.app';
@@ -150,6 +151,8 @@ export default function RootLayout({
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <head>
+        <meta name="theme-color" content="#0D6945" />
+        <meta name="google-play-app" content="app-id=com.hazrat.islam24" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(appJsonLd) }}
@@ -159,6 +162,7 @@ export default function RootLayout({
         <AuthProvider>
           {children}
         </AuthProvider>
+        <StickyDownloadPill />
       </body>
     </html>
   );

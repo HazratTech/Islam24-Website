@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { HiPlay, HiPause, HiCheck, HiStar } from 'react-icons/hi2';
 import styles from './QuranReader.module.css';
 
@@ -129,6 +129,44 @@ export default function QuranReaderClient() {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
   const [bookmarkedVerses, setBookmarkedVerses] = useState<number[]>([]);
   const [copiedVerse, setCopiedVerse] = useState<number | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const audioSrcMap: Record<number, string> = {
+    1: 'https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/001.mp3',
+    112: 'https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/112.mp3',
+    67: 'https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/067.mp3',
+  };
+
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+    };
+  }, []);
+
+  const toggleAudio = () => {
+    if (!audioRef.current) return;
+    if (isPlayingAudio) {
+      audioRef.current.pause();
+      setIsPlayingAudio(false);
+    } else {
+      audioRef.current.play().then(() => {
+        setIsPlayingAudio(true);
+      }).catch((e) => {
+        console.error('Audio play error:', e);
+      });
+    }
+  };
+
+  const handleSelectSurah = (surah: SurahDemo) => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+    setIsPlayingAudio(false);
+    setSelectedSurah(surah);
+  };
 
   const toggleBookmark = (vNum: number) => {
     setBookmarkedVerses((prev) =>
@@ -154,7 +192,7 @@ export default function QuranReaderClient() {
               {SURAH_DATA.map((s) => (
                 <button
                   key={s.number}
-                  onClick={() => setSelectedSurah(s)}
+                  onClick={() => handleSelectSurah(s)}
                   className={`${styles.surahBtn} ${selectedSurah.number === s.number ? styles.surahBtnActive : ''}`}
                 >
                   {s.nameEnglish.split(' ')[0]} ({s.nameArabic})
@@ -213,15 +251,21 @@ export default function QuranReaderClient() {
 
           {/* Audio Recitation Bar */}
           <div className={styles.audioBar}>
+            <audio
+              ref={audioRef}
+              src={audioSrcMap[selectedSurah.number]}
+              onEnded={() => setIsPlayingAudio(false)}
+              preload="none"
+            />
             <button
-              onClick={() => setIsPlayingAudio(!isPlayingAudio)}
+              onClick={toggleAudio}
               className={styles.playBtn}
               aria-label={isPlayingAudio ? 'Pause recitation' : 'Play recitation'}
             >
               {isPlayingAudio ? <HiPause size={18} /> : <HiPlay size={18} />}
             </button>
             <span className={styles.audioLabel}>
-              {isPlayingAudio ? 'Reciting: Mishary Rashid Alafasy' : 'Listen to Recitation (Offline Qari)'}
+              {isPlayingAudio ? 'Reciting: Mishary Rashid Alafasy' : 'Listen to Recitation (Mishary Alafasy)'}
             </span>
           </div>
         </div>

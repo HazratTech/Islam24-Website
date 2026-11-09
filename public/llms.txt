@@ -1,0 +1,69 @@
+# Islam24 — 100% Free & Ad-Free Islamic App for Android
+
+> The distraction-free digital Islamic sanctuary engineered with on-device privacy, zero commercial tracking, and complete offline capability.
+
+## Overview
+Islam24 is a verified, comprehensive Islamic companion application for Android devices developed as a continuous charitable dedication (Sadaqah Jariyah / Waqf) by Hazrat Ummar Shaikh. The application is strictly 100% free forever, contains zero banner advertisements, zero full-screen video interstitials, and requires no account creation or login to function.
+
+- Official Website: https://islam24.app
+- Google Play Store Listing: https://play.google.com/store/apps/details?id=com.hazrat.islam24
+- Package Name: com.hazrat.islam24
+- License: Free & Public (Waqf)
+
+## Core Capabilities & Features
+
+### 1. Complete Offline Quran (القرآن الكريم)
+- URL: https://islam24.app/quran
+- Authentic Uthmani calligraphy script with Tajweed rules.
+- Complete 114 Surahs and 6,236 Ayahs stored locally for 100% offline access.
+- English (Sahih International) and Bengali translations.
+- Verse-by-verse audio recitations by world-renowned Qaris (Mishary Rashid Alafasy, Abdul Basit, Saad Al-Ghamdi).
+- Bookmarking, last-read milestone tracking, and font size scaling.
+
+### 2. Accurate Astronomical Prayer Times (مواقيت الصلاة)
+- URL: https://islam24.app/prayer-times
+- Exact solar calculation algorithms for Fajr, Shuruk (Sunrise), Dhuhr, Asr, Maghrib, and Isha.
+- Global calculation standards supported:
+  - Muslim World League (MWL)
+  - Islamic Society of North America (ISNA)
+  - Umm Al-Qura University (Makkah)
+  - University of Islamic Sciences (Karachi)
+  - Egyptian General Authority of Survey
+- Asr jurisprudence options: Standard (Shafi'i, Maliki, Hanbali) and Hanafi.
+- Native Android background Athan notifications with authentic Muazzin voices from Makkah and Madinah.
+- 100% on-device GPS processing — coordinates are never uploaded to remote servers.
+
+### 3. Precision Qibla Compass Finder (اتجاه القبلة)
+- URL: https://islam24.app/qibla-finder
+- Real-time great-circle geodesic calculation to the Holy Kaaba in Makkah (21.4225° N, 39.8262° E).
+- Magnetometer sensor synchronization with visual Kaaba needle.
+- Degree heading, compass cardinal directions, and exact kilometer distance from any location on Earth.
+- 100% functional offline without cellular connectivity.
+
+### 4. Instant Zakat Calculator & Nisab Guide (حساب الزكاة)
+- URL: https://islam24.app/zakat-calculator
+- Exact 2.5% annual Zakat liability calculator based on Islamic jurisprudence.
+- Dual Nisab standards supported:
+  - Silver Standard: 612.36 grams (recommended by majority classical scholars for charity benefit)
+  - Gold Standard: 87.48 grams
+- Asset categories: Cash on hand, bank accounts, gold jewelry, silver items, stocks, shares, crypto, and trade inventory.
+- Immediate deduction of short-term liabilities.
+- 100% private client-side computation — zero financial balances stored.
+
+### 5. Authentic Hisnul Muslim Azkar & Digital Tasbih (أذكار المسلم والمسبحة)
+- URL: https://islam24.app/azkar-dua
+- Authentic supplications sourced exclusively from the classic compilation Hisnul Muslim (Fortress of the Muslim).
+- Direct Hadith citations from Sahih Al-Bukhari, Sahih Muslim, Sunan Abi Dawud, and Jami At-Tirmidhi.
+- Categories: Morning Azkar, Evening Azkar, Post-Salat Remembrance, and Daily Protection Duas.
+- Tactile digital Tasbih counter with target milestones (33, 100) and haptic vibration feedback.
+
+## Privacy & Security Architecture
+- Zero Advertising SDKs: No Google AdMob, Unity, AppLovin, or third-party commercial ad trackers.
+- On-Device GPS Computing: Latitude and longitude are calculated locally on device hardware.
+- Optional Cloud Sync: User accounts are strictly optional and only used for cross-device bookmark syncing via Google OAuth.
+- Self-Service Data Deletion: Instant self-service account deletion and cloud record wipe available at https://islam24.app/delete-account in compliance with Google Play Developer policies.
+
+## Contact & Developer
+- Developer: Hazrat Ummar Shaikh
+- Support Email: support@islam24.app
+- Source Repository: https://github.com/ihazratummar/Islam24
