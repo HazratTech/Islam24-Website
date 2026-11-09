@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { HiPlay, HiPause, HiCheck, HiStar } from 'react-icons/hi2';
 
 interface SurahDemo {
   number: number;
@@ -290,13 +291,13 @@ export default function QuranReaderClient() {
             }}
           >
             {isPlayingAudio ? (
-              <>
-                <span>⏸</span> Playing Recitation (Mishary Rashid)
-              </>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <HiPause size={16} /> Playing Recitation (Mishary Rashid)
+              </span>
             ) : (
-              <>
-                <span>▶</span> Listen to Surah Recitation
-              </>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <HiPlay size={16} /> Listen to Surah Recitation
+              </span>
             )}
           </button>
         </div>
@@ -349,9 +350,18 @@ export default function QuranReaderClient() {
                         fontSize: '0.8rem',
                         fontWeight: 600,
                         color: copiedVerse === ayah.verseNumber ? 'var(--emerald)' : 'var(--text-muted)',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '4px',
                       }}
                     >
-                      {copiedVerse === ayah.verseNumber ? '✓ Copied' : 'Copy'}
+                      {copiedVerse === ayah.verseNumber ? (
+                        <>
+                          <HiCheck size={14} /> Copied
+                        </>
+                      ) : (
+                        'Copy'
+                      )}
                     </button>
 
                     <button
@@ -360,12 +370,13 @@ export default function QuranReaderClient() {
                         background: 'none',
                         border: 'none',
                         cursor: 'pointer',
-                        fontSize: '1rem',
+                        display: 'inline-flex',
+                        alignItems: 'center',
                         color: isBookmarked ? 'var(--gold)' : '#CBD5E1',
                       }}
                       title="Bookmark Verse"
                     >
-                      {isBookmarked ? '★' : '☆'}
+                      <HiStar size={18} />
                     </button>
                   </div>
                 </div>

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import styles from './Hero.module.css';
 import QRCodeModal from '@/components/QRCodeModal';
+import { TbQrcode } from 'react-icons/tb';
 
 export default function HeroActions() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -32,7 +33,8 @@ export default function HeroActions() {
           className={styles.qrBtn}
           aria-label="Scan QR code to install Islam24 on Android"
         >
-          <span>📱 Scan QR to Install</span>
+          <TbQrcode size={18} style={{ color: 'var(--emerald)' }} />
+          <span>Scan QR to Install</span>
         </button>
 
         <Link href="/features" className="btn btn-dark">
@@ -44,3 +46,4 @@ export default function HeroActions() {
     </>
   );
 }
+

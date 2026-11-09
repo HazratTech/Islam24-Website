@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
+import { HiSpeakerWave, HiPlay, HiMapPin } from 'react-icons/hi2';
+import { TbSunrise, TbSun, TbSunHigh, TbSunLow, TbSunset, TbMoonStars } from 'react-icons/tb';
 
 interface CityTimes {
   name: string;
@@ -109,17 +111,17 @@ export default function PrayerTimesClient() {
   };
 
   const prayers = [
-    { name: 'Fajr', time: selectedCity.fajr, icon: '🌅', desc: 'Dawn Prayer' },
-    { name: 'Sunrise', time: selectedCity.sunrise, icon: '☀️', desc: 'Shuruk' },
-    { name: 'Dhuhr', time: selectedCity.dhuhr, icon: '☀️', desc: 'Noon Prayer' },
+    { name: 'Fajr', time: selectedCity.fajr, icon: <TbSunrise size={26} style={{ color: 'var(--gold)' }} />, desc: 'Dawn Prayer' },
+    { name: 'Sunrise', time: selectedCity.sunrise, icon: <TbSunHigh size={26} style={{ color: 'var(--gold-dark)' }} />, desc: 'Shuruk' },
+    { name: 'Dhuhr', time: selectedCity.dhuhr, icon: <TbSun size={26} style={{ color: 'var(--gold)' }} />, desc: 'Noon Prayer' },
     {
       name: 'Asr',
       time: asrSchool === 'hanafi' ? '05:22 PM' : selectedCity.asr,
-      icon: '⛅',
+      icon: <TbSunLow size={26} style={{ color: 'var(--emerald)' }} />,
       desc: 'Afternoon Prayer',
     },
-    { name: 'Maghrib', time: selectedCity.maghrib, icon: '🌇', desc: 'Sunset Prayer' },
-    { name: 'Isha', time: selectedCity.isha, icon: '🌙', desc: 'Night Prayer' },
+    { name: 'Maghrib', time: selectedCity.maghrib, icon: <TbSunset size={26} style={{ color: 'var(--gold-dark)' }} />, desc: 'Sunset Prayer' },
+    { name: 'Isha', time: selectedCity.isha, icon: <TbMoonStars size={26} style={{ color: 'var(--emerald-dark)' }} />, desc: 'Night Prayer' },
   ];
 
   return (
@@ -283,13 +285,13 @@ export default function PrayerTimesClient() {
             }}
           >
             {isPlayingAthan ? (
-              <>
-                <span>🔊</span> Athan Playing (Makkah Reciter)
-              </>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <HiSpeakerWave size={16} /> Athan Playing (Makkah Reciter)
+              </span>
             ) : (
-              <>
-                <span>▶</span> Test Athan Alert
-              </>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <HiPlay size={15} /> Test Athan Alert
+              </span>
             )}
           </button>
         </div>
@@ -324,7 +326,7 @@ export default function PrayerTimesClient() {
                     }}
                   />
                 )}
-                <div style={{ fontSize: '1.4rem', marginBottom: '6px' }}>{p.icon}</div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>{p.icon}</div>
                 <div style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px' }}>
                   {p.name}
                 </div>
@@ -352,8 +354,9 @@ export default function PrayerTimesClient() {
           <div>
             Standard Method: <strong>{selectedMethod}</strong>
           </div>
-          <div>
-            📍 Coordinates computed 100% on-device (Zero data logging)
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+            <HiMapPin size={15} style={{ color: 'var(--emerald)' }} />
+            <span>Coordinates computed 100% on-device (Zero data logging)</span>
           </div>
         </div>
       </div>

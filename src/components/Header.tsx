@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import styles from './Header.module.css';
+import { HiUser } from 'react-icons/hi2';
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -53,7 +54,7 @@ export default function Header() {
                     style={{ width: '20px', height: '20px', borderRadius: '50%', objectFit: 'cover' }}
                   />
                 ) : (
-                  '👤'
+                  <HiUser size={18} />
                 )}
                 {user.name ? user.name.split(' ')[0] : 'Profile'}
               </span>

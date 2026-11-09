@@ -3,6 +3,8 @@ import gplay from 'google-play-scraper';
 import { unstable_cache } from 'next/cache';
 import OptimizedVideoPlayer from '@/components/OptimizedVideoPlayer';
 import HeroActions from '@/components/HeroActions';
+import { HiShieldCheck, HiStar } from 'react-icons/hi2';
+import { TbBuildingMosque, TbBook2 } from 'react-icons/tb';
 
 const getAppStats = unstable_cache(
   async () => {
@@ -33,7 +35,8 @@ export default async function Hero() {
           <div className={styles.bismillah}>بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
 
           <div className={styles.badge}>
-            ✨ Sacred Sanctuary &bull; 0 Ads &bull; Complete Privacy
+            <HiShieldCheck size={16} style={{ color: 'var(--emerald)' }} />
+            <span>Sacred Sanctuary &bull; 0 Ads &bull; Complete Privacy</span>
           </div>
 
           <h1 className={styles.title}>
@@ -48,7 +51,9 @@ export default async function Hero() {
 
           <div className={styles.stats}>
             <div className={styles.stat}>
-              <span className={styles.statNumber}>{stats.scoreText} ★</span>
+              <span className={styles.statNumber}>
+                {stats.scoreText} <HiStar size={18} style={{ color: 'var(--gold)', verticalAlign: 'middle', marginTop: '-3px' }} />
+              </span>
               <span className={styles.statLabel}>Play Store</span>
             </div>
             <div className={styles.statDivider}></div>
@@ -71,12 +76,12 @@ export default async function Hero() {
 
           {/* Floating Spiritual Badges */}
           <div className={`${styles.chip} ${styles.chipTopLeft}`}>
-            <span className={styles.chipIcon}>🕌</span>
+            <span className={styles.chipIcon}><TbBuildingMosque size={18} /></span>
             <span>Accurate Athan Alerts</span>
           </div>
 
           <div className={`${styles.chip} ${styles.chipBottomRight}`}>
-            <span className={styles.chipIcon}>📖</span>
+            <span className={styles.chipIcon}><TbBook2 size={18} /></span>
             <span>100% Offline Quran</span>
           </div>
 

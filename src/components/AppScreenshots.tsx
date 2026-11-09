@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import styles from './AppScreenshots.module.css';
 import OptimizedVideoPlayer from '@/components/OptimizedVideoPlayer';
+import { HiPlay } from 'react-icons/hi2';
 
 const screenshots = [
   { src: '/screenshot/home-main.webp', alt: 'Islam24 Android Home Screen with Prayer Timetable and Daily Hadith', label: 'Home & Prayer Times' },
@@ -28,7 +29,10 @@ export default function AppScreenshots() {
         {/* Featured Video Showcase */}
         <div className={styles.featuredVideoContainer}>
           <div className={styles.featuredContent}>
-            <span className={styles.featuredBadge}>▶ App Walkthrough</span>
+            <span className={styles.featuredBadge}>
+              <HiPlay size={12} style={{ color: 'var(--emerald)' }} />
+              <span>App Walkthrough</span>
+            </span>
             <h3 className={styles.featuredTitle}>
               Full Distraction-Free Experience
             </h3>

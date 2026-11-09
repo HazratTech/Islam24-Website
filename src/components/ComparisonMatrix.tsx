@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './ComparisonMatrix.module.css';
+import { HiCheck, HiXMark, HiShieldCheck } from 'react-icons/hi2';
 
 const COMPARISONS = [
   {
@@ -62,7 +63,9 @@ export default function ComparisonMatrix() {
                 <th className={styles.islamCol}>
                   <div className={styles.islamHeaderWrap}>
                     <span className={styles.islamBadge}>Sanctuary</span>
-                    <span>✨ Islam24</span>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                      <HiShieldCheck size={16} style={{ color: 'var(--emerald-light)' }} /> Islam24
+                    </span>
                   </div>
                 </th>
                 <th className={styles.otherCol}>Traditional Apps</th>
@@ -79,16 +82,24 @@ export default function ComparisonMatrix() {
                   </td>
                   <td className={styles.islamCol}>
                     {item.islam24 ? (
-                      <span className={styles.checkIcon}>✓</span>
+                      <span className={styles.checkIcon} aria-label="Included">
+                        <HiCheck size={16} />
+                      </span>
                     ) : (
-                      <span className={styles.crossIcon}>✕</span>
+                      <span className={styles.crossIcon} aria-label="Not included">
+                        <HiXMark size={16} />
+                      </span>
                     )}
                   </td>
                   <td className={styles.otherCol}>
                     {item.others ? (
-                      <span className={styles.checkIcon} style={{ background: 'rgba(255,255,255,0.1)' }}>✓</span>
+                      <span className={styles.checkIcon} style={{ background: 'rgba(255,255,255,0.1)' }} aria-label="Included">
+                        <HiCheck size={16} />
+                      </span>
                     ) : (
-                      <span className={styles.crossIcon}>✕</span>
+                      <span className={styles.crossIcon} aria-label="Not included">
+                        <HiXMark size={16} />
+                      </span>
                     )}
                   </td>
                 </tr>

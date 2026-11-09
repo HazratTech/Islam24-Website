@@ -3,6 +3,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from 'react';
 import styles from './StickyInstallBar.module.css';
+import { HiStar, HiXMark } from 'react-icons/hi2';
+import { TbQrcode } from 'react-icons/tb';
 
 interface StickyInstallBarProps {
   onOpenQR: () => void;
@@ -56,7 +58,9 @@ export default function StickyInstallBar({ onOpenQR }: StickyInstallBarProps) {
         <div className={styles.meta}>
           <div className={styles.appName}>
             <span>Islam24</span>
-            <span className={styles.rating}>★ 4.8</span>
+            <span className={styles.rating}>
+              <HiStar size={11} style={{ color: 'var(--gold)' }} /> 4.8
+            </span>
           </div>
           <span className={styles.tagline}>100% Free &bull; 0 Ads &bull; Complete Privacy</span>
         </div>
@@ -79,7 +83,8 @@ export default function StickyInstallBar({ onOpenQR }: StickyInstallBarProps) {
             </>
           ) : (
             <>
-              <span>📱 Scan to Install</span>
+              <TbQrcode size={15} />
+              <span>Scan to Install</span>
             </>
           )}
         </a>
@@ -89,9 +94,10 @@ export default function StickyInstallBar({ onOpenQR }: StickyInstallBarProps) {
           className={styles.dismissBtn}
           aria-label="Dismiss banner"
         >
-          ✕
+          <HiXMark size={16} />
         </button>
       </div>
     </div>
   );
 }
+

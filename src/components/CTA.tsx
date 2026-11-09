@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import styles from './CTA.module.css';
 import QRCodeModal from '@/components/QRCodeModal';
+import { HiCheck } from 'react-icons/hi2';
+import { TbQrcode } from 'react-icons/tb';
 
 interface CTAProps {
   onOpenQR?: () => void;
@@ -38,9 +40,9 @@ export default function CTA({ onOpenQR }: CTAProps) {
           </p>
 
           <div className={styles.trustPills}>
-            <span className={styles.trustPill}>✓ 100% Free Forever</span>
-            <span className={styles.trustPill}>✓ 0 Commercial Ads</span>
-            <span className={styles.trustPill}>✓ Zero Data Tracking</span>
+            <span className={styles.trustPill}><HiCheck size={16} /> 100% Free Forever</span>
+            <span className={styles.trustPill}><HiCheck size={16} /> 0 Commercial Ads</span>
+            <span className={styles.trustPill}><HiCheck size={16} /> Zero Data Tracking</span>
           </div>
 
           <div className={styles.buttonGroup}>
@@ -62,7 +64,8 @@ export default function CTA({ onOpenQR }: CTAProps) {
               className={styles.qrBtn}
               aria-label="Scan QR code with your phone"
             >
-              <span>📱 Scan QR to Install</span>
+              <TbQrcode size={18} />
+              <span>Scan QR to Install</span>
             </button>
           </div>
         </div>

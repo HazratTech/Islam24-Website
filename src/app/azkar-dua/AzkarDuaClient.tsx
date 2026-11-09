@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { HiCheck } from 'react-icons/hi2';
 
 interface DhikrPhrase {
   arabic: string;
@@ -449,7 +450,13 @@ export default function AzkarDuaClient() {
                       transition: 'all 0.2s ease',
                     }}
                   >
-                    {isDone ? '✓ Recited' : 'Mark Recited'}
+                    {isDone ? (
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                        <HiCheck size={14} /> Recited
+                      </span>
+                    ) : (
+                      'Mark Recited'
+                    )}
                   </button>
                 </div>
 

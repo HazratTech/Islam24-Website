@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { HiCheck, HiXMark, HiLockClosed } from 'react-icons/hi2';
 
 const CURRENCIES = [
   { code: 'USD', symbol: '$', goldPricePerGram: 75.0, silverPricePerGram: 0.95 },
@@ -410,9 +411,15 @@ export default function ZakatCalculatorClient() {
                 marginBottom: '24px',
               }}
             >
-              {isAboveNisab
-                ? '✓ Wealth exceeds Nisab: Zakat is due (2.5%)'
-                : '✕ Wealth is below current Nisab: No Zakat obligatory'}
+              {isAboveNisab ? (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                  <HiCheck size={16} /> Wealth exceeds Nisab: Zakat is due (2.5%)
+                </span>
+              ) : (
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                  <HiXMark size={16} /> Wealth is below current Nisab: No Zakat obligatory
+                </span>
+              )}
             </div>
 
             {/* Big Payable Output */}
@@ -445,8 +452,9 @@ export default function ZakatCalculatorClient() {
               </p>
             </div>
 
-            <div style={{ marginTop: '20px', fontSize: '0.8rem', color: 'var(--text-muted)', textAlign: 'center' }}>
-              🔒 <strong>100% Private</strong>: Your numbers are calculated strictly on your browser hardware. Islam24 never logs or transmits financial amounts.
+            <div style={{ marginTop: '20px', fontSize: '0.8rem', color: 'var(--text-muted)', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+              <HiLockClosed size={15} style={{ color: 'var(--emerald)' }} />
+              <span><strong>100% Private</strong>: Your numbers are calculated strictly on your browser hardware. Islam24 never logs or transmits financial amounts.</span>
             </div>
           </div>
         </div>

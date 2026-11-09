@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import Script from 'next/script';
 import { useAuth } from '@/context/AuthContext';
 import styles from './DeleteAccount.module.css';
+import { HiCheck, HiXMark } from 'react-icons/hi2';
 
 interface GoogleIdAccounts {
   initialize: (config: { client_id: string; callback: (res: { credential?: string }) => void }) => void;
@@ -156,7 +157,9 @@ export default function DeleteAccountClient() {
       {/* Success or Error Notice */}
       {deleteSuccess && (
         <div className={styles.successMessage}>
-          <h3 style={{ fontSize: '1.15rem', margin: '0 0 6px 0', fontWeight: 800 }}>✓ Account Permanently Deleted</h3>
+          <h3 style={{ fontSize: '1.15rem', margin: '0 0 6px 0', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '6px' }}>
+            <HiCheck size={18} /> Account Permanently Deleted
+          </h3>
           <p style={{ margin: 0, fontSize: '0.95rem', lineHeight: 1.6 }}>
             Your account, profile record, and all cloud-synchronized bookmarks and tasbih records have been permanently purged from Islam24 systems in accordance with Google Play Data Safety policies.
           </p>
@@ -206,7 +209,13 @@ export default function DeleteAccountClient() {
                 <strong>Alternative Request Method:</strong> If your browser blocks external Google scripts, you may submit a manual data erasure request by emailing <a href="mailto:support@islam24.app">support@islam24.app</a> with your registered email address. Manual requests are processed within 24–48 hours.
                 <div className={styles.alternativeActions}>
                   <button onClick={copySupportEmail} className={styles.btnCopyEmail}>
-                    {copiedEmail ? 'Copied ✓' : 'Copy Email'}
+                    {copiedEmail ? (
+                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                        <HiCheck size={14} /> Copied
+                      </span>
+                    ) : (
+                      'Copy Email'
+                    )}
                   </button>
                   <a
                     href="mailto:support@islam24.app?subject=Account%20and%20Data%20Deletion%20Request%20-%20Islam24&body=Hello%20Islam24%20Team%2C%0A%0AI%20am%20requesting%20the%20permanent%20deletion%20of%20my%20Islam24%20account%20and%20all%20associated%20data.%0A%0AMy%20registered%20email%3A%20%5BYour%20Google%20Account%20Email%5D%0A%0AThank%20you."
@@ -222,7 +231,8 @@ export default function DeleteAccountClient() {
             <div className={styles.profileSection}>
               <div className={styles.profileCardHeader}>
                 <div className={styles.verifiedBadge}>
-                  <span>✓ Authenticated Islam24 Account</span>
+                  <HiCheck size={14} />
+                  <span>Authenticated Islam24 Account</span>
                 </div>
 
                 <div className={styles.avatarRing}>
@@ -269,7 +279,13 @@ export default function DeleteAccountClient() {
                         className={styles.copyBtn}
                         title="Copy User ID"
                       >
-                        {copiedId ? 'Copied ✓' : 'Copy'}
+                        {copiedId ? (
+                          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '3px' }}>
+                            <HiCheck size={12} /> Copied
+                          </span>
+                        ) : (
+                          'Copy'
+                        )}
                       </button>
                     </div>
                   </div>
@@ -318,25 +334,25 @@ export default function DeleteAccountClient() {
             </h3>
             <ul className={styles.checklist}>
               <li className={styles.checklistItem}>
-                <span className={styles.checkIconRed}>✕</span>
+                <span className={styles.checkIconRed}><HiXMark size={14} /></span>
                 <div>
                   <strong>Immediate Cloud Wipe:</strong> Your account record is instantly purged from our servers within seconds.
                 </div>
               </li>
               <li className={styles.checklistItem}>
-                <span className={styles.checkIconRed}>✕</span>
+                <span className={styles.checkIconRed}><HiXMark size={14} /></span>
                 <div>
                   <strong>Zero Retention Grace Period:</strong> We do not retain &ldquo;soft-deleted&rdquo; user records or archive backups of deleted accounts.
                 </div>
               </li>
               <li className={styles.checklistItem}>
-                <span className={styles.checkIconRed}>✕</span>
+                <span className={styles.checkIconRed}><HiXMark size={14} /></span>
                 <div>
                   <strong>OAuth Tokens Revoked:</strong> Your Google authentication session token is immediately invalidated.
                 </div>
               </li>
               <li className={styles.checklistItem}>
-                <span className={styles.checkIconGreen}>✓</span>
+                <span className={styles.checkIconGreen}><HiCheck size={14} /></span>
                 <div>
                   <strong>Physical Phone Data:</strong> To clear offline cached Quran recitations on your device, simply uninstall the app or clear App Storage.
                 </div>
@@ -351,19 +367,19 @@ export default function DeleteAccountClient() {
             </h3>
             <ul className={styles.checklist}>
               <li className={styles.checklistItem}>
-                <span className={styles.checkIconGreen}>✓</span>
+                <span className={styles.checkIconGreen}><HiCheck size={14} /></span>
                 <div>
                   <strong>GPS Location:</strong> Prayer times and Qibla math are computed 100% on your device hardware. Coordinates are never uploaded.
                 </div>
               </li>
               <li className={styles.checklistItem}>
-                <span className={styles.checkIconGreen}>✓</span>
+                <span className={styles.checkIconGreen}><HiCheck size={14} /></span>
                 <div>
                   <strong>Search &amp; Audio Telemetry:</strong> We do not track what Surahs you recite or your private Dhikr frequency.
                 </div>
               </li>
               <li className={styles.checklistItem}>
-                <span className={styles.checkIconGreen}>✓</span>
+                <span className={styles.checkIconGreen}><HiCheck size={14} /></span>
                 <div>
                   <strong>Ad Identifiers:</strong> Islam24 contains zero advertising SDKs or third-party marketing trackers.
                 </div>

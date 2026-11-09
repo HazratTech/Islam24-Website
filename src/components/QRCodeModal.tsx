@@ -4,6 +4,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import QRCode from 'qrcode';
 import styles from './QRCodeModal.module.css';
+import { HiXMark, HiShieldCheck, HiCamera, HiCheck } from 'react-icons/hi2';
 
 interface QRCodeModalProps {
   isOpen: boolean;
@@ -75,11 +76,14 @@ export default function QRCodeModal({ isOpen, onClose }: QRCodeModalProps) {
     <div className={styles.overlay} onClick={onClose} role="dialog" aria-modal="true" aria-label="Install Islam24 on Android">
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeBtn} onClick={onClose} aria-label="Close dialog">
-          ✕
+          <HiXMark size={20} />
         </button>
 
         <div className={styles.header}>
-          <div className={styles.badge}>✨ Android App &bull; 100% Free</div>
+          <div className={styles.badge}>
+            <HiShieldCheck size={14} style={{ color: 'var(--emerald)' }} />
+            <span>Android App &bull; 100% Free</span>
+          </div>
           <h3 className={styles.title}>Install Islam24 on Android</h3>
           <p className={styles.subtitle}>
             Experience your daily worship with zero commercial ads or tracking interruptions.
@@ -103,7 +107,7 @@ export default function QRCodeModal({ isOpen, onClose }: QRCodeModalProps) {
         </div>
 
         <div className={styles.qrInstruction}>
-          <span className={styles.cameraIcon}>📷</span>
+          <HiCamera size={18} style={{ color: 'var(--emerald)' }} />
           <span>Point your phone camera here to download</span>
         </div>
 
@@ -121,10 +125,17 @@ export default function QRCodeModal({ isOpen, onClose }: QRCodeModalProps) {
           </a>
 
           <button onClick={handleCopyLink} className={styles.copyBtn}>
-            {copied ? '✓ Play Store Link Copied!' : 'Copy Direct Play Store Link'}
+            {copied ? (
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <HiCheck size={16} style={{ color: 'var(--emerald)' }} /> Play Store Link Copied!
+              </span>
+            ) : (
+              'Copy Direct Play Store Link'
+            )}
           </button>
         </div>
       </div>
     </div>
   );
 }
+

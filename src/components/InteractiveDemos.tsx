@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import styles from './InteractiveDemos.module.css';
+import { HiStar, HiPlay, HiPause, HiCheck } from 'react-icons/hi2';
+import { TbBuildingMosque, TbCompass, TbBook2, TbCalculator, TbCirclesRelation } from 'react-icons/tb';
 
 const CALC_METHODS = [
   { id: 'MWL', name: 'Muslim World League', fajr: '04:12 AM', dhuhr: '12:15 PM', asr: '03:45 PM', maghrib: '06:52 PM', isha: '08:18 PM' },
@@ -78,31 +80,31 @@ export default function InteractiveDemos() {
             className={`${styles.tabBtn} ${activeTab === 'prayer' ? styles.activeTabBtn : ''}`}
             onClick={() => setActiveTab('prayer')}
           >
-            <span>🕌</span> Prayer Timetable
+            <TbBuildingMosque size={18} /> Prayer Timetable
           </button>
           <button
             className={`${styles.tabBtn} ${activeTab === 'compass' ? styles.activeTabBtn : ''}`}
             onClick={() => setActiveTab('compass')}
           >
-            <span>🧭</span> Qibla Compass
+            <TbCompass size={18} /> Qibla Compass
           </button>
           <button
             className={`${styles.tabBtn} ${activeTab === 'quran' ? styles.activeTabBtn : ''}`}
             onClick={() => setActiveTab('quran')}
           >
-            <span>📖</span> Offline Quran
+            <TbBook2 size={18} /> Offline Quran
           </button>
           <button
             className={`${styles.tabBtn} ${activeTab === 'zakat' ? styles.activeTabBtn : ''}`}
             onClick={() => setActiveTab('zakat')}
           >
-            <span>💰</span> Zakat Calculator
+            <TbCalculator size={18} /> Zakat Calculator
           </button>
           <button
             className={`${styles.tabBtn} ${activeTab === 'tasbih' ? styles.activeTabBtn : ''}`}
             onClick={() => setActiveTab('tasbih')}
           >
-            <span>📿</span> Digital Tasbih
+            <TbCirclesRelation size={18} /> Digital Tasbih
           </button>
         </div>
 
@@ -161,7 +163,14 @@ export default function InteractiveDemos() {
             <div className={styles.compassLayout}>
               <div className={styles.compassWrapper}>
                 <div className={styles.compassDisc}>
-                  <div className={styles.kaabaIcon}>🕋</div>
+                  <div className={styles.kaabaIcon}>
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 2L3 7V17L12 22L21 17V7L12 2Z" fill="#122019" stroke="#0D6945" strokeWidth="1.5" strokeLinejoin="round"/>
+                      <path d="M12 2L21 7L12 12L3 7L12 2Z" fill="#1e342a"/>
+                      <path d="M12 12V22" stroke="#0D6945" strokeWidth="1.5"/>
+                      <path d="M3 10L12 15L21 10" stroke="#B8860B" strokeWidth="1.5"/>
+                    </svg>
+                  </div>
                 </div>
                 <div
                   className={styles.compassNeedle}
@@ -205,9 +214,10 @@ export default function InteractiveDemos() {
                 <button
                   onClick={() => setIsBookmarked(!isBookmarked)}
                   className="btn btn-dark"
-                  style={{ padding: '8px 16px', fontSize: '0.85rem' }}
+                  style={{ padding: '8px 16px', fontSize: '0.85rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                 >
-                  {isBookmarked ? '★ Bookmarked' : '☆ Bookmark'}
+                  <HiStar size={15} style={{ color: isBookmarked ? 'var(--gold)' : 'var(--text-muted)' }} />
+                  <span>{isBookmarked ? 'Bookmarked' : 'Bookmark'}</span>
                 </button>
               </div>
 
@@ -223,9 +233,9 @@ export default function InteractiveDemos() {
                 <button
                   onClick={() => setIsPlayingAudio(!isPlayingAudio)}
                   className={styles.playBtn}
-
+                  aria-label={isPlayingAudio ? 'Pause recitation' : 'Play recitation'}
                 >
-                  {isPlayingAudio ? '⏸' : '▶'}
+                  {isPlayingAudio ? <HiPause size={16} /> : <HiPlay size={16} style={{ marginLeft: '2px' }} />}
                 </button>
 
                 <div style={{ flex: 1 }}>
@@ -278,8 +288,9 @@ export default function InteractiveDemos() {
                 <div className={styles.zakatAmount}>
                   ${zakatDue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </div>
-                <p style={{ fontSize: '0.85rem', color: 'var(--emerald-light)', marginTop: '8px' }}>
-                  ✓ Exceeds Nisab threshold ($5,100). Ready for calculation in app.
+                <p style={{ fontSize: '0.85rem', color: 'var(--emerald-light)', marginTop: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <HiCheck size={16} style={{ color: 'var(--emerald)' }} />
+                  <span>Exceeds Nisab threshold ($5,100). Ready for calculation in app.</span>
                 </p>
               </div>
             </div>
