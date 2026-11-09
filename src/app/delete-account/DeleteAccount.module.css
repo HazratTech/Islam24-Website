@@ -1,6 +1,6 @@
 .main {
   min-height: 100vh;
-  padding-top: 130px;
+  padding-top: 150px;
   padding-bottom: 90px;
   background-color: var(--bg-primary);
   background-image: 
@@ -17,6 +17,15 @@
 .header {
   text-align: center;
   margin-bottom: 48px;
+}
+
+.bismillah {
+  font-family: var(--font-arabic);
+  font-size: 2.2rem;
+  color: var(--emerald-dark);
+  margin-bottom: 14px;
+  direction: rtl;
+  font-weight: 700;
 }
 
 .title {
@@ -474,6 +483,69 @@
   color: #991B1B;
   margin-bottom: 20px;
   font-size: 0.9rem;
+}
+
+.alternativeNotice {
+  margin-top: 24px;
+  padding: 18px 20px;
+  background: #FAF8F5;
+  border: 1px dashed var(--emerald-border);
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.alternativeNotice a {
+  color: var(--emerald-dark);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.alternativeActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.btnCopyEmail {
+  background: #FFFFFF;
+  border: 1px solid var(--emerald-border);
+  color: var(--emerald-dark);
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+
+.btnCopyEmail:hover {
+  background: var(--bg-card-tint);
+  border-color: var(--emerald);
+}
+
+.btnEmailLink {
+  background: var(--emerald);
+  color: #FFFFFF;
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(13, 105, 69, 0.25);
+}
+
+.btnEmailLink:hover {
+  background: var(--emerald-dark);
+  color: #FFFFFF;
+  text-decoration: none;
 }
 
 @media (max-width: 900px) {
