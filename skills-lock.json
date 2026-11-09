@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "skills": {
+    "branding-process": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/branding-process/SKILL.md",
+      "computedHash": "24855c6d19570bda6a366d7a40cfdce32b1e9bd6f6574c6669a4d36b6f95c11d"
+    },
+    "changelog-versioning": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/changelog-versioning/SKILL.md",
+      "computedHash": "bf161e3012622c6ccdee3489f898ce58d43822df929f025e2ec94dd5b0efe61f"
+    },
+    "christianity-scriptural-references": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/christianity-scriptural-references/SKILL.md",
+      "computedHash": "a2bcd464ccca2e86290b8660ca699c73507554fc29adf54ad338173db7d3bdd0"
+    },
+    "create-agents": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/create-agents/SKILL.md",
+      "computedHash": "1bdb2c93a6b2c6b7f25491de93d4becb2aff449b179e6f53623874bfe5d761a4"
+    },
+    "create-readme": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/create-readme/SKILL.md",
+      "computedHash": "fe904749afcc402fbd76430eda2c67edcd00499472e222ef872338eb91a341bf"
+    },
+    "design-taste-frontend": {
+      "source": "Leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/taste-skill/SKILL.md",
+      "computedHash": "acda6bf83f200405aa200eb245448fdc11cfce43d97bc2d9b8bf13a27f362d95"
+    },
+    "git-commit": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/git-commit/SKILL.md",
+      "computedHash": "31e6c029b372198d11f1d97c15138e90d086ce54a5937675b70d9f1deceaf4cf"
+    },
+    "islamic-companion": {
+      "source": "ilmimris/islamic-skills",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "d58b5d5ec7df09d3d10c80092b90fc196cc145aa0af66fede47ec40676d311eb"
+    },
+    "islamic-scriptural-references": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/islamic-scriptural-references/SKILL.md",
+      "computedHash": "b78452fa4dc299842df0367895bd21c882f0f4a874b68658a9b8ca605916097e"
+    },
+    "jewish-scriptural-references": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/jewish-scriptural-references/SKILL.md",
+      "computedHash": "532d4b04b0793d2e3fe012b6a34e3f4fee431451cb0626a904b1e6a065956f5b"
+    },
+    "mermaid-diagram": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/mermaid-diagram/SKILL.md",
+      "computedHash": "2faf8fb7d39af5b54dee8afdce193da19953c43fc530660fa1b2b220fc1026fd"
+    },
+    "novel-architect": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/novel-architect/SKILL.md",
+      "computedHash": "b8cb0abebfead689c6c1a19c62bca1b5f136c242bccb8deedc68b7944977d454"
+    },
+    "novel-storytelling": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/novel-storytelling/SKILL.md",
+      "computedHash": "f4f4bae1bd05af6e21766c10a0eb52d67b747af97c6debc93693b1dde6bd317e"
+    },
+    "project-documentation": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/project-documentation/SKILL.md",
+      "computedHash": "34cddc63a7d7b4c47b15005c8874be4e1d2f3a3283153001d2120c8cddbd166e"
+    },
+    "qiraat-ayah-map": {
+      "source": "quran-ws/qurantech-skill",
+      "sourceType": "github",
+      "skillPath": "plugins/qurantech/skills/qiraat-ayah-map/SKILL.md",
+      "computedHash": "4de58f63530e5b66f92712c8570281de0adb721169ec992741d61c78eeba757f"
+    },
+    "quran-assets": {
+      "source": "quran-ws/qurantech-skill",
+      "sourceType": "github",
+      "skillPath": "plugins/qurantech/skills/quran-assets/SKILL.md",
+      "computedHash": "63446d4f4851573cf943bf348b1cad83b1b8f40d20918e22e358b4039dea46da"
+    },
+    "quran-engine": {
+      "source": "quran-ws/qurantech-skill",
+      "sourceType": "github",
+      "skillPath": "plugins/qurantech/skills/quran-engine/SKILL.md",
+      "computedHash": "de7b18a92efc370d058bfd3fca7e47475204387488d14e46404b56cfe6b6ff50"
+    },
+    "quran-svg": {
+      "source": "quran-ws/qurantech-skill",
+      "sourceType": "github",
+      "skillPath": "plugins/qurantech/skills/quran-svg/SKILL.md",
+      "computedHash": "ace4e09d4636c3df8bc74c94bfafb1399b0fa6414b3960612650f2c9c402b413"
+    },
+    "quran-svg-elements": {
+      "source": "quran-ws/qurantech-skill",
+      "sourceType": "github",
+      "skillPath": "plugins/qurantech/skills/quran-svg-elements/SKILL.md",
+      "computedHash": "eb61bec4f7258bafdb2cdf2b85822e6c68983721e644bd60bf2c5aeabd7e5f17"
+    },
+    "quran-tajweed": {
+      "source": "quran-ws/qurantech-skill",
+      "sourceType": "github",
+      "skillPath": "plugins/qurantech/skills/quran-tajweed/SKILL.md",
+      "computedHash": "dcdbaebf6438df8487bac96362adabeac91caf1447133a745b18e413eacd2553"
+    },
+    "qurantech": {
+      "source": "quran-ws/qurantech-skill",
+      "sourceType": "github",
+      "skillPath": "plugins/qurantech/skills/qurantech/SKILL.md",
+      "computedHash": "470b5a2907982f2cb55307c80520362f5ee9680d53580bf0ec9a8c54f6e24e29"
+    },
+    "researching-protocol": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/researching-protocol/SKILL.md",
+      "computedHash": "6c91b82be411394f16b94d6ff6698f7e259e0d115a53f9c9edb14f54b2d9b74c"
+    },
+    "sdlc-process": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/sdlc-process/SKILL.md",
+      "computedHash": "c975131ab0d4e8b48abec755357ddc58635448141bc8a8dc201615749640ac2b"
+    },
+    "skill-creator": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skill-creator/SKILL.md",
+      "computedHash": "430ffffc5f072ac96c045e8771e7e443828c404da54e0e51e81a348bf479f04f"
+    },
+    "ui-ux-design": {
+      "source": "nawawwow/skills",
+      "sourceType": "github",
+      "skillPath": "skills/ui-ux-design/SKILL.md",
+      "computedHash": "2dce3ad256958d7075a64f9908b5bf336821ddde4c3ace8c4e3c84088c73a851"
+    }
+  }
+}
