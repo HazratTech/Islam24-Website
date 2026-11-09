@@ -40,7 +40,7 @@ export default async function Hero() {
           </div>
 
           <h1 className={styles.title}>
-            Worship in
+            Worship in{' '}
             <br />
             <span className={styles.gradientText}>Absolute Stillness.</span>
           </h1>
